@@ -15,8 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@contact/auth/data-access": ["libs/auth/data-access/src/index.ts"],
+      "@contact/auth/feature": ["libs/auth/feature/src/index.ts"],
       "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
-      "@contact/type": ["libs/type/src/index.ts"]
+      "@contact/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@contact/type": ["libs/type/src/index.ts"],
+      "@contact/user/data-access": ["libs/user/data-access/src/index.ts"],
+      "@contact/user/feature": ["libs/user/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
