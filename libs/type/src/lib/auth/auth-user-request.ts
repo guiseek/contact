@@ -1,5 +1,5 @@
-import {User} from '../user/user'
+import { User } from '../user/user';
 
 export interface AuthUserRequest extends Request {
-  user: User
+  user: User;
 }
