@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
+      "@contact/type": ["libs/type/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
