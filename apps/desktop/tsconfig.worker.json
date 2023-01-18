@@ -5,5 +5,8 @@
     "lib": ["es2018", "dom", "webworker"],
     "types": ["audioworklet"]
   },
-  "include": ["src/**/*.worker.ts", "/libs/meet/feature/src/lib/shared/**/*.worker.ts"]
+  "include": [
+    "src/**/*.worker.ts",
+    "/libs/meet/feature/src/lib/shared/**/*.worker.ts"
+  ]
 }

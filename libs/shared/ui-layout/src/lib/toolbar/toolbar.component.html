@@ -1,0 +1,23 @@
+<mat-toolbar class="toolbar-third-party" [color]="color">
+  <button
+    *ngIf="showToggleMenu"
+    mat-icon-button
+    class="toolbar-icon"
+    aria-label="Alterna menu de navegação"
+    (click)="menuToggled.emit()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <a mediaQuery min="md" class="toolbar-go-back" [routerLink]="goBackRoute">
+    <object data="/assets/vectors/speek.svg"></object>
+    <span>Speek Contact</span>
+  </a>
+
+  <span class="toolbar-spacer"></span>
+
+  <ng-content select="[mat-icon-button]"></ng-content>
+  <ng-content select="mat-icon"></ng-content>
+  <ng-content select="[matMenuTriggerFor]"></ng-content>
+  <ng-content select="mat-menu"></ng-content>
+</mat-toolbar>

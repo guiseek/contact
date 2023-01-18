@@ -2,16 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatListModule } from '@angular/material/list';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { UiCdkModule, UiLayoutModule, UiMaterialModule } from '@contact/shared/ui-layout';
 import { meetFeatureRoutes } from './lib.routes';
 
 import { VolumeterDirective } from './shared/directives';
@@ -26,15 +17,9 @@ import { SettingsService } from './settings/settings.service';
 @NgModule({
   imports: [
     CommonModule,
-    DragDropModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatSelectModule,
-    MatDialogModule,
-    MatButtonModule,
+    UiCdkModule,
+    UiLayoutModule,
+    UiMaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild(meetFeatureRoutes),
   ],
@@ -47,6 +32,6 @@ import { SettingsService } from './settings/settings.service';
     ResolutionsComponent,
     FormatDeviceLabelPipe,
   ],
-  providers: [SettingsService]
+  providers: [SettingsService],
 })
 export class MeetFeatureModule {}

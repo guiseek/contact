@@ -22,8 +22,8 @@ const routes: Routes = [
       {
         path: '',
         outlet: 'settings',
-        redirectTo: 'audio'
-      }
+        redirectTo: 'audio',
+      },
     ],
   },
 ];

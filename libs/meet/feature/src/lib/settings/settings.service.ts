@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SettingsComponent } from './settings.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SettingsService {
   constructor(private _dialog: MatDialog) {}

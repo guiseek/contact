@@ -1,0 +1,233 @@
+@use 'sass:map';
+
+$breakpoint: (
+  'xxs': 240,
+  'xs': 360,
+  'sm': 480,
+  'md': 768,
+  'lg': 1024,
+  'xl': 1440,
+  'xxl': 1920,
+);
+
+$media: (
+  'motion-ok': 'prefers-reduced-motion: no-preference',
+  'motion-not-ok': 'prefers-reduced-motion: reduce',
+  'opacity-ok': 'prefers-reduced-transparency: no-preference',
+  'opacity-not-ok': 'prefers-reduced-transparency: reduce',
+  'use-data-ok': 'prefers-reduced-data: no-preference',
+  'use-data-not-ok': 'prefers-reduced-data: reduce',
+  'os-dark': 'prefers-color-scheme: dark',
+  'os-light': 'prefers-color-scheme: light',
+  'high-contrast': 'prefers-contrast: more',
+  'low-contrast': 'prefers-contrast: less',
+  'portrait': 'orientation: portrait',
+  'lasdscape': 'orientation: lasdscape',
+  'hd-color': 'dynamic-range: high',
+  'xxs-only': "0px <= width <= #{map.get($breakpoint, 'xxs')px}",
+  'xs-only': "#{map.get($breakpoint, 'xxs')px} <= width <= #{map.get($breakpoint, 'xs')px}",
+  'sm-only': "#{map.get($breakpoint, 'xs')px} <= width <= #{map.get($breakpoint, 'sm')px}",
+  'md-only': "#{map.get($breakpoint, 'sm')px} <= width <= #{map.get($breakpoint, 'md')px}",
+  'lg-only': "#{map.get($breakpoint, 'md')px} <= width <= #{map.get($breakpoint, 'lg')px}",
+  'xxl-only':
+    "#{map.get($breakpoint, 'lg')px} <= width <= #{map.get($breakpoint, 'xxl')px}",
+);
+
+@mixin motion-ok() {
+  @media (map.get($media, 'motion-ok')) {
+    @content;
+  }
+}
+@mixin opacity-ok() {
+  @media (map.get($media, 'opacity-ok')) {
+    @content;
+  }
+}
+@mixin use-data-ok() {
+  @media (map.get($media, 'use-data-ok')) {
+    @content;
+  }
+}
+
+@mixin motion-not-ok() {
+  @media (map.get($media, 'motion-not-ok')) {
+    @content;
+  }
+}
+@mixin opacity-not-ok() {
+  @media (map.get($media, 'opacity-not-ok')) {
+    @content;
+  }
+}
+@mixin use-data-not-ok() {
+  @media (map.get($media, 'use-data-not-ok')) {
+    @content;
+  }
+}
+
+@mixin os-dark() {
+  @media (map.get($media, 'os-dark')) {
+    @content;
+  }
+}
+
+@mixin os-light() {
+  @media (map.get($media, 'os-light')) {
+    @content;
+  }
+}
+
+@mixin xxs-only() {
+  @media (map.get($media, 'xxs-only')) {
+    @content;
+  }
+}
+@mixin xs-only() {
+  @media (map.get($media, 'xs-only')) {
+    @content;
+  }
+}
+@mixin sm-only() {
+  @media (map.get($media, 'sm-only')) {
+    @content;
+  }
+}
+@mixin md-only() {
+  @media (map.get($media, 'md-only')) {
+    @content;
+  }
+}
+@mixin lg-only() {
+  @media (map.get($media, 'lg-only')) {
+    @content;
+  }
+}
+@mixin xl-only() {
+  @media (map.get($media, 'xl-only')) {
+    @content;
+  }
+}
+@mixin xxl-only() {
+  @media (map.get($media, 'xxl-only')) {
+    @content;
+  }
+}
+
+@mixin xxs-n-above() {
+  @media (width >= #{map.get($breakpoint, "xxs")px}) {
+    @content;
+  }
+}
+@mixin xs-n-above() {
+  @media (width >= #{map.get($breakpoint, "xs")px}) {
+    @content;
+  }
+}
+@mixin sm-n-above() {
+  @media (width >= #{map.get($breakpoint, "sm")px}) {
+    @content;
+  }
+}
+@mixin md-n-above() {
+  @media (width >= #{map.get($breakpoint, "md")px}) {
+    @content;
+  }
+}
+@mixin lg-n-above() {
+  @media (width >= #{map.get($breakpoint, "lg")px}) {
+    @content;
+  }
+}
+@mixin xl-n-above() {
+  @media (width >= #{map.get($breakpoint, "xl")px}) {
+    @content;
+  }
+}
+@mixin xxl-n-above() {
+  @media (width >= #{map.get($breakpoint, "xxl")px}) {
+    @content;
+  }
+}
+
+@mixin xxs-n-below() {
+  @media (width < #{map.get($breakpoint, "xxs")px}) {
+    @content;
+  }
+}
+@mixin xs-n-below() {
+  @media (width < #{map.get($breakpoint, "xs")px}) {
+    @content;
+  }
+}
+@mixin sm-n-below() {
+  @media (width < #{map.get($breakpoint, "sm")px}) {
+    @content;
+  }
+}
+@mixin md-n-below() {
+  @media (width < #{map.get($breakpoint, "md")px}) {
+    @content;
+  }
+}
+@mixin lg-n-below() {
+  @media (width < #{map.get($breakpoint, "lg")px}) {
+    @content;
+  }
+}
+@mixin xl-n-below() {
+  @media (width < #{map.get($breakpoint, "xl")px}) {
+    @content;
+  }
+}
+@mixin xxl-n-below() {
+  @media (width < #{map.get($breakpoint, "xxl")px}) {
+    @content;
+  }
+}
+
+@mixin xxs-phone() {
+  @media (#{map.get($breakpoint, "xxs-only")px}) and (#{map.get($breakpoint, "portrait")px}) {
+    @content;
+  }
+}
+@mixin xs-phone() {
+  @media (#{map.get($breakpoint, "xxs-only")px}) and (#{map.get($breakpoint, "portrait")px}) {
+    @content;
+  }
+}
+@mixin sm-phone() {
+  @media (#{map.get($breakpoint, "sm-only")px}) and (#{map.get($breakpoint, "portrait")px}) {
+    @content;
+  }
+}
+@mixin md-phone() {
+  @media (#{map.get($breakpoint, "md-only")px}) and (#{map.get($breakpoint, "portrait")px}) {
+    @content;
+  }
+}
+@mixin lg-phone() {
+  @media (#{map.get($breakpoint, "lg-only")px}) and (#{map.get($breakpoint, "portrait")px}) {
+    @content;
+  }
+}
+
+@mixin touch() {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+@mixin stylus() {
+  @media (hover: none) and (pointer: fine) {
+    @content;
+  }
+}
+@mixin pointer() {
+  @media (hover) and (pointer: coarse) {
+    @content;
+  }
+}
+@mixin mouse() {
+  @media (hover) and (pointer: fine) {
+    @content;
+  }
+}

@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .toolbar-third-party {
+    overflow: hidden;
+  }
+
+
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+}
+
+a.toolbar-go-back {
+  display: flex;
+  align-items: center;
+}

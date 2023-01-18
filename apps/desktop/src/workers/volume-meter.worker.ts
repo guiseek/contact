@@ -29,7 +29,7 @@ const drawVisualizer = ({
       const green = i * 4;
       const blue = barHeight / 4 - 12;
       ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-      ctx.fillStyle = 'black'
+      ctx.fillStyle = 'black';
       ctx.fillRect(
         canvas.width / 2 - firstX,
         canvas.height - barHeight,

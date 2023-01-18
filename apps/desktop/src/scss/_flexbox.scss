@@ -1,0 +1,46 @@
+.flex {
+  display: flex;
+
+  &-1 {
+    flex: 1;
+  }
+
+  &.col {
+    flex-direction: column;
+
+    &.gap-8 {
+      column-gap: 8px;
+    }
+
+    &.gap-16 {
+      column-gap: 16px;
+    }
+
+    &.gap-32 {
+      column-gap: 32px;
+    }
+  }
+  &.row {
+    flex-direction: row;
+
+    &.space-between {
+      justify-content: space-between;
+    }
+
+    &.space-around {
+      justify-content: space-around;
+    }
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-end {
+    justify-content: flex-end;
+  }
+}
