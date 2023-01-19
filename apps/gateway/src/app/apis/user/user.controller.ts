@@ -22,9 +22,10 @@ import {
   UserResponseDto,
   CreateDeviceDto,
   DeviceResponseDto,
+  CreateUserDto,
 } from '../../data';
-import { Logged } from '../../utils';
-import { AuthUserLogged, User } from '@contact/type';
+import { Logged, Roles } from '../../utils';
+import { AuthUserLogged, User, UserRole } from '@contact/type';
 
 @ApiBearerAuth()
 @ApiTags('user')
@@ -130,6 +131,17 @@ export class UserController {
       throw new UnauthorizedException('You can only change yourself');
     }
     return new UserResponseDto(await this.userService.remove(+id));
+  }
+
+  @Post()
+  @Roles(UserRole.Admin)
+  @ApiOperation({ summary: 'Creates user' })
+  @ApiBody({
+    required: true,
+    type: CreateUserDto,
+  })
+  async createUser(@Body() createUserDto: CreateUserDto) {
+    return new UserResponseDto(await this.userService.createOne(createUserDto));
   }
 
   @Get()

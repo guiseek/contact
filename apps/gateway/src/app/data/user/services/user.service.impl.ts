@@ -38,7 +38,7 @@ export class UserServiceImpl implements UserService {
   }
 
   async findOneByUsername(username: string) {
-    return this.findOne({ username });
+    return this.users.findOneBy({ username });
   }
 
   async findOne(where: FindOptionsWhere<UserImpl>) {

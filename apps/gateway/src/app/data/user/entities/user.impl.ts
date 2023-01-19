@@ -1,12 +1,12 @@
+import { Device, User, UserRole } from '@contact/type';
 import { entityContainer } from '../../../utils';
-import { Device, User } from '@contact/type';
 import {
   Column,
   Entity,
   Unique,
   BaseEntity,
-  PrimaryGeneratedColumn,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { DeviceImpl } from './device.impl';
 
@@ -78,6 +78,12 @@ export class UserImpl extends BaseEntity implements User {
 
   @OneToMany(() => DeviceImpl, (device) => device.user)
   devices: Device[];
+
+  @Column({
+    type: 'varchar',
+    default: 'user'
+  })
+  roles: UserRole[];
 
   @Column({
     type: 'boolean',
