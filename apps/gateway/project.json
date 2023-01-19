@@ -35,6 +35,15 @@
         }
       }
     },
+    "seed": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "gateway:build:production",
+        "buildTargetOptions": {
+          "main": "apps/gateway/src/app/seeds/seed.ts"
+        }
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

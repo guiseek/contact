@@ -12,10 +12,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
   canActivate(context: ExecutionContext) {
     const targets = [context.getHandler(), context.getClass()]
 
-    const isAllowed = this.reflector.getAllAndOverride<boolean>(
-      IS_ALLOWED_KEY,
-      targets
-    )
+    const isAllowed = this.reflector.getAllAndOverride<boolean>(IS_ALLOWED_KEY, targets)
 
     if (isAllowed) {
       return true

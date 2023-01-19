@@ -1,3 +1,3 @@
 export function type(): string {
-  return 'type';
+  return 'type'
 }

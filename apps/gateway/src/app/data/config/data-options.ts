@@ -1,9 +1,9 @@
-import { DataSourceOptions, LoggerOptions } from 'typeorm';
-import { config } from 'dotenv';
+import {DataSourceOptions, LoggerOptions} from 'typeorm'
+import {config} from 'dotenv'
 
-config();
+config()
 
-const env = process.env;
+const env = process.env
 
 export const dataOptions = {
   type: env.DB_TYPE,
@@ -15,4 +15,4 @@ export const dataOptions = {
   dropSchema: env.DB_DROP_SCHEMA === 'true',
   synchronize: env.DB_SYNCHRONIZE === 'true',
   logging: env.DB_LOGGING as LoggerOptions,
-} as DataSourceOptions;
+} as DataSourceOptions

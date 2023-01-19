@@ -1,6 +1,6 @@
-import {Exclude} from 'class-transformer'
-import {UserResponse, User} from '@contact/type'
+import {UserResponse, User, UserRole, Device, Meeting} from '@contact/type'
 import {ApiHideProperty, ApiProperty} from '@nestjs/swagger'
+import {Exclude} from 'class-transformer'
 
 export class UserResponseDto implements UserResponse {
   @ApiProperty()
@@ -28,6 +28,9 @@ export class UserResponseDto implements UserResponse {
   birthday?: string
 
   @ApiProperty()
+  roles: UserRole[]
+
+  @ApiProperty()
   status: boolean
 
   @ApiProperty()
@@ -43,6 +46,16 @@ export class UserResponseDto implements UserResponse {
   @Exclude()
   @ApiHideProperty()
   salt: string
+
+  @ApiProperty()
+  devices?: Device[]
+
+  @ApiProperty()
+  meetings?: Meeting[]
+
+  @Exclude()
+  @ApiHideProperty()
+  isAdmin: boolean
 
   constructor(user: User) {
     Object.assign(this, user)

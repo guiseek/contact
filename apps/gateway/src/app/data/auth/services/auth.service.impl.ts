@@ -7,10 +7,7 @@ import {AuthService} from '../ports/auth.service'
 import {User} from '@contact/type'
 
 export class AuthServiceImpl implements AuthService {
-  constructor(
-    private userService: UserService,
-    private jwtService: JwtService
-  ) {}
+  constructor(private userService: UserService, private jwtService: JwtService) {}
 
   async validateUser({username, password}: AuthRequestDto) {
     const user = await this.userService.findOneByUsername(username)
@@ -38,8 +35,8 @@ export class AuthServiceImpl implements AuthService {
   }
 
   async login(user: User) {
-    const {id, email, displayName, username} = user
-    const payload = {sub: id, email, username, displayName}
+    const {id, email, displayName, username, roles} = user
+    const payload = {sub: id, email, username, displayName, roles}
     return new AuthResponseDto(this.jwtService.sign(payload))
   }
 }

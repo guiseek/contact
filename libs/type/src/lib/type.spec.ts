@@ -1,7 +1,7 @@
-import { type } from './type';
+import {type} from './type'
 
 describe('type', () => {
   it('should work', () => {
-    expect(type()).toEqual('type');
-  });
-});
+    expect(type()).toEqual('type')
+  })
+})

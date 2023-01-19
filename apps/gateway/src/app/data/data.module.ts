@@ -1,5 +1,5 @@
-import { Global, Module } from '@nestjs/common';
-import { DATA_PROVIDERS } from './data.providers';
+import {Global, Module} from '@nestjs/common'
+import {DATA_PROVIDERS} from './data.providers'
 
 @Global()
 @Module({

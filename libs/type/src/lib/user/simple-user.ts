@@ -1,6 +1,3 @@
-import { User } from './user';
+import {User} from './user'
 
-export type SimpleUser = Omit<
-  User,
-  'password' | 'salt' | 'createdAt' | 'updatedAt'
->;
+export type SimpleUser = Omit<User, 'password' | 'salt' | 'createdAt' | 'updatedAt'>

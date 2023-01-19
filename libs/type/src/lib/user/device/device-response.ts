@@ -1,6 +1,6 @@
-import { Device } from './device';
+import {Device} from './device'
 
 export interface DeviceResponse extends Device {
-  createdAt: Date;
-  updateAt: Date;
+  createdAt: Date
+  updateAt: Date
 }

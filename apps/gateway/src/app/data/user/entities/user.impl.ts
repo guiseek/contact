@@ -1,14 +1,8 @@
-import { Device, User, UserRole } from '@contact/type';
-import { entityContainer } from '../../../utils';
-import {
-  Column,
-  Entity,
-  Unique,
-  BaseEntity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { DeviceImpl } from './device.impl';
+import {Column, Entity, Unique, OneToMany, BaseEntity, PrimaryGeneratedColumn} from 'typeorm'
+import {Agenda, Device, User, UserRole} from '@contact/type'
+import {entityContainer} from '../../../utils'
+import {DeviceImpl} from './device.impl'
+import {AgendaImpl} from './agenda.impl'
 
 @Entity({
   name: 'users',
@@ -16,87 +10,93 @@ import { DeviceImpl } from './device.impl';
 @Unique(['username'])
 export class UserImpl extends BaseEntity implements User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column({
     type: 'varchar',
     nullable: false,
   })
-  username: string;
+  username: string
 
   @Column({
     type: 'varchar',
     nullable: false,
     default: '',
   })
-  password: string;
+  password: string
 
   @Column({
     type: 'varchar',
     nullable: false,
   })
-  salt: string;
+  salt: string
 
   @Column({
     type: 'varchar',
     nullable: false,
   })
-  email: string;
+  email: string
 
   @Column({
     type: 'datetime',
     default: '00-00-0000 00:00:00',
   })
-  birthday?: string;
+  birthday?: string
 
   @Column({
     type: 'varchar',
     nullable: false,
     default: '',
   })
-  displayName: string;
+  displayName: string
 
   @Column({
     type: 'varchar',
     nullable: false,
     default: '',
   })
-  firstName: string;
+  firstName: string
 
   @Column({
     type: 'varchar',
     nullable: false,
     default: '',
   })
-  lastName: string;
+  lastName: string
 
   @Column({
     type: 'varchar',
     default: '',
   })
-  photoUrl: string;
+  photoUrl: string
 
   @OneToMany(() => DeviceImpl, (device) => device.user)
-  devices: Device[];
+  devices: Device[]
+
+  @OneToMany(() => AgendaImpl, (agenda) => agenda.user)
+  agenda: Agenda[]
 
   @Column({
-    type: 'varchar',
-    default: 'user'
+    type: 'enum',
+    enum: UserRole,
+    enumName: 'USER_ROLE',
+    nullable: false,
+    default: 'USER',
   })
-  roles: UserRole[];
+  roles: UserRole[]
 
   @Column({
     type: 'boolean',
     default: true,
   })
-  status: boolean;
+  status: boolean
 
   @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP()',
     nullable: false,
   })
-  createdAt: Date;
+  createdAt: Date
 
   @Column({
     type: 'timestamp',
@@ -104,7 +104,11 @@ export class UserImpl extends BaseEntity implements User {
     onUpdate: 'CURRENT_TIMESTAMP()',
     nullable: false,
   })
-  updatedAt: Date;
+  updatedAt: Date
+
+  get isAdmin() {
+    return this.roles.includes(UserRole.Admin)
+  }
 }
 
-entityContainer.add(UserImpl);
+entityContainer.add(UserImpl)

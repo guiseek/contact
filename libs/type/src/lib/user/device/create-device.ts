@@ -1,9 +1,9 @@
-import { User } from '../user';
+import {User} from '../user'
 
 export interface CreateDevice {
-  user: Partial<User>;
-  kind: string;
-  deviceId: string;
-  groupId: string;
-  label: string;
+  user: Partial<User>
+  kind: string
+  deviceId: string
+  groupId: string
+  label: string
 }

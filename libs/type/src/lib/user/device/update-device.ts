@@ -1,3 +1,3 @@
-import { CreateDevice } from './create-device';
+import {CreateDevice} from './create-device'
 
-export type UpdateDevice = Partial<CreateDevice> & { id: number };
+export type UpdateDevice = Partial<CreateDevice> & {id: number}

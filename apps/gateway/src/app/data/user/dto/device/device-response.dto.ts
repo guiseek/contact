@@ -1,27 +1,27 @@
-import { Device, UserResponse } from '@contact/type';
-import { ApiProperty } from '@nestjs/swagger';
-import { UserResponseDto } from '../user-response.dto';
+import {Device, UserResponse} from '@contact/type'
+import {ApiProperty} from '@nestjs/swagger'
+import {UserResponseDto} from '../user-response.dto'
 
 export class DeviceResponseDto {
   @ApiProperty()
-  id: number;
+  id: number
 
   @ApiProperty()
-  label: string;
+  label: string
 
   @ApiProperty()
-  deviceId: string;
+  deviceId: string
 
   @ApiProperty()
-  groupId: string;
+  groupId: string
 
   @ApiProperty()
-  kind: string;
+  kind: string
 
   @ApiProperty()
-  user: UserResponse;
+  user: UserResponse
 
-  constructor({ user, ...device }: Device) {
-    Object.assign(this, device, { user: new UserResponseDto(user) });
+  constructor({user, ...device}: Device) {
+    Object.assign(this, device, {user: new UserResponseDto(user)})
   }
 }

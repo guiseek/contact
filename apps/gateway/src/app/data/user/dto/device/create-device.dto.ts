@@ -1,38 +1,38 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
-import { CreateDevice, User } from '@contact/type';
+import {IsNumber, IsOptional, IsString} from 'class-validator'
+import {ApiProperty} from '@nestjs/swagger'
+import {CreateDevice, User} from '@contact/type'
 
 export class CreateDeviceDto implements CreateDevice {
   @IsString()
   @ApiProperty({
     nullable: false,
   })
-  label: string;
+  label: string
 
   @IsString()
   @ApiProperty({
     nullable: false,
   })
-  deviceId: string;
+  deviceId: string
 
   @IsString()
   @ApiProperty({
     nullable: false,
   })
-  groupId: string;
+  groupId: string
 
   @IsString()
   @ApiProperty({
     nullable: false,
   })
-  kind: string;
+  kind: string
 
   @IsNumber()
   @IsOptional()
   @ApiProperty({
     nullable: false,
   })
-  user: Partial<User>;
+  user: Partial<User>
   // @IsNumber()
   // @IsOptional()
   // @ApiProperty({

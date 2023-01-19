@@ -1,6 +1,6 @@
 export interface SignalingMessage {
-  meet: string;
-  user: string;
-  ice?: RTCIceCandidate;
-  sdp?: RTCSessionDescription;
+  meet: string
+  user: string
+  ice?: RTCIceCandidate
+  sdp?: RTCSessionDescription
 }

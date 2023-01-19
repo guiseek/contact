@@ -1,202 +1,202 @@
-import { HttpOptionsHeaders } from './headers';
-import { HttpOptionsParams } from './params';
-import { HttpContext } from './context';
-import { HttpHandler } from './handler';
-import { HttpRequest } from './request';
-import { HttpEvent } from './response';
-import { Observable } from 'rxjs';
+import {HttpOptionsHeaders} from './headers'
+import {HttpOptionsParams} from './params'
+import {HttpContext} from './context'
+import {HttpHandler} from './handler'
+import {HttpRequest} from './request'
+import {HttpEvent} from './response'
+import {Observable} from 'rxjs'
 
 export abstract class HttpService {
-  abstract handler: HttpHandler;
+  abstract handler: HttpHandler
 
-  abstract request<R>(req: HttpRequest<any>): Observable<HttpEvent<R>>;
+  abstract request<R>(req: HttpRequest<any>): Observable<HttpEvent<R>>
   abstract request<R>(
     method: string,
     url: string,
     options?: {
-      body?: any;
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      responseType?: 'json';
-      reportProgress?: boolean;
-      withCredentials?: boolean;
+      body?: any
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      responseType?: 'json'
+      reportProgress?: boolean
+      withCredentials?: boolean
     }
-  ): Observable<R>;
+  ): Observable<R>
 
   abstract delete(
     url: string,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
-      body?: any | null;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
+      body?: any | null
     }
-  ): Observable<Record<any, any>>;
+  ): Observable<Record<any, any>>
   abstract delete<T>(
     url: string,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
-      body?: any | null;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
+      body?: any | null
     }
-  ): Observable<T>;
+  ): Observable<T>
   abstract get<T>(
     url: string,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
     }
-  ): Observable<T>;
+  ): Observable<T>
 
   abstract head<T>(
     url: string,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
     }
-  ): Observable<T>;
+  ): Observable<T>
 
-  abstract jsonp(url: string, callbackParam: string): Observable<object>;
-  abstract jsonp<T>(url: string, callbackParam: string): Observable<T>;
+  abstract jsonp(url: string, callbackParam: string): Observable<object>
+  abstract jsonp<T>(url: string, callbackParam: string): Observable<T>
 
   abstract options<T>(
     url: string,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
     }
-  ): Observable<T>;
+  ): Observable<T>
 
   abstract patch(
     url: string,
     body: any | null,
     options: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType: 'arraybuffer';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType: 'arraybuffer'
+      withCredentials?: boolean
     }
-  ): Observable<ArrayBuffer>;
+  ): Observable<ArrayBuffer>
   abstract patch<T>(
     url: string,
     body: any | null,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
     }
-  ): Observable<T>;
+  ): Observable<T>
 
   abstract post(
     url: string,
     body: any | null,
     options: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType: 'arraybuffer';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType: 'arraybuffer'
+      withCredentials?: boolean
     }
-  ): Observable<ArrayBuffer>;
+  ): Observable<ArrayBuffer>
   abstract post(
     url: string,
     body: any | null,
     options: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType: 'blob';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType: 'blob'
+      withCredentials?: boolean
     }
-  ): Observable<Blob>;
+  ): Observable<Blob>
   abstract post<T>(
     url: string,
     body: any | null,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
     }
-  ): Observable<T>;
+  ): Observable<T>
 
   abstract put(
     url: string,
     body: any | null,
     options: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType: 'arraybuffer';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType: 'arraybuffer'
+      withCredentials?: boolean
     }
-  ): Observable<ArrayBuffer>;
+  ): Observable<ArrayBuffer>
   abstract put(
     url: string,
     body: any | null,
     options: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType: 'blob';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType: 'blob'
+      withCredentials?: boolean
     }
-  ): Observable<Blob>;
+  ): Observable<Blob>
   abstract put<T>(
     url: string,
     body: any | null,
     options?: {
-      headers?: HttpOptionsHeaders;
-      context?: HttpContext;
-      observe?: 'body';
-      params?: HttpOptionsParams;
-      reportProgress?: boolean;
-      responseType?: 'json';
-      withCredentials?: boolean;
+      headers?: HttpOptionsHeaders
+      context?: HttpContext
+      observe?: 'body'
+      params?: HttpOptionsParams
+      reportProgress?: boolean
+      responseType?: 'json'
+      withCredentials?: boolean
     }
-  ): Observable<T>;
+  ): Observable<T>
 }
