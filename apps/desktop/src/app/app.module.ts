@@ -1,21 +1,14 @@
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserModule} from '@angular/platform-browser'
 
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import {
-  HTTP_INTERCEPTORS,
-  HttpClient,
-  HttpClientModule,
-} from '@angular/common/http';
-import { HttpService } from '@contact/type';
-import { userDataProviders } from '@contact/user/data-access';
-import {
-  StorageService,
-  sharedDataProviders,
-} from '@contact/shared/data-access';
-import { AuthInterceptor, authDataProviders } from '@contact/auth/data-access';
+import {AppComponent} from './app.component'
+import {RouterModule} from '@angular/router'
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http'
+import {HttpService} from '@contact/type'
+import {userDataProviders} from '@contact/user/data-access'
+import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
+import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,21 +20,18 @@ import { AuthInterceptor, authDataProviders } from '@contact/auth/data-access';
       [
         {
           path: 'auth',
-          loadChildren: () =>
-            import('@contact/auth/feature').then((m) => m.AuthFeatureModule),
+          loadChildren: () => import('@contact/auth/feature').then((m) => m.AuthFeatureModule),
         },
         {
           path: '',
-          loadChildren: () =>
-            import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
+          loadChildren: () => import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
         },
         {
           path: 'user',
-          loadChildren: () =>
-            import('@contact/user/feature').then((m) => m.UserFeatureModule),
+          loadChildren: () => import('@contact/user/feature').then((m) => m.UserFeatureModule),
         },
       ],
-      { useHash: true }
+      {useHash: true}
     ),
   ],
   providers: [

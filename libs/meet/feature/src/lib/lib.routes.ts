@@ -1,5 +1,5 @@
-import { Route } from '@angular/router';
-import { MeetFeatureComponent } from './meet-feature.component';
+import {Route} from '@angular/router'
+import {MeetFeatureComponent} from './meet-feature.component'
 
 export const meetFeatureRoutes: Route[] = [
   {
@@ -9,7 +9,6 @@ export const meetFeatureRoutes: Route[] = [
   },
   {
     path: 'settings',
-    loadChildren: () =>
-      import('./settings/settings.module').then((m) => m.SettingsModule),
+    loadChildren: () => import('./settings/settings.module').then((m) => m.SettingsModule),
   },
-];
+]

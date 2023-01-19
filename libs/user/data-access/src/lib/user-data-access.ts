@@ -1,10 +1,10 @@
-import { HttpService } from '@contact/type';
-import { UserFacade } from './domain/user.facade';
-import { UserService } from './domain/user.service';
-import { UserServiceImpl } from './infrastructure/user.service.impl';
-import { UserFacadeImpl } from './applications/user.facade.impl';
-import { UserDevicesService } from './domain/user-devices.service';
-import { UserDevicesServiceImpl } from './infrastructure/user-device.service.impl';
+import {HttpService} from '@contact/type'
+import {UserFacade} from './domain/user.facade'
+import {UserService} from './domain/user.service'
+import {UserServiceImpl} from './infrastructure/user.service.impl'
+import {UserFacadeImpl} from './applications/user.facade.impl'
+import {UserDevicesService} from './domain/user-devices.service'
+import {UserDevicesServiceImpl} from './infrastructure/user-device.service.impl'
 
 export function userDataProviders() {
   return [
@@ -28,5 +28,5 @@ export function userDataProviders() {
       useFactory: (user: UserService) => new UserFacadeImpl(user),
       deps: [UserService],
     },
-  ];
+  ]
 }

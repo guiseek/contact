@@ -1,3 +1,6 @@
 {
-  "singleQuote": true
+  "endOfLine": "auto",
+  "bracketSpacing": false,
+  "singleQuote": true,
+  "semi": false
 }

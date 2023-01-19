@@ -1,1 +1,1 @@
-export * from './lib/shared-util-media';
+export * from './lib/shared-util-media'

@@ -1,4 +1,13 @@
 <contact-toolbar>
+  <a
+    mat-icon-button
+    class="toolbar-icon"
+    matTooltip="Conta de usuário"
+    routerLink="/user"
+  >
+    <mat-icon>account_circle</mat-icon>
+  </a>
+
   <button
     mat-icon-button
     class="toolbar-icon favorite-icon"
@@ -42,7 +51,7 @@
 
       <mat-card-actions *ngIf="audioDevices.firstSelectedDevice as device">
         <contact-audio-input
-          [constraints]="{ deviceId: device.deviceId }"
+          [constraints]="{deviceId: device.deviceId}"
         ></contact-audio-input>
       </mat-card-actions>
     </mat-card>
@@ -72,7 +81,7 @@
           <mat-card-actions>
             <contact-video-input
               (capabilitiesChange)="onVideoCapabilities($event)"
-              [constraints]="{ deviceId: device.deviceId }"
+              [constraints]="{deviceId: device.deviceId}"
             ></contact-video-input>
           </mat-card-actions>
         </ng-container>

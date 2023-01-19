@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
-import { SettingsService } from './settings/settings.service';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core'
+import {FormControl, FormGroup} from '@angular/forms'
+import {BehaviorSubject} from 'rxjs'
+import {SettingsService} from './settings/settings.service'
 
 @Component({
   selector: 'contact-meet-feature',
@@ -10,14 +10,13 @@ import { SettingsService } from './settings/settings.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MeetFeatureComponent {
-  private _mediaStream = new BehaviorSubject<MediaStream | null>(null);
-  readonly mediaStream$ = this._mediaStream.asObservable();
+  private _mediaStream = new BehaviorSubject<MediaStream | null>(null)
+  readonly mediaStream$ = this._mediaStream.asObservable()
 
-  private _videoCapabilities =
-    new BehaviorSubject<MediaTrackCapabilities | null>(null);
-  readonly videoCapabilities$ = this._videoCapabilities.asObservable();
-  private _videoRange = new BehaviorSubject<ULongRange>({});
-  readonly videoRange$ = this._videoRange.asObservable();
+  private _videoCapabilities = new BehaviorSubject<MediaTrackCapabilities | null>(null)
+  readonly videoCapabilities$ = this._videoCapabilities.asObservable()
+  private _videoRange = new BehaviorSubject<ULongRange>({})
+  readonly videoRange$ = this._videoRange.asObservable()
 
   form = new FormGroup({
     audio: new FormGroup({
@@ -27,31 +26,31 @@ export class MeetFeatureComponent {
       devices: new FormControl(),
       resolution: new FormControl(),
     }),
-  });
+  })
 
-  settings = inject(SettingsService);
+  settings = inject(SettingsService)
 
   onVideoDevicesChange(value: MediaDeviceInfo[]) {
-    console.log(value);
+    console.log(value)
 
-    this._videoRange.next({});
+    this._videoRange.next({})
   }
 
   onVideoCapabilities(value: MediaTrackCapabilities) {
-    this._videoCapabilities.next(value);
+    this._videoCapabilities.next(value)
     if (value.height) {
-      this._videoRange.next(value.height);
+      this._videoRange.next(value.height)
     }
   }
 
   openSettings() {
-    this.settings.open();
-    console.log();
+    this.settings.open()
+    console.log()
   }
 }
 
 declare global {
   interface HTMLMediaElement {
-    setSinkId(deviceId: string): Promise<void>;
+    setSinkId(deviceId: string): Promise<void>
   }
 }

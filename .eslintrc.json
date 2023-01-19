@@ -6,6 +6,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "@typescript-eslint/no-inferrable-types": "error",
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {

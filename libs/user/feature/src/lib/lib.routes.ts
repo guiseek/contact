@@ -1,10 +1,11 @@
-import { Route } from '@angular/router';
-import { DeviceContainer } from './containers/device/device.container';
+import {Route} from '@angular/router'
+import {DeviceContainer} from './containers/device/device.container'
+import {UserGuard} from './guards/user.guard'
 
 export const userFeatureRoutes: Route[] = [
   {
     path: '',
-    pathMatch: 'full',
+    canActivate: [UserGuard],
     component: DeviceContainer,
   },
-];
+]

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SettingsComponent } from './settings.component';
-import { AudioComponent } from './audio/audio.component';
-import { VideoComponent } from './video/video.component';
+import {NgModule} from '@angular/core'
+import {RouterModule, Routes} from '@angular/router'
+import {SettingsComponent} from './settings.component'
+import {AudioComponent} from './audio/audio.component'
+import {VideoComponent} from './video/video.component'
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
       },
     ],
   },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,11 +1,7 @@
-import { Directive, inject } from '@angular/core';
-import {
-  AbstractControl,
-  AsyncValidator,
-  NG_ASYNC_VALIDATORS,
-} from '@angular/forms';
-import { AuthService, CheckUserValidator } from '@contact/auth/data-access';
-import { filter } from 'rxjs';
+import {Directive, inject} from '@angular/core'
+import {AbstractControl, AsyncValidator, NG_ASYNC_VALIDATORS} from '@angular/forms'
+import {AuthService, CheckUserValidator} from '@contact/auth/data-access'
+import {filter} from 'rxjs'
 
 @Directive({
   exportAs: 'authCheckUser',
@@ -18,23 +14,16 @@ import { filter } from 'rxjs';
     },
   ],
 })
-export class CheckUserDirective
-  extends CheckUserValidator
-  implements AsyncValidator
-{
-  service = inject(AuthService);
+export class CheckUserDirective extends CheckUserValidator implements AsyncValidator {
+  service = inject(AuthService)
 
-  message$ = this.error.asObservable();
+  message$ = this.error.asObservable()
 
-  isAvailable$ = this.error
-    .asObservable()
-    .pipe(filter(({ exists }) => exists === false));
+  isAvailable$ = this.error.asObservable().pipe(filter(({exists}) => exists === false))
 
-  alreadyExists$ = this.error
-    .asObservable()
-    .pipe(filter(({ exists }) => exists === true));
+  alreadyExists$ = this.error.asObservable().pipe(filter(({exists}) => exists === true))
 
   validate(control: AbstractControl) {
-    return this.checkUser(control.value);
+    return this.checkUser(control.value)
   }
 }

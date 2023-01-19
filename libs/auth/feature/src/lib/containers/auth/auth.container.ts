@@ -1,12 +1,12 @@
-import { Component, OnDestroy, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthFacade } from '@contact/auth/data-access';
-import { SubAsync } from '@contact/shared/data-access';
-import { AuthRequest, CreateUser } from '@contact/type';
+import {Component, OnDestroy, inject} from '@angular/core'
+import {ActivatedRoute, Router} from '@angular/router'
+import {AuthFacade} from '@contact/auth/data-access'
+import {SubAsync} from '@contact/shared/data-access'
+import {AuthRequest, CreateUser} from '@contact/type'
 
 interface AuthParams {
-  action?: 'in' | 'up';
-  redirectTo?: string;
+  action?: 'in' | 'up'
+  redirectTo?: string
 }
 
 @Component({
@@ -15,55 +15,55 @@ interface AuthParams {
   styleUrls: ['./auth.container.scss'],
 })
 export class AuthContainer implements OnDestroy {
-  sub = new SubAsync();
+  sub = new SubAsync()
 
-  router = inject(Router);
-  route = inject(ActivatedRoute);
+  router = inject(Router)
+  route = inject(ActivatedRoute)
 
-  auth = inject(AuthFacade);
+  auth = inject(AuthFacade)
 
   get queryParams() {
-    return this.route.snapshot.queryParams as AuthParams;
+    return this.route.snapshot.queryParams as AuthParams
   }
 
-  actions = ['in', 'up'];
+  actions = ['in', 'up']
   get actionIndex() {
-    const { action = 'in' } = this.queryParams;
-    const validAction = this.actions.includes(action);
-    return validAction ? this.actions.indexOf(action) : 0;
+    const {action = 'in'} = this.queryParams
+    const validAction = this.actions.includes(action)
+    return validAction ? this.actions.indexOf(action) : 0
   }
 
   onSignIn<T extends AuthRequest>(value: T) {
-    this.auth.signIn(value);
+    this.auth.signIn(value)
 
     this.sub.async = this.auth.isAuthenticated$.subscribe((state) => {
-      if (state) this.redirect();
-    });
+      if (state) this.redirect()
+    })
   }
 
   onSignUp<T extends CreateUser>(value: T) {
-    this.auth.signUp(value);
+    this.auth.signUp(value)
 
     this.sub.async = this.auth.isAuthenticated$.subscribe((state) => {
-      if (state) this.redirect();
-    });
+      if (state) this.redirect()
+    })
   }
 
   onTabChange() {
-    const form = document.querySelector('form');
-    if (form) this.getInputOfForm(form).focus();
+    const form = document.querySelector('form')
+    if (form) this.getInputOfForm(form).focus()
   }
 
   getInputOfForm(form: HTMLFormElement) {
-    return form.querySelector(`[autofocus]`) as HTMLInputElement;
+    return form.querySelector(`[autofocus]`) as HTMLInputElement
   }
 
   redirect() {
-    const { redirectTo = '/' } = this.queryParams;
-    this.router.navigateByUrl(redirectTo);
+    const {redirectTo = '/'} = this.queryParams
+    this.router.navigateByUrl(redirectTo)
   }
 
   ngOnDestroy() {
-    this.sub.unsub();
+    this.sub.unsub()
   }
 }

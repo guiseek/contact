@@ -1,4 +1,4 @@
-import { StorageService } from './base/storage.service';
+import {StorageService} from './base/storage.service'
 
 export function sharedDataProviders() {
   return [
@@ -11,5 +11,5 @@ export function sharedDataProviders() {
       useFactory: (local: Storage) => new StorageService(local),
       deps: [localStorage],
     },
-  ];
+  ]
 }

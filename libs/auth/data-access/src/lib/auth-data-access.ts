@@ -1,9 +1,9 @@
-import { HttpService } from '@contact/type';
-import { AuthService } from './domain/auth.service';
-import { AuthServiceImpl } from './infrastructure/auth.service.impl';
-import { AuthFacade } from './domain/auth.facade';
-import { AuthFacadeImpl } from './applications/auth.facade.impl';
-import { StorageService } from '@contact/shared/data-access';
+import {HttpService} from '@contact/type'
+import {AuthService} from './domain/auth.service'
+import {AuthServiceImpl} from './infrastructure/auth.service.impl'
+import {AuthFacade} from './domain/auth.facade'
+import {AuthFacadeImpl} from './applications/auth.facade.impl'
+import {StorageService} from '@contact/shared/data-access'
 
 export function authDataProviders() {
   return [
@@ -17,5 +17,5 @@ export function authDataProviders() {
       useFactory: (auth: AuthService, storage: StorageService) => new AuthFacadeImpl(auth, storage),
       deps: [AuthService, StorageService],
     },
-  ];
+  ]
 }

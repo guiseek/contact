@@ -1,4 +1,4 @@
 export interface ShareData {
-  message?: string;
-  address?: string;
+  message?: string
+  address?: string
 }

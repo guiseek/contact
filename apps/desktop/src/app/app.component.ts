@@ -1,13 +1,11 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core'
 
 export function createProcessor() {
   if (typeof Worker === 'undefined') {
-    throw 'Web workers are not supported in this environment.';
+    throw 'Web workers are not supported in this environment.'
   }
   // Create a new
-  return new Worker(
-    new URL('../workers/volume-meter.worker.ts', import.meta.url)
-  );
+  return new Worker(new URL('../workers/volume-meter.worker.ts', import.meta.url))
 }
 
 @Component({
@@ -16,12 +14,12 @@ export function createProcessor() {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'desktop';
+  title = 'desktop'
 
   constructor(private _elRef: ElementRef<HTMLElement>) {}
 
   async ngOnInit() {
-    console.log('');
+    console.log('')
 
     // const audioCtx = new AudioContext();
     // const canvasEl = document.createElement('canvas');

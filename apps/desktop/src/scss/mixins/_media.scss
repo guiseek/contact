@@ -25,10 +25,14 @@ $media: (
   'lasdscape': 'orientation: lasdscape',
   'hd-color': 'dynamic-range: high',
   'xxs-only': "0px <= width <= #{map.get($breakpoint, 'xxs')px}",
-  'xs-only': "#{map.get($breakpoint, 'xxs')px} <= width <= #{map.get($breakpoint, 'xs')px}",
-  'sm-only': "#{map.get($breakpoint, 'xs')px} <= width <= #{map.get($breakpoint, 'sm')px}",
-  'md-only': "#{map.get($breakpoint, 'sm')px} <= width <= #{map.get($breakpoint, 'md')px}",
-  'lg-only': "#{map.get($breakpoint, 'md')px} <= width <= #{map.get($breakpoint, 'lg')px}",
+  'xs-only':
+    "#{map.get($breakpoint, 'xxs')px} <= width <= #{map.get($breakpoint, 'xs')px}",
+  'sm-only':
+    "#{map.get($breakpoint, 'xs')px} <= width <= #{map.get($breakpoint, 'sm')px}",
+  'md-only':
+    "#{map.get($breakpoint, 'sm')px} <= width <= #{map.get($breakpoint, 'md')px}",
+  'lg-only':
+    "#{map.get($breakpoint, 'md')px} <= width <= #{map.get($breakpoint, 'lg')px}",
   'xxl-only':
     "#{map.get($breakpoint, 'lg')px} <= width <= #{map.get($breakpoint, 'xxl')px}",
 );

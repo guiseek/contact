@@ -1,9 +1,9 @@
-import { Route } from '@angular/router';
-import { AuthContainer } from './containers';
+import {Route} from '@angular/router'
+import {AuthContainer} from './containers'
 
 export const authFeatureRoutes: Route[] = [
   {
     path: '',
-    component: AuthContainer
-  }
-];
+    component: AuthContainer,
+  },
+]

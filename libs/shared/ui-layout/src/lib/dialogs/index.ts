@@ -1,2 +1,2 @@
-export * from './share/share.dialog';
-export * from './share/share.service';
+export * from './share/share.dialog'
+export * from './share/share.service'

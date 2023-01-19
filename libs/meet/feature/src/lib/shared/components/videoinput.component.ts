@@ -1,23 +1,10 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output,
-} from '@angular/core';
-import { Subject } from 'rxjs';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core'
+import {Subject} from 'rxjs'
 
 @Component({
   exportAs: 'contactVideoInput',
   selector: 'contact-video-input',
-  template: ` <video
-    autoplay
-    playsInline
-    poster="/assets/vectors/play-skew.svg"
-    [srcObject]="stream"
-    [muted]="stream?.active"
-  ></video>`,
+  template: ` <video autoplay playsInline poster="/assets/vectors/play-skew.svg" [srcObject]="stream" [muted]="stream?.active"></video>`,
   styles: [
     `
       :host {
@@ -36,43 +23,43 @@ import { Subject } from 'rxjs';
   ],
 })
 export class VideoInputComponent implements AfterViewInit, OnDestroy {
-  stream?: MediaStream;
+  stream?: MediaStream
 
-  private _capabilities = new Subject<MediaTrackCapabilities>();
-  readonly capabilities$ = this._capabilities.asObservable();
+  private _capabilities = new Subject<MediaTrackCapabilities>()
+  readonly capabilities$ = this._capabilities.asObservable()
 
-  @Output() capabilitiesChange = new EventEmitter<MediaTrackCapabilities>();
+  @Output() capabilitiesChange = new EventEmitter<MediaTrackCapabilities>()
 
-  @Input() active = true;
+  @Input() active = true
 
   private _constraints: MediaTrackConstraints = {
     deviceId: 'default',
-  };
+  }
   get constraints() {
-    return this._constraints;
+    return this._constraints
   }
   @Input() set constraints(value) {
-    this._constraints = value;
-    this.ngAfterViewInit();
+    this._constraints = value
+    this.ngAfterViewInit()
   }
 
   async ngAfterViewInit() {
-    this.stopStream();
-    const video = this.constraints ? this.constraints : this.active;
-    this.stream = await navigator.mediaDevices.getUserMedia({ video });
-    const [videoTrack] = this.stream.getVideoTracks();
-    this.capabilitiesChange.emit(videoTrack.getCapabilities());
+    this.stopStream()
+    const video = this.constraints ? this.constraints : this.active
+    this.stream = await navigator.mediaDevices.getUserMedia({video})
+    const [videoTrack] = this.stream.getVideoTracks()
+    this.capabilitiesChange.emit(videoTrack.getCapabilities())
   }
 
   private stopStream() {
     if (this.stream) {
-      const tracks = this.stream.getTracks();
-      tracks.forEach((track) => track.stop());
-      this.stream = undefined;
+      const tracks = this.stream.getTracks()
+      tracks.forEach((track) => track.stop())
+      this.stream = undefined
     }
   }
 
   ngOnDestroy() {
-    this.stopStream();
+    this.stopStream()
   }
 }

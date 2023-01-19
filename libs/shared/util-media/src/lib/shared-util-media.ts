@@ -1,3 +1,3 @@
 export function sharedUtilMedia(): string {
-  return 'shared-util-media';
+  return 'shared-util-media'
 }

@@ -1,9 +1,8 @@
 @use '../variables' as token;
 
 body button {
+  font-size: #{token.$typography-manrope-button-font-size}px;
   &.speek {
-    font-size: #{token.$typography-manrope-button-font-size}px;
-
     &.blue {
       color: token.$color-blue-05;
 

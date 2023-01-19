@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, inject} from '@angular/core'
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'contact-settings',
@@ -7,5 +7,5 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent {
-  route = inject(ActivatedRoute);
+  route = inject(ActivatedRoute)
 }
