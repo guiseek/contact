@@ -1,10 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { PartialType } from '@nestjs/mapped-types';
-import { IsNumber, IsString } from 'class-validator';
-import { UpdateDevice } from '@contact/type';
-import { CreateUserDto } from '../../user/dto';
+import { IsNumber } from 'class-validator';
+import { CreateDeviceDto } from './create-device.dto';
 
-export class UpdateDeviceDto extends PartialType(CreateUserDto) {
+export class UpdateDeviceDto extends PartialType(CreateDeviceDto) {
   // @IsString()
   // @ApiProperty({
   //   nullable: false,

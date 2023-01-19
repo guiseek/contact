@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
 } from 'typeorm';
-import { DeviceImpl } from '../../device/entities/device.impl';
+import { DeviceImpl } from './device.impl';
 
 @Entity({
   name: 'users',

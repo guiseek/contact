@@ -5,12 +5,12 @@ import {
   UserResponse,
   AuthResponse,
   CheckUserResponse,
-  AuthUserResponse,
+  AuthUserLogged,
 } from '@contact/type';
 import { Observable } from 'rxjs';
 
 export abstract class AuthService {
-  abstract validateUser(): Observable<AuthUserResponse>;
+  abstract validateUser(): Observable<AuthUserLogged>;
   abstract checkUser(user: CheckUser): Observable<CheckUserResponse>;
   abstract createUser(user: CreateUser): Observable<UserResponse>;
   abstract login(request: AuthRequest): Observable<AuthResponse>;

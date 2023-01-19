@@ -19,8 +19,9 @@ export class DeviceImpl extends BaseEntity implements Device {
   @Column({
     type: 'varchar',
     nullable: false,
+    // default: 'audioinput'
   })
-  kind: MediaDeviceKind;
+  kind: string;
 
   @Column({
     type: 'varchar',

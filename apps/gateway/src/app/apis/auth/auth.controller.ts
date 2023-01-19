@@ -24,8 +24,8 @@ import {
   CreateUserDto,
   UserResponseDto,
 } from '../../data';
-import { AuthUserRequest } from '@contact/type';
-import { Allowed } from '../../utils';
+import { AuthUserRequest, AuthUserLogged } from '@contact/type';
+import { Allowed, Logged } from '../../utils';
 import { JwtAuthGuard, LocalAuthGuard } from './guards';
 
 @ApiBearerAuth()
@@ -84,7 +84,8 @@ export class AuthController {
     description: 'The auth user record',
     type: AuthUserResponseDto,
   })
-  getProfile(@Request() req: AuthUserRequest) {
-    return req.user;
+  getProfile(@Logged() user: AuthUserLogged) {
+    console.log(user);
+    return user
   }
 }

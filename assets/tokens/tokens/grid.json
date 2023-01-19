@@ -1,0 +1,55 @@
+{
+  "grid": {
+    "💻 12 columns (16px)": {
+      "description": null,
+      "type": "custom-grid",
+      "value": {
+        "pattern": "columns",
+        "gutterSize": 16,
+        "alignment": "stretch",
+        "count": 12,
+        "offset": 16
+      },
+      "extensions": {
+        "org.lukasoppermann.figmaDesignTokens": {
+          "styleId": "S:f176ef76ae2b353423439f6f7899cd9cc63a63fa,",
+          "exportKey": "grid"
+        }
+      }
+    },
+    "💻 6 columns (16px)": {
+      "description": null,
+      "type": "custom-grid",
+      "value": {
+        "pattern": "columns",
+        "gutterSize": 16,
+        "alignment": "stretch",
+        "count": 6,
+        "offset": 16
+      },
+      "extensions": {
+        "org.lukasoppermann.figmaDesignTokens": {
+          "styleId": "S:b5f2befadb7d6a8fde9031cf86dfbde6830ade31,",
+          "exportKey": "grid"
+        }
+      }
+    },
+    "📱 6 columns (8px)": {
+      "description": null,
+      "type": "custom-grid",
+      "value": {
+        "pattern": "columns",
+        "gutterSize": 8,
+        "alignment": "stretch",
+        "count": 6,
+        "offset": 8
+      },
+      "extensions": {
+        "org.lukasoppermann.figmaDesignTokens": {
+          "styleId": "S:994d3e8b39c066150605dac5f83ec71bbb5e8801,",
+          "exportKey": "grid"
+        }
+      }
+    }
+  }
+}

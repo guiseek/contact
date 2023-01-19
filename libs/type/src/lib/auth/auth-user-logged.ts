@@ -1,6 +1,6 @@
 import { User } from '../user/user';
 
-export type AuthUserResponse = Pick<
+export type AuthUserLogged = Pick<
   User,
   'email' | 'username' | 'displayName' | 'id'
 >;

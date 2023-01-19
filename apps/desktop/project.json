@@ -83,6 +83,21 @@
         "passWithNoTests": true,
         "webWorkerTsConfig": "apps/desktop/tsconfig.worker.json"
       }
+    },
+    "tokens": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "cd assets/tokens && npx style-dictionary build"
+          },
+          {
+            "command": "cp assets/tokens/build/*.scss apps/desktop/src/scss/"
+          }
+        ]
+      }
     }
   },
   "tags": []

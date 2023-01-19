@@ -1,6 +1,6 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { CreateDevice } from '@contact/type';
+import { CreateDevice, User } from '@contact/type';
 
 export class CreateDeviceDto implements CreateDevice {
   @IsString()
@@ -21,14 +21,22 @@ export class CreateDeviceDto implements CreateDevice {
   })
   groupId: string;
 
+  @IsString()
   @ApiProperty({
     nullable: false,
   })
-  kind: MediaDeviceKind;
+  kind: string;
 
   @IsNumber()
+  @IsOptional()
   @ApiProperty({
     nullable: false,
   })
-  userId: number;
+  user: Partial<User>;
+  // @IsNumber()
+  // @IsOptional()
+  // @ApiProperty({
+  //   nullable: false,
+  // })
+  // userId: number;
 }

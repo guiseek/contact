@@ -1,40 +1,11 @@
-import {ApiProperty} from '@nestjs/swagger'
-import {IsNumber, IsString, MaxLength, IsDateString} from 'class-validator'
-import {UpdateUser} from '@contact/type'
+import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { IsNumber } from 'class-validator';
+import { CreateUserDto } from './create-user.dto';
 
-export class UpdateUserDto implements UpdateUser {
-  @IsString()
-  @ApiProperty({
-    nullable: false,
-  })
-  username: string
-
-  @IsString()
-  @MaxLength(500)
-  @ApiProperty({
-    nullable: false,
-  })
-  displayName: string
-
-  @ApiProperty()
-  @IsDateString()
-  birthday?: string
-
-  @IsString()
-  @ApiProperty({
-    nullable: false,
-  })
-  lastName: string
-
-  @IsString()
-  @ApiProperty({
-    nullable: false,
-  })
-  firstName: string
-
+export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsNumber()
   @ApiProperty({
-    nullable: false,
+    nullable: true,
   })
-  id: number
+  id: number;
 }

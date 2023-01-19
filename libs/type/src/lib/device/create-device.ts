@@ -1,7 +1,9 @@
+import { User } from '../user';
+
 export interface CreateDevice {
-  kind: MediaDeviceKind;
+  user: Partial<User>;
+  kind: string;
   deviceId: string;
   groupId: string;
   label: string;
-  userId: number;
 }

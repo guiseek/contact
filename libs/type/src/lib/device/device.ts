@@ -1,7 +1,7 @@
 import { User } from '../user';
 
 export interface Device {
-  kind: MediaDeviceKind;
+  kind: string;
   deviceId: string;
   groupId: string;
   label: string;

@@ -2,3 +2,12 @@
 
 <pre>{{ facade.loading$ | async }}</pre>
 <pre>{{ facade.user$ | async | json }}</pre>
+
+
+<mat-icon class="icon-blue">account_circle</mat-icon>
+<mat-icon class="icon-blue">content_copy</mat-icon>
+
+<button class="speek blue rounded" mat-raised-button (click)="share.open({})">
+  <mat-icon>arrow_forward</mat-icon>
+  <span>Copy link</span>
+</button>

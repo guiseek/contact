@@ -1,7 +1,7 @@
 import {ApiProperty} from '@nestjs/swagger'
-import {AuthUserResponse} from '@contact/type'
+import {AuthUserLogged} from '@contact/type'
 
-export class AuthUserResponseDto implements AuthUserResponse {
+export class AuthUserResponseDto implements AuthUserLogged {
   @ApiProperty()
   id: number
 

@@ -1,0 +1,40 @@
+:host {
+  h5 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  button {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    color: #414141;
+    background-color: transparent;
+    padding: 0;
+
+    height: auto;
+    width: auto;
+    img {
+      width: 60px;
+      border-radius: 28px;
+      height: 60px;
+      transition: box-shadow 250ms ease-in-out;
+      clip: auto;
+    }
+
+    &:hover img {
+      box-shadow: 3px 3px 1px #ccc;
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    div {
+      display: flex;
+      column-gap: 8px;
+      justify-content: space-between;
+    }
+  }
+}

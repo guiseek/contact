@@ -6,7 +6,7 @@ import {
   AuthResponse,
   HttpService,
   CheckUserResponse,
-  AuthUserResponse,
+  AuthUserLogged,
 } from '@contact/type';
 import { AuthService } from '../domain/auth.service';
 
@@ -14,7 +14,7 @@ export class AuthServiceImpl implements AuthService {
   constructor(readonly http: HttpService) {}
 
   validateUser() {
-    return this.http.get<AuthUserResponse>(`/api/auth/me`);
+    return this.http.get<AuthUserLogged>(`/api/auth/me`);
   }
   checkUser(user: CheckUser) {
     return this.http.post<CheckUserResponse>(`/api/auth/check`, user);

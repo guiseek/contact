@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { AuthUserResponse } from '@contact/type';
+import { AuthUserLogged } from '@contact/type';
 
 @Component({
   selector: 'contact-toolbar',
@@ -8,7 +8,7 @@ import { AuthUserResponse } from '@contact/type';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
-  @Input() user?: AuthUserResponse;
+  @Input() user?: AuthUserLogged;
   @Input() color: ThemePalette = 'primary';
   @Input() goBackRoute: string | string[] = ['/'];
 

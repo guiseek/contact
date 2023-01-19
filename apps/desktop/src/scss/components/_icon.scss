@@ -1,0 +1,5 @@
+@use '../variables' as token;
+
+.icon-blue {
+  color: token.$color-blue-04;
+}

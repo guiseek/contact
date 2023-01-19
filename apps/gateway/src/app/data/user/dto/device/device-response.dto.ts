@@ -1,5 +1,6 @@
-import { Device } from '@contact/type';
+import { Device, UserResponse } from '@contact/type';
 import { ApiProperty } from '@nestjs/swagger';
+import { UserResponseDto } from '../user-response.dto';
 
 export class DeviceResponseDto {
   @ApiProperty()
@@ -15,12 +16,12 @@ export class DeviceResponseDto {
   groupId: string;
 
   @ApiProperty()
-  kind: MediaDeviceKind;
+  kind: string;
 
   @ApiProperty()
-  userId: number;
+  user: UserResponse;
 
-  constructor(device: Device) {
-    Object.assign(this, device);
+  constructor({ user, ...device }: Device) {
+    Object.assign(this, device, { user: new UserResponseDto(user) });
   }
 }

@@ -2,7 +2,7 @@ import { catchError, filter, map, switchMap, take, tap } from 'rxjs';
 import {
   AuthRequest,
   AuthResponse,
-  AuthUserResponse,
+  AuthUserLogged,
   CreateUser,
   HttpErrorResponse,
 } from '@contact/type';
@@ -11,7 +11,7 @@ import { AuthService } from '../domain/auth.service';
 import { AuthFacade } from '../domain/auth.facade';
 
 interface AuthState {
-  user: AuthUserResponse | null;
+  user: AuthUserLogged | null;
   error: string | null;
   isAuthenticated: boolean;
   loading: boolean;

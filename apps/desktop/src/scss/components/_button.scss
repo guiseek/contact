@@ -1,0 +1,22 @@
+@use '../variables' as token;
+
+body button {
+  &.speek {
+    font-size: #{token.$typography-manrope-button-font-size}px;
+
+    &.blue {
+      color: token.$color-blue-05;
+
+      mat-icon {
+        color: token.$color-blue-04;
+        width: 24px;
+        font-size: 24px;
+        height: 24px;
+      }
+    }
+
+    &.rounded {
+      border-radius: 8px;
+    }
+  }
+}
