@@ -1,9 +1,19 @@
-:host {
+contact-toolbar {
   display: flex;
   flex-direction: column;
 
   .toolbar-third-party {
     overflow: hidden;
+  }
+
+  .mat-mdc-icon-button.toolbar-icon {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 0 12px;
+    border-radius: 0;
+    height: inherit;
+    margin: 0;
   }
 
   .toolbar-spacer {
@@ -15,3 +25,4 @@ a.toolbar-go-back {
   display: flex;
   align-items: center;
 }
+

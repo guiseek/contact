@@ -9,17 +9,17 @@ import {UserFacade} from '@contact/user/data-access'
   styleUrls: ['./device.container.scss'],
 })
 export class DeviceContainer implements OnInit {
-  facade = inject(UserFacade)
+  user = inject(UserFacade)
   auth = inject(AuthFacade)
   share = inject(ShareService)
 
   ngOnInit() {
-    console.log('')
-
-    // this.facade.loadOneById(1);
-    // this.auth.validate().subscribe(console.log)
+    this.user.loadOneById(1);
   }
 
+  onMenuClicked(action: string | number) {
+    console.log(action)
+  }
   open() {
     this.share.open({})
   }

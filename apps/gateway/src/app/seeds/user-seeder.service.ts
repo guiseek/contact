@@ -8,8 +8,15 @@ export const users: CreateUser[] = [
     username: 'guiseek',
     password: '$2b$10$G.Bq/yHHl7P/ihLC6wLI6OOzQf1XuwEPkIxg9ksgrIlPx1vmKZN/a',
     salt: '$2b$10$G.Bq/yHHl7P/ihLC6wLI6O',
-    displayName: 'Guilherme',
-    email: 'guiseek@email.com',
+    displayName: 'Gui',
+    email: 'gui@speek.mail',
+  },
+  {
+    username: 'demo',
+    password: '$2b$10$..9LD0cOlY3vlvK9.RFn4e2DUZw78FKsjlEbZr5weJsFSqJB3ltDy',
+    salt: '$2b$10$..9LD0cOlY3vlvK9.RFn4e',
+    displayName: 'Demo',
+    email: 'demo@speek.mail',
   },
 ]
 

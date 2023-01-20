@@ -3,13 +3,14 @@
     <mat-form-field>
       <mat-label>Usuário</mat-label>
       <input
+        required
         type="text"
-        matInput
+        autocomplete="username"
         autofocus
+        matInput
         authCheckUser
         #checkUser="authCheckUser"
         formControlName="username"
-        autocomplete="username"
       />
       <mat-error *ngIf="checkUser.alreadyExists$ | async as check">
         {{ check.message }}
@@ -21,10 +22,13 @@
     <mat-form-field>
       <mat-label>Senha</mat-label>
       <input
+        required
         type="password"
-        matInput
-        formControlName="password"
+        id="new-password"
         autocomplete="new-password"
+        formControlName="password"
+        name="password"
+        matInput
       />
       <mat-error>Mínimo de 6 caracteres</mat-error>
     </mat-form-field>
@@ -32,6 +36,7 @@
     <mat-form-field>
       <mat-label>Nome</mat-label>
       <input
+        required
         type="text"
         matInput
         formControlName="displayName"
@@ -42,10 +47,12 @@
     <mat-form-field>
       <mat-label>E-mail</mat-label>
       <input
+        required
         type="email"
+        id="email"
+        autocomplete="email"
         matInput
         formControlName="email"
-        autocomplete="email"
       />
       <mat-error>E-mail inválido</mat-error>
     </mat-form-field>
@@ -54,7 +61,7 @@
   <ng-content select="mat-error"></ng-content>
 
   <footer>
-    <a routerLink="/" mat-button>
+    <a routerLink="/" mat-button tabIndex="-1">
       <mat-icon>chevron_left</mat-icon>
       Voltar
     </a>

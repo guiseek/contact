@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core'
+import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core'
 import {ThemePalette} from '@angular/material/core'
 import {AuthUserLogged} from '@contact/type'
 
@@ -6,6 +6,7 @@ import {AuthUserLogged} from '@contact/type'
   selector: 'contact-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ToolbarComponent {
   @Input() user?: AuthUserLogged

@@ -62,7 +62,6 @@ export class AuthController {
     type: AuthUserResponseDto,
   })
   getProfile(@Logged() user: AuthUserLogged) {
-    console.log(user)
     return user
   }
 }
