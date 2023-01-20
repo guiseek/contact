@@ -6,16 +6,33 @@ import {AuthUserLogged, UserRole} from '@contact/type'
 import {User} from '../../data/user/ports/user'
 import {Logged, Roles} from '../../utils'
 
+type Constructor<T = unknown> = new (...params: unknown[]) => T
+
+const toDto = <D>(dto: Constructor<D>) => {
+  return {
+    async one<T extends D>(item: Promise<T>) {
+      return new dto(await item)
+    },
+    async many<T extends D>(items: Promise<T[]>) {
+      return (await items).map((item) => new dto(item))
+    },
+  }
+}
+
 @ApiBearerAuth()
 @ApiTags('user')
 @Controller('user')
 export class UserController {
+  private _toUserDto = toDto(UserResponseDto)
+  private _toDeviceDto = toDto(DeviceResponseDto)
+  private _toAgendaDto = toDto(AgendaResponseDto)
+
   constructor(private readonly userService: UserService, private caslAbilityFactory: CaslAbilityFactory) {}
 
   @Get('devices')
   @ApiOperation({summary: 'Gets devices by user'})
   async findDevices(@Logged() user: AuthUserLogged) {
-    return (await this.userService.findDevices(user)).map((device) => new DeviceResponseDto(device))
+    return this._toDeviceDto.many(this.userService.findDevices(user))
   }
 
   @Post('device')
@@ -25,10 +42,10 @@ export class UserController {
     required: true,
     type: CreateDeviceDto,
   })
-  async createDevice(@Logged() user: AuthUserLogged, @Body() createDeviceDto: CreateDeviceDto) {
-    return new DeviceResponseDto(
-      await this.userService.createDevice({
-        ...createDeviceDto,
+  async createDevice(@Logged() user: AuthUserLogged, @Body() value: CreateDeviceDto) {
+    return this._toDeviceDto.one(
+      this.userService.createDevice({
+        ...value,
         user,
       })
     )
@@ -40,14 +57,14 @@ export class UserController {
     required: true,
     type: CreateMeetingDto,
   })
-  async createMeeting(@Logged() user: AuthUserLogged, @Body() createMeetingDto: CreateMeetingDto) {
-    return new AgendaResponseDto(await this.userService.createMeetingAgenda(createMeetingDto, user))
+  async createMeeting(@Logged() user: AuthUserLogged, @Body() value: CreateMeetingDto) {
+    return this._toAgendaDto.one(this.userService.createMeetingAgenda(value, user))
   }
 
   @Get('agenda')
   @ApiOperation({summary: 'Gets agenda by user'})
   async findAgenda(@Logged() user: AuthUserLogged) {
-    return await this.userService.findAgenda(user)
+    return await this._toAgendaDto.many(this.userService.findAgenda(user))
   }
 
   @Post('device/bulk')
@@ -57,13 +74,8 @@ export class UserController {
     required: true,
     type: CreateDeviceDto,
   })
-  async createDevices(@Logged() user: AuthUserLogged, @Body() createDevicesDto: CreateDeviceDto[]) {
-    return Promise.allSettled(
-      createDevicesDto.map(async (createDeviceDto) => {
-        const value = {...createDeviceDto, user}
-        return new DeviceResponseDto(await this.userService.createDevice(value))
-      })
-    )
+  async createDevices(@Logged() user: AuthUserLogged, @Body() values: CreateDeviceDto[]) {
+    return Promise.allSettled(values.map((value) => this._toDeviceDto.one(this.userService.createDevice({...value, user}))))
   }
 
   @Get(':idOrUsername')
@@ -72,9 +84,9 @@ export class UserController {
     let user: User
 
     if (isNaN(+idOrUsername)) {
-      user = await this.userService.findOne({username: idOrUsername})
+      this._toUserDto.one(this.userService.findOne({username: idOrUsername}))
     } else {
-      user = await this.userService.findOne({id: +idOrUsername})
+      this._toUserDto.one(this.userService.findOne({id: +idOrUsername}))
     }
 
     return new UserResponseDto(user)
@@ -92,11 +104,11 @@ export class UserController {
     description: 'The user updated',
     type: UserResponseDto,
   })
-  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto, @Logged() user: AuthUserLogged) {
+  async update(@Param('id') id: string, @Body() value: UpdateUserDto, @Logged() user: AuthUserLogged) {
     if (user.id !== +id) {
       throw new UnauthorizedException('You can only change yourself')
     }
-    return new UserResponseDto(await this.userService.update(+id, updateUserDto))
+    return this._toUserDto.one(this.userService.update(+id, value))
   }
 
   @Delete(':id')
@@ -107,11 +119,10 @@ export class UserController {
   })
   async remove(@Param('id') id: string, @Logged() logged: AuthUserLogged) {
     const user = new User(logged)
-    const ability = this.caslAbilityFactory.createForUser(user)
     if (user.id !== +id) {
       throw new UnauthorizedException('You can only change yourself')
     }
-    return new UserResponseDto(await this.userService.remove(+id))
+    return this._toUserDto.one(this.userService.remove(+id))
   }
 
   @Post()
@@ -121,12 +132,13 @@ export class UserController {
     required: true,
     type: CreateUserDto,
   })
-  async createUser(@Body() createUserDto: CreateUserDto) {
-    return new UserResponseDto(await this.userService.createOne(createUserDto))
+  async createUser(@Body() value: CreateUserDto) {
+    return this._toUserDto.one(this.userService.createOne(value))
   }
 
   @Get()
+  // @Roles(UserRole.Admin)
   async findAll() {
-    return (await this.userService.findAll()).map((user) => new UserResponseDto(user))
+    return this._toUserDto.many(this.userService.findAll())
   }
 }
