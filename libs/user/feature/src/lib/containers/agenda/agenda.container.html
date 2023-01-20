@@ -1,1 +1,14 @@
-<p>agenda works!</p>
+<section>
+  <div class="flex-1 flex col gap-32">
+    <user-agenda-item
+      *ngFor="let item of user.agenda$ | async"
+      (action)="onAgendaItemAction($event)"
+      [agenda]="item"
+    ></user-agenda-item>
+  </div>
+</section>
+
+<contact-fab-menu
+  [items]="fabMenuItems"
+  (itemSelected)="onFabMenuSelect($event)"
+></contact-fab-menu>

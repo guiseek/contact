@@ -5,5 +5,5 @@ import {User} from '../user'
 export interface CreateAgenda {
   user: Pick<User, 'id'>
   roles: UserRole[]
-  meeting: Meeting
+  // meeting: Meeting
 }

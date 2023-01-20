@@ -17,16 +17,16 @@ export class AgendaImpl implements Agenda {
   user: User
 
   @Column({
-    type: 'enum',
+    type: 'set',
     enum: UserRole,
-    enumName: 'USER_ROLE',
     nullable: false,
-    default: 'USER',
+    default: [UserRole.User],
   })
   roles: UserRole[]
 
   @ManyToOne(() => MeetingImpl, (meeting) => meeting.agenda, {
     eager: true,
+    cascade: true
   })
   meeting: Meeting
 }

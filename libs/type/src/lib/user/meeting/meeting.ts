@@ -6,7 +6,7 @@ export interface Meeting {
   start: Date
   end?: Date
   agenda: Agenda[]
-  public: boolean
+  visible: boolean
   createdAt: Date
   updatedAt: Date
 }

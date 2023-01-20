@@ -1,0 +1,36 @@
+<div class="container" [ngClass]="layoutDirection">
+  <div [ngClass]="layoutDirection">
+    <button
+      mat-fab
+      type="button"
+      (click)="isActive = !isActive"
+      [disabled]="disabled"
+      [color]="color"
+      [ngClass]="{
+        'mat-fab': !isActive,
+        'mat-mini-fab': isActive
+      }"
+    >
+      <mat-icon [@fabToggler]="{value: isActive}">{{ icon }}</mat-icon>
+    </button>
+  </div>
+  <div
+    [ngClass]="layoutDirection"
+    *ngIf="isActive"
+    [@fabsStagger]="items.length"
+  >
+    <button
+      mat-fab
+      type="button"
+      *ngFor="let fab of items"
+      [color]="fab.color"
+      (click)="selectItem(fab)"
+      [matTooltip]="fab.tooltip!"
+      [matTooltipPosition]="fab.tooltipPosition!"
+    >
+      <mat-icon *ngIf="fab?.icon" [color]="fab?.iconColor">{{
+        fab.icon
+      }}</mat-icon>
+    </button>
+  </div>
+</div>

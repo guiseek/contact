@@ -1,0 +1,31 @@
+<mat-card *ngIf="agenda">
+  <mat-card-header>
+    <h3 mat-card-title>{{ agenda.meeting.title }}</h3>
+    <p mat-card-subtitle>{{ agenda.meeting.start | date }}</p>
+  </mat-card-header>
+  <mat-card-actions class="flex row space-between">
+    <a mat-icon-button [routerLink]="['/user', 'agenda', agenda.id]">
+      <mat-icon>link</mat-icon>
+    </a>
+    <div></div>
+    <div>
+      <button
+        mat-icon-button
+        (click)="action.emit(['toggle-visibility', agenda])"
+      >
+        <mat-icon>
+          {{ agenda.meeting.visible ? 'visibility' : 'visibility_off' }}
+        </mat-icon>
+      </button>
+      <button mat-icon-button (click)="action.emit(['set-user', agenda])">
+        <mat-icon>person_add</mat-icon>
+      </button>
+      <button mat-icon-button (click)="action.emit(['edit-item', agenda])">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="action.emit(['delete-item', agenda])">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

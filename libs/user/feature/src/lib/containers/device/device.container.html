@@ -1,42 +1,6 @@
-<contact-toolbar>
-  <a
-    mat-icon-button
-    class="toolbar-icon"
-    matTooltip="Conta de usuário"
-    routerLink="/user"
-  >
-    <mat-icon>account_circle</mat-icon>
-  </a>
-
-  <contact-toolbar-dropdown
-    [user]="auth.user$"
-    (menuClicked)="onMenuClicked($event)"
-  ></contact-toolbar-dropdown>
-
-  <button
-    mat-icon-button
-    class="toolbar-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-
-  <button
-    mat-icon-button
-    mediaQuery
-    min="lg"
-    class="toolbar-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
-</contact-toolbar>
 
 <pre>{{ user.loading$ | async }}</pre>
 <pre>{{ user.user$ | async | json }}</pre>
-
-<mat-icon class="icon-blue">account_circle</mat-icon>
-<mat-icon class="icon-blue">content_copy</mat-icon>
 
 <button class="speek blue rounded" mat-raised-button (click)="share.open({})">
   <mat-icon>arrow_forward</mat-icon>

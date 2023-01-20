@@ -3,7 +3,7 @@ export interface MeetingResponse {
   title: string
   start: Date
   end?: Date
-  public: boolean
+  visible: boolean
   createdAt: Date
   updatedAt: Date
 }

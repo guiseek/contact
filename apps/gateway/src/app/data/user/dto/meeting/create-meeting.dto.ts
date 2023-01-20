@@ -18,5 +18,5 @@ export class CreateMeetingDto implements CreateMeeting {
 
   @ApiProperty()
   @IsBoolean()
-  public: boolean
+  visible: boolean
 }

@@ -1,4 +1,5 @@
 export * from './create-user'
+export * from './search-user'
 export * from './simple-user'
 export * from './update-user'
 export * from './user-credential'

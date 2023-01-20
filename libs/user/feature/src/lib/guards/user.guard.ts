@@ -2,7 +2,7 @@ import {Router, CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot} from '
 import {inject, Injectable} from '@angular/core'
 import {AuthFacade} from '@contact/auth/data-access'
 import {HttpErrorResponse} from '@contact/type'
-import {EMPTY, catchError, map} from 'rxjs'
+import {catchError, map} from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
@@ -12,16 +12,14 @@ export class UserGuard implements CanActivate {
   router = inject(Router)
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log(route)
-
     return this.authFacade.validate().pipe(
+      map((response) => !!response),
       catchError((err, caught) => {
         if (err) {
           this.redirectToAuth(err, state)
         }
         return caught
-      }),
-      map((response) => !!response)
+      })
     )
   }
 

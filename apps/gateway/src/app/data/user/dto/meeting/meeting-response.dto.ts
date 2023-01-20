@@ -1,8 +1,9 @@
-import {ApiProperty, PartialType} from '@nestjs/swagger'
+import {ApiProperty, IntersectionType} from '@nestjs/swagger'
+import {AgendaResponse, Meeting, MeetingResponse} from '@contact/type'
+import {AgendaResponseDto} from './agenda-response.dto'
 import {CreateMeetingDto} from './create-meeting.dto'
-import {Agenda, Meeting} from '@contact/type'
 
-export class MeetingResponseDto extends PartialType(CreateMeetingDto) {
+export class MeetingResponseDto extends IntersectionType(CreateMeetingDto, class {}) implements MeetingResponse {
   @ApiProperty()
   id: number
 
@@ -11,4 +12,19 @@ export class MeetingResponseDto extends PartialType(CreateMeetingDto) {
 
   @ApiProperty()
   updatedAt: Date
+
+  @ApiProperty()
+  agenda: AgendaResponse[]
+
+  constructor(meeting: Meeting) {
+    super()
+
+    const agenda =
+      meeting.agenda &&
+      meeting.agenda.map((item) => {
+        return new AgendaResponseDto(item)
+      })
+
+    Object.assign(this, meeting, {agenda})
+  }
 }

@@ -35,7 +35,7 @@ export class MeetingImpl implements Meeting {
     type: 'boolean',
     nullable: false,
   })
-  public: boolean
+  visible: boolean
 
   @Column({
     type: 'timestamp',

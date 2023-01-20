@@ -1,5 +1,5 @@
-import {CreateAgenda, Meeting, User, UserRole} from '@contact/type'
-import {IsEnum, IsNotEmpty} from 'class-validator'
+import {CreateAgenda, User, UserRole} from '@contact/type'
+import {IsArray, IsNotEmpty} from 'class-validator'
 import {ApiProperty} from '@nestjs/swagger'
 
 export class CreateAgendaDto implements CreateAgenda {
@@ -8,10 +8,6 @@ export class CreateAgendaDto implements CreateAgenda {
   user: Pick<User, 'id'>
 
   @ApiProperty()
-  @IsEnum(UserRole)
+  @IsArray()
   roles: UserRole[]
-
-  @ApiProperty()
-  @IsNotEmpty()
-  meeting: Meeting
 }

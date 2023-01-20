@@ -1,4 +1,4 @@
-import {Column, Entity, Unique, OneToMany, BaseEntity, PrimaryGeneratedColumn} from 'typeorm'
+import {Column, Entity, Unique, OneToMany, BaseEntity, PrimaryGeneratedColumn, Index} from 'typeorm'
 import {Agenda, Device, User, UserRole} from '@contact/type'
 import {entityContainer} from '../../../utils'
 import {DeviceImpl} from './device.impl'
@@ -12,6 +12,7 @@ export class UserImpl extends BaseEntity implements User {
   @PrimaryGeneratedColumn()
   id: number
 
+  @Index({fulltext: true})
   @Column({
     type: 'varchar',
     nullable: false,
@@ -43,6 +44,7 @@ export class UserImpl extends BaseEntity implements User {
   })
   birthday?: string
 
+  @Index({fulltext: true})
   @Column({
     type: 'varchar',
     nullable: false,
@@ -50,6 +52,7 @@ export class UserImpl extends BaseEntity implements User {
   })
   displayName: string
 
+  @Index({fulltext: true})
   @Column({
     type: 'varchar',
     nullable: false,
@@ -57,6 +60,7 @@ export class UserImpl extends BaseEntity implements User {
   })
   firstName: string
 
+  @Index({fulltext: true})
   @Column({
     type: 'varchar',
     nullable: false,

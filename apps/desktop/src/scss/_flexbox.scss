@@ -9,15 +9,15 @@
     flex-direction: column;
 
     &.gap-8 {
-      column-gap: 8px;
+      row-gap: 8px;
     }
 
     &.gap-16 {
-      column-gap: 16px;
+      row-gap: 16px;
     }
 
     &.gap-32 {
-      column-gap: 32px;
+      row-gap: 32px;
     }
   }
   &.row {
@@ -29,6 +29,17 @@
 
     &.space-around {
       justify-content: space-around;
+    }
+    &.gap-8 {
+      column-gap: 8px;
+    }
+
+    &.gap-16 {
+      column-gap: 16px;
+    }
+
+    &.gap-32 {
+      column-gap: 32px;
     }
   }
 
