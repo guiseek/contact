@@ -7,7 +7,7 @@ import {SettingsService} from './settings/settings.service'
   selector: 'contact-meet-feature',
   templateUrl: './meet-feature.component.html',
   styleUrls: ['./meet-feature.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MeetFeatureComponent {
   private _mediaStream = new BehaviorSubject<MediaStream | null>(null)

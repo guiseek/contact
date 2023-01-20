@@ -3,10 +3,7 @@ import {UserSeederService} from './user-seeder.service'
 
 @Injectable()
 export class Seeder {
-  constructor(
-    private readonly logger: Logger,
-    private readonly userSeederService: UserSeederService
-  ) {}
+  constructor(private readonly logger: Logger, private readonly userSeederService: UserSeederService) {}
 
   async seed() {
     await this.users()

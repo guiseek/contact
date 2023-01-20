@@ -14,7 +14,7 @@ export class DeviceContainer implements OnInit {
   share = inject(ShareService)
 
   ngOnInit() {
-    this.user.loadOneById(1);
+    this.user.loadOneById(1)
   }
 
   onMenuClicked(action: string | number) {
