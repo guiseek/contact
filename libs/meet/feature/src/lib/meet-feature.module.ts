@@ -2,7 +2,11 @@ import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {RouterModule} from '@angular/router'
 import {ReactiveFormsModule} from '@angular/forms'
-import {UiCdkModule, UiLayoutModule, UiMaterialModule} from '@contact/shared/ui-layout'
+import {
+  UiCdkModule,
+  UiLayoutModule,
+  UiMaterialModule,
+} from '@contact/shared/ui-layout'
 import {meetFeatureRoutes} from './lib.routes'
 
 import {VolumeterDirective} from './shared/directives'
@@ -15,8 +19,23 @@ import {ResolutionsComponent} from './shared/components/resolutions.component'
 import {SettingsService} from './settings/settings.service'
 
 @NgModule({
-  imports: [CommonModule, UiCdkModule, UiLayoutModule, UiMaterialModule, ReactiveFormsModule, RouterModule.forChild(meetFeatureRoutes)],
-  declarations: [VolumeterDirective, DevicesComponent, MeetFeatureComponent, AudioInputComponent, VideoInputComponent, ResolutionsComponent, FormatDeviceLabelPipe],
+  imports: [
+    CommonModule,
+    UiCdkModule,
+    UiLayoutModule,
+    UiMaterialModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(meetFeatureRoutes),
+  ],
+  declarations: [
+    VolumeterDirective,
+    DevicesComponent,
+    MeetFeatureComponent,
+    AudioInputComponent,
+    VideoInputComponent,
+    ResolutionsComponent,
+    FormatDeviceLabelPipe,
+  ],
   providers: [SettingsService],
 })
 export class MeetFeatureModule {}

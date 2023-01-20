@@ -6,7 +6,11 @@ import pt from '@angular/common/locales/pt'
 import ptBr from '@angular/common/locales/extra/br'
 import {AppComponent} from './app.component'
 import {RouterModule} from '@angular/router'
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http'
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http'
 import {HttpService} from '@contact/type'
 import {userDataProviders} from '@contact/user/data-access'
 import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
@@ -25,15 +29,18 @@ registerLocaleData(pt, 'pt-BR', ptBr)
       [
         {
           path: '',
-          loadChildren: () => import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
+          loadChildren: () =>
+            import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
         },
         {
           path: 'auth',
-          loadChildren: () => import('@contact/auth/feature').then((m) => m.AuthFeatureModule),
+          loadChildren: () =>
+            import('@contact/auth/feature').then((m) => m.AuthFeatureModule),
         },
         {
           path: 'user',
-          loadChildren: () => import('@contact/user/feature').then((m) => m.UserFeatureModule),
+          loadChildren: () =>
+            import('@contact/user/feature').then((m) => m.UserFeatureModule),
         },
       ],
       {useHash: true}

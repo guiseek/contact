@@ -1,4 +1,9 @@
-import {InferSubjects, AbilityBuilder, ExtractSubjectType, createMongoAbility} from '@casl/ability'
+import {
+  InferSubjects,
+  AbilityBuilder,
+  ExtractSubjectType,
+  createMongoAbility,
+} from '@casl/ability'
 
 import {User} from '../../data/user/ports/user'
 import {Injectable} from '@nestjs/common'
@@ -29,7 +34,8 @@ export class CaslAbilityFactory {
 
     return build({
       // Read https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types for details
-      detectSubjectType: (item) => item.constructor as ExtractSubjectType<Subjects>,
+      detectSubjectType: (item) =>
+        item.constructor as ExtractSubjectType<Subjects>,
     })
   }
 }

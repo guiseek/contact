@@ -16,7 +16,18 @@ import {SettingsRoutingModule} from './settings-routing.module'
 
 @NgModule({
   declarations: [SettingsComponent, AudioComponent, VideoComponent],
-  imports: [CommonModule, MatDialogModule, MatListModule, MatButtonModule, MatInputModule, MatTabsModule, MatFormFieldModule, MatSelectModule, MatIconModule, SettingsRoutingModule],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatListModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
+    SettingsRoutingModule,
+  ],
   providers: [SettingsService],
 })
 export class SettingsModule {}

@@ -2,7 +2,10 @@ import {Input, OnDestroy, Directive, ElementRef} from '@angular/core'
 import {AnimatinStreamBase} from '../base/animation-stream-base'
 
 @Directive({selector: 'canvas[contactVolumeter]'})
-export class VolumeterDirective extends AnimatinStreamBase implements OnDestroy {
+export class VolumeterDirective
+  extends AnimatinStreamBase
+  implements OnDestroy
+{
   @Input() set contactVolumeter(constraints: MediaTrackConstraints) {
     this.constraints = constraints
     this.destroy()

@@ -1,5 +1,11 @@
 import {FormControl, FormGroup, Validators} from '@angular/forms'
-import {eachMinuteOfInterval, endOfDay, isToday, addHours, addMinutes} from 'date-fns'
+import {
+  eachMinuteOfInterval,
+  endOfDay,
+  isToday,
+  addHours,
+  addMinutes,
+} from 'date-fns'
 import {SubAsync} from '@contact/shared/data-access'
 import {BehaviorSubject} from 'rxjs'
 
@@ -26,8 +32,13 @@ export class AgendaForm extends FormGroup {
 
   constructor() {
     super({
-      title: new FormControl(initialValue.title, [Validators.required, Validators.maxLength(255)]),
-      start: new FormControl<Date | null>(initialValue.start, [Validators.required]),
+      title: new FormControl(initialValue.title, [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      start: new FormControl<Date | null>(initialValue.start, [
+        Validators.required,
+      ]),
       end: new FormControl<Date | null>(initialValue.end),
       visible: new FormControl(initialValue.visible),
     })

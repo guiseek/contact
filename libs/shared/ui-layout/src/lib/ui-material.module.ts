@@ -16,6 +16,22 @@ import {MatTabsModule} from '@angular/material/tabs'
 import {MatNativeDateModule} from '@angular/material/core'
 
 @NgModule({
-  exports: [MatIconModule, MatCardModule, MatAutocompleteModule, MatTabsModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatListModule, MatSelectModule, MatTooltipModule, MatButtonModule, MatDialogModule, MatDividerModule, MatInputModule, MatFormFieldModule],
+  exports: [
+    MatIconModule,
+    MatCardModule,
+    MatAutocompleteModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatInputModule,
+    MatFormFieldModule,
+  ],
 })
 export class UiMaterialModule {}

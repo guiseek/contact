@@ -7,7 +7,13 @@ addEventListener('message', ({data}) => {
 
 let canvas: HTMLCanvasElement
 
-const drawVisualizer = ({bufferLength, dataArray}: {bufferLength: number; dataArray: Uint8Array}) => {
+const drawVisualizer = ({
+  bufferLength,
+  dataArray,
+}: {
+  bufferLength: number
+  dataArray: Uint8Array
+}) => {
   let barHeight
   const barWidth = canvas.width / 2 / bufferLength
   let firstX = 0
@@ -24,7 +30,12 @@ const drawVisualizer = ({bufferLength, dataArray}: {bufferLength: number; dataAr
       const blue = barHeight / 4 - 12
       ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`
       ctx.fillStyle = 'black'
-      ctx.fillRect(canvas.width / 2 - firstX, canvas.height - barHeight, barWidth, barHeight)
+      ctx.fillRect(
+        canvas.width / 2 - firstX,
+        canvas.height - barHeight,
+        barWidth,
+        barHeight
+      )
       firstX += barWidth
       ctx.fillRect(secondX, canvas.height - barHeight, barWidth, barHeight)
       secondX += barWidth

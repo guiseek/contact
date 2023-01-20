@@ -1,4 +1,9 @@
-import {SearchUserDto, CreateMeetingDto, UpdateMeetingDto, CreateAgendaDto} from '../dto'
+import {
+  SearchUserDto,
+  CreateMeetingDto,
+  UpdateMeetingDto,
+  CreateAgendaDto,
+} from '../dto'
 import {FindOptionsWhere, Like, Repository} from 'typeorm'
 import {CreateUserDto} from '../dto/create-user.dto'
 import {UpdateUserDto} from '../dto/update-user.dto'
@@ -12,7 +17,12 @@ import {CreateDeviceDto} from '../dto/device'
 import {UserRole} from '@contact/type'
 
 export class UserServiceImpl implements UserService {
-  constructor(private users: Repository<UserImpl>, private devices: Repository<DeviceImpl>, private meetings: Repository<MeetingImpl>, private agenda: Repository<AgendaImpl>) {}
+  constructor(
+    private users: Repository<UserImpl>,
+    private devices: Repository<DeviceImpl>,
+    private meetings: Repository<MeetingImpl>,
+    private agenda: Repository<AgendaImpl>
+  ) {}
 
   async searchUser({query}: SearchUserDto) {
     return this.users.manager.getRepository(UserImpl).find({
@@ -20,7 +30,10 @@ export class UserServiceImpl implements UserService {
     })
   }
 
-  async createMeeting(createMeetingDto: CreateMeetingDto, user: Pick<UserImpl, 'id'>) {
+  async createMeeting(
+    createMeetingDto: CreateMeetingDto,
+    user: Pick<UserImpl, 'id'>
+  ) {
     const meeting = await this.meetings.save(createMeetingDto)
     const createAgendaDto = {user, meeting, roles: [UserRole.Admin]}
     return await this.agenda.save(createAgendaDto)
@@ -42,7 +55,9 @@ export class UserServiceImpl implements UserService {
   async deleteMeeting(id: number) {
     let meeting: MeetingImpl
     if ((meeting = await this.findOneMeeting({id}))) {
-      await Promise.allSettled(meeting.agenda.map((item) => this.agenda.remove(item)))
+      await Promise.allSettled(
+        meeting.agenda.map((item) => this.agenda.remove(item))
+      )
       return this.meetings.remove(meeting)
     }
   }

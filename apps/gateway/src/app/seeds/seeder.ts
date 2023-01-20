@@ -3,7 +3,10 @@ import {UserSeederService} from './user-seeder.service'
 
 @Injectable()
 export class Seeder {
-  constructor(private readonly logger: Logger, private readonly userSeederService: UserSeederService) {}
+  constructor(
+    private readonly logger: Logger,
+    private readonly userSeederService: UserSeederService
+  ) {}
 
   async seed() {
     await this.users()
@@ -19,8 +22,12 @@ export class Seeder {
   async users() {
     return await Promise.all(this.userSeederService.create())
       .then((createdUsers) => {
-        const removedNullsUsers = createdUsers.filter((nullValueOrCreatedUser) => nullValueOrCreatedUser)
-        this.logger.verbose(`No. of users created: ${removedNullsUsers.length} `)
+        const removedNullsUsers = createdUsers.filter(
+          (nullValueOrCreatedUser) => nullValueOrCreatedUser
+        )
+        this.logger.verbose(
+          `No. of users created: ${removedNullsUsers.length} `
+        )
         return Promise.resolve(true)
       })
       .catch((error) => Promise.reject(error))

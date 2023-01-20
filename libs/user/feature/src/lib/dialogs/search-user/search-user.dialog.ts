@@ -1,8 +1,10 @@
 import {Component} from '@angular/core'
-import { MatDialogRef } from '@angular/material/dialog';
+import {MatDialogRef} from '@angular/material/dialog'
 
 @Component({
-  template: `<user-search-user (searchUser)="ref.close($event)"></user-search-user>`,
+  template: `<user-search-user
+    (searchUser)="ref.close($event)"
+  ></user-search-user>`,
   styles: [
     `
       :host {

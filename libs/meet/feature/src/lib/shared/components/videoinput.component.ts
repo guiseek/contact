@@ -1,10 +1,23 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core'
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+} from '@angular/core'
 import {Subject} from 'rxjs'
 
 @Component({
   exportAs: 'contactVideoInput',
   selector: 'contact-video-input',
-  template: ` <video autoplay playsInline poster="/assets/vectors/play-skew.svg" [srcObject]="stream" [muted]="stream?.active"></video>`,
+  template: ` <video
+    autoplay
+    playsInline
+    poster="/assets/vectors/play-skew.svg"
+    [srcObject]="stream"
+    [muted]="stream?.active"
+  ></video>`,
   styles: [
     `
       :host {

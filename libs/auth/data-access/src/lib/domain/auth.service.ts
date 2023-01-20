@@ -1,4 +1,12 @@
-import {CheckUser, CreateUser, AuthRequest, UserResponse, AuthResponse, CheckUserResponse, AuthUserLogged} from '@contact/type'
+import {
+  CheckUser,
+  CreateUser,
+  AuthRequest,
+  UserResponse,
+  AuthResponse,
+  CheckUserResponse,
+  AuthUserLogged,
+} from '@contact/type'
 import {Observable} from 'rxjs'
 
 export abstract class AuthService {

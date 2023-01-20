@@ -7,7 +7,10 @@ import {AuthService} from '../ports/auth.service'
 import {User} from '@contact/type'
 
 export class AuthServiceImpl implements AuthService {
-  constructor(private userService: UserService, private jwtService: JwtService) {}
+  constructor(
+    private userService: UserService,
+    private jwtService: JwtService
+  ) {}
 
   async validateUser({username, password}: AuthRequestDto) {
     const user = await this.userService.findOneByUsername(username)

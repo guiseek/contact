@@ -9,7 +9,11 @@ export interface HttpParameterCodec {
 export interface HttpParamsOptions {
   fromString?: string
   fromObject?: {
-    [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>
+    [param: string]:
+      | string
+      | number
+      | boolean
+      | ReadonlyArray<string | number | boolean>
   }
   encoder?: HttpParameterCodec
 }
@@ -32,7 +36,13 @@ export interface HttpParams {
   getAll(param: string): string[] | null
   keys(): string[]
   append(param: string, value: string | number | boolean): HttpParams
-  appendAll(params: {[param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>}): HttpParams
+  appendAll(params: {
+    [param: string]:
+      | string
+      | number
+      | boolean
+      | ReadonlyArray<string | number | boolean>
+  }): HttpParams
   set(param: string, value: string | number | boolean): HttpParams
   delete(param: string, value?: string | number | boolean): HttpParams
   toString(): string
@@ -42,5 +52,9 @@ export interface HttpParams {
 export type HttpOptionsParams =
   | HttpParams
   | {
-      [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>
+      [param: string]:
+        | string
+        | number
+        | boolean
+        | ReadonlyArray<string | number | boolean>
     }

@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core'
 import {AgendaForm} from '../../forms'
 import {CreateMeeting} from '@contact/type'
 

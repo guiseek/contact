@@ -21,8 +21,8 @@
       <mat-label>Horário inicial</mat-label>
       <mat-select formControlName="start" required>
         <mat-option *ngFor="let time of form.startList$ | async" [value]="time">
-          <strong>{{time|date:'shortTime'}}</strong>
-          <span class="muted"> do dia {{time|date:'shortDate'}}</span>
+          <strong>{{ time | date : 'shortTime' }}</strong>
+          <span class="muted"> do dia {{ time | date : 'shortDate' }}</span>
         </mat-option>
       </mat-select>
       <mat-error>Horário inicial é obrigatório</mat-error>
@@ -32,8 +32,8 @@
       <mat-label>Horário final</mat-label>
       <mat-select formControlName="end">
         <mat-option *ngFor="let time of form.endList$ | async" [value]="time">
-          <strong>{{time|date:'shortTime'}}</strong>
-          <span class="muted"> do dia {{time|date:'shortDate'}}</span>
+          <strong>{{ time | date : 'shortTime' }}</strong>
+          <span class="muted"> do dia {{ time | date : 'shortDate' }}</span>
         </mat-option>
       </mat-select>
     </mat-form-field>

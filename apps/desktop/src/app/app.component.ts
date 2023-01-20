@@ -5,7 +5,9 @@ export function createProcessor() {
     throw 'Web workers are not supported in this environment.'
   }
   // Create a new
-  return new Worker(new URL('../workers/volume-meter.worker.ts', import.meta.url))
+  return new Worker(
+    new URL('../workers/volume-meter.worker.ts', import.meta.url)
+  )
 }
 
 @Component({

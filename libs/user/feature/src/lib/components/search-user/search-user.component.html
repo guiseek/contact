@@ -11,8 +11,5 @@
       {{ option.displayName }}
     </mat-option>
   </mat-autocomplete>
-  <contact-svg-loader
-    [show]="(loader$ | async)"
-    matSuffix
-  ></contact-svg-loader>
+  <contact-svg-loader [show]="loader$ | async" matSuffix></contact-svg-loader>
 </mat-form-field>

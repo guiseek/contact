@@ -26,7 +26,7 @@ export class AgendaImpl implements Agenda {
 
   @ManyToOne(() => MeetingImpl, (meeting) => meeting.agenda, {
     eager: true,
-    cascade: true
+    cascade: true,
   })
   meeting: Meeting
 }

@@ -18,9 +18,34 @@ import {FabMenuComponent} from './fab-menu/fab-menu.component'
 import {SvgLoaderComponent} from './svg-loader/svg-loader.component'
 
 @NgModule({
-  imports: [RouterModule, CommonModule, MatToolbarModule, MatMenuModule, MatTooltipModule, MatDialogModule, MatButtonModule, MatDividerModule, MatIconModule, LayoutModule],
-  declarations: [ToolbarComponent, FabMenuComponent, MediaQueryDirective, SvgLoaderComponent, ShareDialog, ToolbarDropdownComponent],
-  exports: [ToolbarComponent, FabMenuComponent, MediaQueryDirective, SvgLoaderComponent, ShareDialog, ToolbarDropdownComponent],
+  imports: [
+    RouterModule,
+    CommonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    LayoutModule,
+  ],
+  declarations: [
+    ToolbarComponent,
+    FabMenuComponent,
+    MediaQueryDirective,
+    SvgLoaderComponent,
+    ShareDialog,
+    ToolbarDropdownComponent,
+  ],
+  exports: [
+    ToolbarComponent,
+    FabMenuComponent,
+    MediaQueryDirective,
+    SvgLoaderComponent,
+    ShareDialog,
+    ToolbarDropdownComponent,
+  ],
   providers: [ShareService],
 })
 export class UiLayoutModule {}

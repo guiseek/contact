@@ -1,4 +1,14 @@
-import {AgendaResponse, CreateAgenda, CreateMeeting, HttpErrorResponse, MeetingResponse, SearchUser, UpdateMeeting, UpdateUser, UserResponse} from '@contact/type'
+import {
+  AgendaResponse,
+  CreateAgenda,
+  CreateMeeting,
+  HttpErrorResponse,
+  MeetingResponse,
+  SearchUser,
+  UpdateMeeting,
+  UpdateUser,
+  UserResponse,
+} from '@contact/type'
 import {UserService} from '../domain/user.service'
 import {State} from '@contact/shared/data-access'
 import {UserFacade} from '../domain/user.facade'

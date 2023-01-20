@@ -1,4 +1,14 @@
-import {UserResponse, HttpService, UpdateUser, CreateMeeting, AgendaResponse, UpdateMeeting, MeetingResponse, SearchUser, CreateAgenda} from '@contact/type'
+import {
+  UserResponse,
+  HttpService,
+  UpdateUser,
+  CreateMeeting,
+  AgendaResponse,
+  UpdateMeeting,
+  MeetingResponse,
+  SearchUser,
+  CreateAgenda,
+} from '@contact/type'
 import {UserService} from '../domain/user.service'
 
 export class UserServiceImpl implements UserService {
@@ -25,7 +35,10 @@ export class UserServiceImpl implements UserService {
   }
 
   createAgendaOnMeeting(meetingId: number, createAgenda: CreateAgenda) {
-    return this.http.post<AgendaResponse>(`/api/user/meeting/${meetingId}/agenda`, createAgenda)
+    return this.http.post<AgendaResponse>(
+      `/api/user/meeting/${meetingId}/agenda`,
+      createAgenda
+    )
   }
 
   searchUser(searchUser: SearchUser) {

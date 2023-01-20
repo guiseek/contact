@@ -1,6 +1,35 @@
-import {UserService, UpdateUserDto, CreateUserDto, UserResponseDto, CreateDeviceDto, DeviceResponseDto, CreateMeetingDto, AgendaResponseDto, UpdateMeetingDto, MeetingResponseDto, SearchUserDto, CreateAgendaDto} from '../../data'
-import {ApiTags, ApiBody, ApiResponse, ApiOperation, ApiBearerAuth, ApiNotFoundResponse} from '@nestjs/swagger'
-import {Get, Body, Post, Patch, Param, Delete, Controller, UnauthorizedException} from '@nestjs/common'
+import {
+  UserService,
+  UpdateUserDto,
+  CreateUserDto,
+  UserResponseDto,
+  CreateDeviceDto,
+  DeviceResponseDto,
+  CreateMeetingDto,
+  AgendaResponseDto,
+  UpdateMeetingDto,
+  MeetingResponseDto,
+  SearchUserDto,
+  CreateAgendaDto,
+} from '../../data'
+import {
+  ApiTags,
+  ApiBody,
+  ApiResponse,
+  ApiOperation,
+  ApiBearerAuth,
+  ApiNotFoundResponse,
+} from '@nestjs/swagger'
+import {
+  Get,
+  Body,
+  Post,
+  Patch,
+  Param,
+  Delete,
+  Controller,
+  UnauthorizedException,
+} from '@nestjs/common'
 import {CaslAbilityFactory} from '../casl/casl-ability.factory'
 import {AuthUserLogged, UserRole} from '@contact/type'
 import {User} from '../../data/user/ports/user'
@@ -28,7 +57,10 @@ export class UserController {
   private _toAgendaDto = toDto(AgendaResponseDto)
   private _toMeetingDto = toDto(MeetingResponseDto)
 
-  constructor(private readonly userService: UserService, private caslAbilityFactory: CaslAbilityFactory) {}
+  constructor(
+    private readonly userService: UserService,
+    private caslAbilityFactory: CaslAbilityFactory
+  ) {}
 
   @Get('devices')
   @ApiOperation({summary: 'Gets devices by user'})
@@ -43,7 +75,10 @@ export class UserController {
     required: true,
     type: CreateDeviceDto,
   })
-  async createDevice(@Logged() user: AuthUserLogged, @Body() value: CreateDeviceDto) {
+  async createDevice(
+    @Logged() user: AuthUserLogged,
+    @Body() value: CreateDeviceDto
+  ) {
     return this._toDeviceDto.one(
       this.userService.createDevice({
         ...value,
@@ -58,7 +93,10 @@ export class UserController {
     required: true,
     type: SearchUserDto,
   })
-  async searchUser(@Logged() user: AuthUserLogged, @Body() value: SearchUserDto) {
+  async searchUser(
+    @Logged() user: AuthUserLogged,
+    @Body() value: SearchUserDto
+  ) {
     return this._toUserDto.many(this.userService.searchUser(value))
   }
 
@@ -68,7 +106,10 @@ export class UserController {
     required: true,
     type: CreateMeetingDto,
   })
-  async createMeeting(@Logged() user: AuthUserLogged, @Body() value: CreateMeetingDto) {
+  async createMeeting(
+    @Logged() user: AuthUserLogged,
+    @Body() value: CreateMeetingDto
+  ) {
     return this._toAgendaDto.one(this.userService.createMeeting(value, user))
   }
 
@@ -80,25 +121,43 @@ export class UserController {
 
   @Get('meeting/:meetingId')
   @ApiOperation({summary: 'Gets meeting'})
-  async getMeeting(@Logged() user: AuthUserLogged, @Param('meetingId') id: number) {
+  async getMeeting(
+    @Logged() user: AuthUserLogged,
+    @Param('meetingId') id: number
+  ) {
     return this._toMeetingDto.one(this.userService.findOneMeeting({id}))
   }
 
   @Patch('meeting/:meetingId')
   @ApiOperation({summary: 'Patch meeting'})
-  async patchMeeting(@Logged() user: AuthUserLogged, @Param('meetingId') meetingId: number, @Body() value: UpdateMeetingDto) {
-    return this._toMeetingDto.one(this.userService.updateMeeting(meetingId, value))
+  async patchMeeting(
+    @Logged() user: AuthUserLogged,
+    @Param('meetingId') meetingId: number,
+    @Body() value: UpdateMeetingDto
+  ) {
+    return this._toMeetingDto.one(
+      this.userService.updateMeeting(meetingId, value)
+    )
   }
 
   @Post('meeting/:meetingId/agenda')
   @ApiOperation({summary: 'Create agenda to existing meeting'})
-  async patchMeetingAgenda(@Logged() user: AuthUserLogged, @Param('meetingId') meetingId: number, @Body() value: CreateAgendaDto) {
-    return this._toAgendaDto.one(this.userService.createAgendaOnMeeting(meetingId, value))
+  async patchMeetingAgenda(
+    @Logged() user: AuthUserLogged,
+    @Param('meetingId') meetingId: number,
+    @Body() value: CreateAgendaDto
+  ) {
+    return this._toAgendaDto.one(
+      this.userService.createAgendaOnMeeting(meetingId, value)
+    )
   }
 
   @Delete('meeting/:meetingId')
   @ApiOperation({summary: 'Delete meeting'})
-  async deleteMeeting(@Logged() user: AuthUserLogged, @Param('meetingId') meetingId: number) {
+  async deleteMeeting(
+    @Logged() user: AuthUserLogged,
+    @Param('meetingId') meetingId: number
+  ) {
     return this._toMeetingDto.one(this.userService.deleteMeeting(meetingId))
   }
 
@@ -115,8 +174,15 @@ export class UserController {
     required: true,
     type: CreateDeviceDto,
   })
-  async createDevices(@Logged() user: AuthUserLogged, @Body() values: CreateDeviceDto[]) {
-    return Promise.allSettled(values.map((value) => this._toDeviceDto.one(this.userService.createDevice({...value, user}))))
+  async createDevices(
+    @Logged() user: AuthUserLogged,
+    @Body() values: CreateDeviceDto[]
+  ) {
+    return Promise.allSettled(
+      values.map((value) =>
+        this._toDeviceDto.one(this.userService.createDevice({...value, user}))
+      )
+    )
   }
 
   @Get(':idOrUsername')
@@ -145,7 +211,11 @@ export class UserController {
     description: 'The user updated',
     type: UserResponseDto,
   })
-  async update(@Param('id') id: string, @Body() value: UpdateUserDto, @Logged() user: AuthUserLogged) {
+  async update(
+    @Param('id') id: string,
+    @Body() value: UpdateUserDto,
+    @Logged() user: AuthUserLogged
+  ) {
     if (user.id !== +id) {
       throw new UnauthorizedException('You can only change yourself')
     }

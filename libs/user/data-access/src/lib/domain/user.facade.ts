@@ -1,4 +1,13 @@
-import {AgendaResponse, CreateAgenda, CreateMeeting, MeetingResponse, SearchUser, UpdateMeeting, UpdateUser, UserResponse} from '@contact/type'
+import {
+  AgendaResponse,
+  CreateAgenda,
+  CreateMeeting,
+  MeetingResponse,
+  SearchUser,
+  UpdateMeeting,
+  UpdateUser,
+  UserResponse,
+} from '@contact/type'
 import {Observable} from 'rxjs'
 
 export abstract class UserFacade {
@@ -16,6 +25,9 @@ export abstract class UserFacade {
   abstract loadOneMeeting(id: number): void
   abstract updateMeeting(value: UpdateMeeting): void
   abstract deleteMeeting(id: number): void
-  abstract createAgendaOnMeeting(meetingId: number, createAgenda: CreateAgenda): void
+  abstract createAgendaOnMeeting(
+    meetingId: number,
+    createAgenda: CreateAgenda
+  ): void
   abstract loadAgenda(): void
 }

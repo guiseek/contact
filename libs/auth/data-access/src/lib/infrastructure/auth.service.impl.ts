@@ -1,4 +1,13 @@
-import {CheckUser, CreateUser, AuthRequest, UserResponse, AuthResponse, HttpService, CheckUserResponse, AuthUserLogged} from '@contact/type'
+import {
+  CheckUser,
+  CreateUser,
+  AuthRequest,
+  UserResponse,
+  AuthResponse,
+  HttpService,
+  CheckUserResponse,
+  AuthUserLogged,
+} from '@contact/type'
 import {AuthService} from '../domain/auth.service'
 
 export class AuthServiceImpl implements AuthService {

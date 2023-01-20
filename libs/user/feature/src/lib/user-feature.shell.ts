@@ -5,17 +5,35 @@ import {UserFacade} from '@contact/user/data-access'
 @Component({
   template: `
     <contact-toolbar>
-      <a mat-icon-button class="toolbar-icon" matTooltip="Conta" routerLink="/user">
+      <a
+        mat-icon-button
+        class="toolbar-icon"
+        matTooltip="Conta"
+        routerLink="/user"
+      >
         <mat-icon>account_circle</mat-icon>
       </a>
-      <a mat-icon-button class="toolbar-icon" matTooltip="Dispositivos" routerLink="/user/devices">
+      <a
+        mat-icon-button
+        class="toolbar-icon"
+        matTooltip="Dispositivos"
+        routerLink="/user/devices"
+      >
         <mat-icon>devices</mat-icon>
       </a>
-      <a mat-icon-button class="toolbar-icon" matTooltip="Agenda" routerLink="/user/agenda">
+      <a
+        mat-icon-button
+        class="toolbar-icon"
+        matTooltip="Agenda"
+        routerLink="/user/agenda"
+      >
         <mat-icon>view_agenda</mat-icon>
       </a>
 
-      <contact-toolbar-dropdown [user]="auth.user$" (menuClicked)="onMenuClicked($event)"></contact-toolbar-dropdown>
+      <contact-toolbar-dropdown
+        [user]="auth.user$"
+        (menuClicked)="onMenuClicked($event)"
+      ></contact-toolbar-dropdown>
     </contact-toolbar>
 
     <main>

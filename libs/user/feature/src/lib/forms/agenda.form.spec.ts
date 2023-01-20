@@ -1,11 +1,10 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing'
 
 import {AgendaForm} from './agenda.form'
-import { Component } from '@angular/core'
-
+import {Component} from '@angular/core'
 
 @Component({
-  selector: 'user-agenda-form-test'
+  selector: 'user-agenda-form-test',
 })
 class AgendaFormComponent {
   form = new AgendaForm()

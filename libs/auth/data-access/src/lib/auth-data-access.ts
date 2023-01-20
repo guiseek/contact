@@ -14,7 +14,8 @@ export function authDataProviders() {
     },
     {
       provide: AuthFacade,
-      useFactory: (auth: AuthService, storage: StorageService) => new AuthFacadeImpl(auth, storage),
+      useFactory: (auth: AuthService, storage: StorageService) =>
+        new AuthFacadeImpl(auth, storage),
       deps: [AuthService, StorageService],
     },
   ]

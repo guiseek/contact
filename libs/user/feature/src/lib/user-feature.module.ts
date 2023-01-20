@@ -14,7 +14,24 @@ import {SearchUserComponent} from './components/search-user/search-user.componen
 import {SearchUserDialog} from './dialogs/search-user/search-user.dialog'
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, UiLayoutModule, UiMaterialModule, RouterModule.forChild(userFeatureRoutes)],
-  declarations: [UserFeatureShell, DeviceContainer, AccountContainer, AgendaContainer, IsPastPipe, CreateMeetingComponent, AgendaItemComponent, CreateMeetingDialog, SearchUserComponent, SearchUserDialog],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    UiLayoutModule,
+    UiMaterialModule,
+    RouterModule.forChild(userFeatureRoutes),
+  ],
+  declarations: [
+    UserFeatureShell,
+    DeviceContainer,
+    AccountContainer,
+    AgendaContainer,
+    IsPastPipe,
+    CreateMeetingComponent,
+    AgendaItemComponent,
+    CreateMeetingDialog,
+    SearchUserComponent,
+    SearchUserDialog,
+  ],
 })
 export class UserFeatureModule {}

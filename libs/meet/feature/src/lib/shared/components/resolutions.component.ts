@@ -1,5 +1,16 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Renderer2} from '@angular/core'
-import {FormControl, NgControl, SelectControlValueAccessor} from '@angular/forms'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  Renderer2,
+} from '@angular/core'
+import {
+  FormControl,
+  NgControl,
+  SelectControlValueAccessor,
+} from '@angular/forms'
 import {BehaviorSubject} from 'rxjs'
 
 interface OptionItem {
@@ -14,7 +25,10 @@ interface OptionItem {
     <mat-form-field>
       <mat-label>Resolução</mat-label>
       <mat-select [formControl]="formControl">
-        <mat-option *ngFor="let resolution of resolutions$ | async" [value]="resolution">
+        <mat-option
+          *ngFor="let resolution of resolutions$ | async"
+          [value]="resolution"
+        >
           {{ resolution.label }}
         </mat-option>
       </mat-select>
@@ -31,7 +45,10 @@ interface OptionItem {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResolutionsComponent extends SelectControlValueAccessor implements OnInit {
+export class ResolutionsComponent
+  extends SelectControlValueAccessor
+  implements OnInit
+{
   private _resolutions = new BehaviorSubject<OptionItem[]>([])
   resolutions$ = this._resolutions.asObservable()
 
@@ -54,7 +71,11 @@ export class ResolutionsComponent extends SelectControlValueAccessor implements 
     return this.ngControl.control as FormControl
   }
 
-  constructor(renderer: Renderer2, elementRef: ElementRef, readonly ngControl: NgControl) {
+  constructor(
+    renderer: Renderer2,
+    elementRef: ElementRef,
+    readonly ngControl: NgControl
+  ) {
     super(renderer, elementRef)
     ngControl.valueAccessor = this
   }

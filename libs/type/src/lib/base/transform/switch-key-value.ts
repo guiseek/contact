@@ -6,6 +6,9 @@ export type SwitchKeyValue<
     [K in keyof T]: {key: K; value: T[K]}
   },
   T2 = {
-    [K in ObjectValues<T1>['value']]: Extract<ObjectValues<T1>, {value: K}>['key']
+    [K in ObjectValues<T1>['value']]: Extract<
+      ObjectValues<T1>,
+      {value: K}
+    >['key']
   }
 > = T2

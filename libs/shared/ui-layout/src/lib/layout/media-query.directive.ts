@@ -11,7 +11,10 @@ export class MediaQueryDirective implements AfterViewInit {
 
   @Input() max?: LayoutBreakpoint
 
-  constructor(private _elRef: ElementRef<HTMLElement>, readonly media: MediaMatcher) {}
+  constructor(
+    private _elRef: ElementRef<HTMLElement>,
+    readonly media: MediaMatcher
+  ) {}
 
   ngAfterViewInit() {
     if (this.min) this.handleQuery(this.min)

@@ -1,5 +1,16 @@
-import {User, Device, Agenda, CreateUser, UpdateUser, Meeting} from '@contact/type'
-import {CreateAgendaDto, CreateMeetingDto, UpdateMeetingDto} from '../dto/meeting'
+import {
+  User,
+  Device,
+  Agenda,
+  CreateUser,
+  UpdateUser,
+  Meeting,
+} from '@contact/type'
+import {
+  CreateAgendaDto,
+  CreateMeetingDto,
+  UpdateMeetingDto,
+} from '../dto/meeting'
 import {CreateDeviceDto} from '../dto/device'
 import {SearchUserDto} from '../dto'
 
@@ -12,10 +23,16 @@ export abstract class UserService {
 
   abstract searchUser(query: SearchUserDto): Promise<User[]>
   abstract findOneMeeting(where: Partial<Pick<Meeting, 'id'>>): Promise<Meeting>
-  abstract createMeeting(value: CreateMeetingDto, user: Pick<User, 'id'>): Promise<Agenda>
+  abstract createMeeting(
+    value: CreateMeetingDto,
+    user: Pick<User, 'id'>
+  ): Promise<Agenda>
   abstract updateMeeting(id: number, value: UpdateMeetingDto): Promise<Meeting>
   abstract deleteMeeting(id: number): Promise<Meeting>
-  abstract createAgendaOnMeeting(id: number, createAgendaDto: CreateAgendaDto): Promise<Agenda>
+  abstract createAgendaOnMeeting(
+    id: number,
+    createAgendaDto: CreateAgendaDto
+  ): Promise<Agenda>
 
   abstract findOneById(id: number): Promise<User>
 

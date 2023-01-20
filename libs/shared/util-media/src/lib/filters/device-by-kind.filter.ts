@@ -14,4 +14,6 @@ listFilter((item) => {
   return item.id === 1
 })
 
-export const deviceFilterByKind = (kind: MediaDeviceKind) => (device: MediaDeviceInfo) => device.kind === kind
+export const deviceFilterByKind =
+  (kind: MediaDeviceKind) => (device: MediaDeviceInfo) =>
+    device.kind === kind

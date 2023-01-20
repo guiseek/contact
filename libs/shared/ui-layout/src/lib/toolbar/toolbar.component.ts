@@ -1,4 +1,10 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core'
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core'
 import {ThemePalette} from '@angular/material/core'
 import {AuthUserLogged} from '@contact/type'
 

@@ -17,7 +17,13 @@ export class AuthUserResponseDto implements AuthUserLogged {
   @ApiProperty()
   roles: UserRole[]
 
-  constructor(id: number, email: string, username: string, displayName: string, roles: UserRole[]) {
+  constructor(
+    id: number,
+    email: string,
+    username: string,
+    displayName: string,
+    roles: UserRole[]
+  ) {
     this.id = id
     this.email = email
     this.username = username

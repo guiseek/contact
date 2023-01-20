@@ -1,6 +1,22 @@
 import {Post, Get, Body, Request, UseGuards, Controller} from '@nestjs/common'
-import {ApiTags, ApiBody, ApiBasicAuth, ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger'
-import {AuthRequestDto, AuthResponseDto, AuthService, AuthUserResponseDto, CheckUserDto, CheckUserResponseDto, CreateUserDto, UserResponseDto} from '../../data'
+import {
+  ApiTags,
+  ApiBody,
+  ApiBasicAuth,
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+} from '@nestjs/swagger'
+import {
+  AuthRequestDto,
+  AuthResponseDto,
+  AuthService,
+  AuthUserResponseDto,
+  CheckUserDto,
+  CheckUserResponseDto,
+  CreateUserDto,
+  UserResponseDto,
+} from '../../data'
 import {AuthUserRequest, AuthUserLogged} from '@contact/type'
 import {Allowed, Logged} from '../../utils'
 import {JwtAuthGuard, LocalAuthGuard} from './guards'

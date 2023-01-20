@@ -1,6 +1,11 @@
 import {Component, OnInit, inject} from '@angular/core'
 import {MatDialog} from '@angular/material/dialog'
-import {AgendaItemAction, AgendaResponse, CreateMeeting, UserRole} from '@contact/type'
+import {
+  AgendaItemAction,
+  AgendaResponse,
+  CreateMeeting,
+  UserRole,
+} from '@contact/type'
 import {UserFacade} from '@contact/user/data-access'
 import {CreateMeetingDialog, SearchUserDialog} from '../../dialogs'
 
@@ -60,7 +65,10 @@ export class AgendaContainer implements OnInit {
     const $sub = searchUser$.subscribe((user) => {
       if (user) {
         console.log(user)
-        this.user.createAgendaOnMeeting(meetingId, {user, roles: [UserRole.User]})
+        this.user.createAgendaOnMeeting(meetingId, {
+          user,
+          roles: [UserRole.User],
+        })
         // this.user.searchUser(value)
       }
       $sub.unsubscribe()

@@ -13,7 +13,8 @@ export class MeetFeatureComponent {
   private _mediaStream = new BehaviorSubject<MediaStream | null>(null)
   readonly mediaStream$ = this._mediaStream.asObservable()
 
-  private _videoCapabilities = new BehaviorSubject<MediaTrackCapabilities | null>(null)
+  private _videoCapabilities =
+    new BehaviorSubject<MediaTrackCapabilities | null>(null)
   readonly videoCapabilities$ = this._videoCapabilities.asObservable()
   private _videoRange = new BehaviorSubject<ULongRange>({})
   readonly videoRange$ = this._videoRange.asObservable()

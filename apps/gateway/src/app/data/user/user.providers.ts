@@ -15,22 +15,35 @@ export const USER_PROVIDERS: Provider<unknown>[] = [
   },
   {
     provide: 'device.repository',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(DeviceImpl),
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(DeviceImpl),
     inject: ['data.source'],
   },
   {
     provide: 'meeting.repository',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(MeetingImpl),
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(MeetingImpl),
     inject: ['data.source'],
   },
   {
     provide: 'agenda.repository',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(AgendaImpl),
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(AgendaImpl),
     inject: ['data.source'],
   },
   {
     provide: UserService,
-    useFactory: (user: Repository<UserImpl>, device: Repository<DeviceImpl>, meeting: Repository<MeetingImpl>, agenda: Repository<AgendaImpl>) => new UserServiceImpl(user, device, meeting, agenda),
-    inject: ['user.repository', 'device.repository', 'meeting.repository', 'agenda.repository'],
+    useFactory: (
+      user: Repository<UserImpl>,
+      device: Repository<DeviceImpl>,
+      meeting: Repository<MeetingImpl>,
+      agenda: Repository<AgendaImpl>
+    ) => new UserServiceImpl(user, device, meeting, agenda),
+    inject: [
+      'user.repository',
+      'device.repository',
+      'meeting.repository',
+      'agenda.repository',
+    ],
   },
 ]

@@ -1,4 +1,12 @@
-import {Column, Entity, Unique, OneToMany, BaseEntity, PrimaryGeneratedColumn, Index} from 'typeorm'
+import {
+  Column,
+  Entity,
+  Unique,
+  OneToMany,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  Index,
+} from 'typeorm'
 import {Agenda, Device, User, UserRole} from '@contact/type'
 import {entityContainer} from '../../../utils'
 import {DeviceImpl} from './device.impl'

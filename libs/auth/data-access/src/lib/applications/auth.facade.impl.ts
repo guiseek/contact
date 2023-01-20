@@ -1,5 +1,11 @@
 import {catchError, filter, map, switchMap, take, tap} from 'rxjs'
-import {AuthRequest, AuthResponse, AuthUserLogged, CreateUser, HttpErrorResponse} from '@contact/type'
+import {
+  AuthRequest,
+  AuthResponse,
+  AuthUserLogged,
+  CreateUser,
+  HttpErrorResponse,
+} from '@contact/type'
 import {State, StorageService} from '@contact/shared/data-access'
 import {AuthService} from '../domain/auth.service'
 import {AuthFacade} from '../domain/auth.facade'
@@ -18,9 +24,14 @@ export class AuthFacadeImpl extends State<AuthState> implements AuthFacade {
 
   error$ = this.select((state) => state.error)
 
-  user$ = this.select((state) => state.user).pipe(filter((user) => user !== null))
+  user$ = this.select((state) => state.user).pipe(
+    filter((user) => user !== null)
+  )
 
-  constructor(private authService: AuthService, private storage: StorageService) {
+  constructor(
+    private authService: AuthService,
+    private storage: StorageService
+  ) {
     super({
       user: null,
       error: null,

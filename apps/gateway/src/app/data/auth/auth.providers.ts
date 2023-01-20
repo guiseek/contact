@@ -7,7 +7,8 @@ import {AuthServiceImpl} from './services/auth.service.impl'
 export const AUTH_PROVIDERS: Provider<unknown>[] = [
   {
     provide: AuthService,
-    useFactory: (userService: UserService, jwtService: JwtService) => new AuthServiceImpl(userService, jwtService),
+    useFactory: (userService: UserService, jwtService: JwtService) =>
+      new AuthServiceImpl(userService, jwtService),
     inject: [UserService, JwtService],
   },
 ]

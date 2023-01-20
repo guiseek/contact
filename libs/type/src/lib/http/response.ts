@@ -21,7 +21,12 @@ export interface HttpSentEvent {
 export interface HttpUserEvent<T> {
   type: HttpEventType.User
 }
-export type HttpEvent<T> = HttpSentEvent | HttpHeaderResponse | HttpResponse<T> | HttpProgressEvent | HttpUserEvent<T>
+export type HttpEvent<T> =
+  | HttpSentEvent
+  | HttpHeaderResponse
+  | HttpResponse<T>
+  | HttpProgressEvent
+  | HttpUserEvent<T>
 
 export interface HttpResponseBase {
   readonly headers: HttpHeaders
@@ -50,15 +55,31 @@ export interface HttpErrorResponse extends HttpResponseBase, Error {
   readonly error: any | null
   readonly ok: false
 
-  new (init: {error?: Error; headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): this
+  new (init: {
+    error?: Error
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): this
 }
 
 export interface HttpHeaderResponse extends HttpResponseBase {
-  new (init: {headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): this
+  new (init: {
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): this
 
   readonly type: HttpEventType.ResponseHeader
 
-  clone(update: {headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): HttpHeaderResponse
+  clone(update: {
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): HttpHeaderResponse
 }
 
 export interface HttpResponse<T> extends HttpResponseBase {
@@ -70,12 +91,35 @@ export interface HttpResponse<T> extends HttpResponseBase {
   /**
    * Construct a new `HttpResponse`.
    */
-  new (init: {body?: T | null; headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): this
+  new (init: {
+    body?: T | null
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): this
 
   readonly type: HttpEventType.Response
 
   clone(): HttpResponse<T>
-  clone(update: {headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): HttpResponse<T>
-  clone<V>(update: {body?: V | null; headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): HttpResponse<V>
-  clone(update: {body?: any | null; headers?: HttpHeaders; status?: number; statusText?: string; url?: string}): HttpResponse<any>
+  clone(update: {
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): HttpResponse<T>
+  clone<V>(update: {
+    body?: V | null
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): HttpResponse<V>
+  clone(update: {
+    body?: any | null
+    headers?: HttpHeaders
+    status?: number
+    statusText?: string
+    url?: string
+  }): HttpResponse<any>
 }

@@ -3,7 +3,11 @@
  * This is only a minimal backend to get started.
  */
 
-import {ClassSerializerInterceptor, Logger, ValidationPipe} from '@nestjs/common'
+import {
+  ClassSerializerInterceptor,
+  Logger,
+  ValidationPipe,
+} from '@nestjs/common'
 import {NestFactory, Reflector} from '@nestjs/core'
 
 import {AppModule} from './app/app.module'
@@ -14,7 +18,13 @@ async function bootstrap() {
   const globalPrefix = 'api'
   app.setGlobalPrefix(globalPrefix)
 
-  const config = new DocumentBuilder().setTitle('Gateway').setDescription('The Speek Keep API').setVersion('1.0').addTag('contact').addBearerAuth().build()
+  const config = new DocumentBuilder()
+    .setTitle('Gateway')
+    .setDescription('The Speek Keep API')
+    .setVersion('1.0')
+    .addTag('contact')
+    .addBearerAuth()
+    .build()
 
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('docs', app, document)
@@ -30,7 +40,9 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3333
   await app.listen(port)
-  Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+  )
 }
 
 bootstrap()

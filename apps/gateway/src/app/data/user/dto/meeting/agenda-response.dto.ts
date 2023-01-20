@@ -3,7 +3,10 @@ import {CreateAgendaDto} from './create-agenda.dto'
 import {Agenda, AgendaResponse, Meeting} from '@contact/type'
 import {UserResponseDto} from '../user-response.dto'
 
-export class AgendaResponseDto extends IntersectionType(CreateAgendaDto, class {}) implements AgendaResponse {
+export class AgendaResponseDto
+  extends IntersectionType(CreateAgendaDto, class {})
+  implements AgendaResponse
+{
   @ApiProperty()
   id: number
 

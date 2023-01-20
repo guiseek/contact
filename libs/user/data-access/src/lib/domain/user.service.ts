@@ -1,4 +1,13 @@
-import {AgendaResponse, CreateAgenda, CreateMeeting, MeetingResponse, SearchUser, UpdateMeeting, UpdateUser, UserResponse} from '@contact/type'
+import {
+  AgendaResponse,
+  CreateAgenda,
+  CreateMeeting,
+  MeetingResponse,
+  SearchUser,
+  UpdateMeeting,
+  UpdateUser,
+  UserResponse,
+} from '@contact/type'
 import {Observable} from 'rxjs'
 
 export abstract class UserService {
@@ -12,15 +21,23 @@ export abstract class UserService {
 
   abstract searchUser(searchUser: SearchUser): Observable<UserResponse[]>
 
-  abstract createMeeting(createMeeting: CreateMeeting): Observable<AgendaResponse>
+  abstract createMeeting(
+    createMeeting: CreateMeeting
+  ): Observable<AgendaResponse>
 
-  abstract updateMeeting(id: number, value: UpdateMeeting): Observable<MeetingResponse>
+  abstract updateMeeting(
+    id: number,
+    value: UpdateMeeting
+  ): Observable<MeetingResponse>
 
   abstract findOneMeeting(id: number): Observable<MeetingResponse>
 
   abstract deleteMeeting(id: number): Observable<MeetingResponse>
 
-  abstract createAgendaOnMeeting(meetingId: number, createAgenda: CreateAgenda): Observable<AgendaResponse>
+  abstract createAgendaOnMeeting(
+    meetingId: number,
+    createAgenda: CreateAgenda
+  ): Observable<AgendaResponse>
 
   abstract update(id: number, updateUser: UpdateUser): Observable<UserResponse>
 

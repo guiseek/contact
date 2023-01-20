@@ -1,1 +1,1 @@
-export * from './agenda.form';
+export * from './agenda.form'
