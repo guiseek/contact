@@ -20,6 +20,7 @@
       "@contact/client/types": ["libs/client/types/src/index.ts"],
       "@contact/inter/types": ["libs/inter/types/src/index.ts"],
       "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
+      "@contact/meet/data-access": ["libs/meet/data-access/src/index.ts"],
       "@contact/server/types": ["libs/server/types/src/index.ts"],
       "@contact/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@contact/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],
