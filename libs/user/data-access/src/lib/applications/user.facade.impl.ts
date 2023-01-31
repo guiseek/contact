@@ -45,103 +45,103 @@ export class UserFacadeImpl extends State<UserState> implements UserFacade {
   }
 
   searchUser(searchUser: SearchUser) {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .searchUser(searchUser)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((users) => {
-        this.setState({users, loading: false})
+        this.patch({users, loading: false})
       })
   }
 
   createMeeting(createMeeting: CreateMeeting) {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .createMeeting(createMeeting)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((meeting) => {
         const agenda = [...this.state.agenda, meeting]
-        this.setState({agenda, loading: false})
+        this.patch({agenda, loading: false})
       })
   }
 
   createAgendaOnMeeting(meetingId: number, createAgenda: CreateAgenda) {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .createAgendaOnMeeting(meetingId, createAgenda)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((latestAgenda) => {
         const agenda = [...this.state.agenda, latestAgenda]
-        this.setState({agenda, loading: false})
+        this.patch({agenda, loading: false})
       })
   }
 
   updateMeeting(value: UpdateMeeting) {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .updateMeeting(value.id, value)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((meeting) => {
         console.log(meeting)
-        this.setState({loading: false})
+        this.patch({loading: false})
         this.loadAgenda()
       })
   }
 
   loadOneMeeting(id: number): void {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .findOneMeeting(id)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((meeting) => {
-        this.setState({meeting, loading: false})
+        this.patch({meeting, loading: false})
       })
   }
 
   deleteMeeting(id: number): void {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .deleteMeeting(id)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((meeting) => {
-        this.setState({meeting, loading: false})
+        this.patch({meeting, loading: false})
         this.loadAgenda()
       })
   }
 
   loadAgenda() {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .findAgenda()
       .pipe(take(1), catchError(this.throwError))
       .subscribe((agenda) => {
-        this.setState({agenda, loading: false})
+        this.patch({agenda, loading: false})
       })
   }
 
   loadOneById(id: number): void {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .findOneById(id)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((user) => {
-        this.setState({user, loading: false})
+        this.patch({user, loading: false})
       })
   }
 
   updateUser(user: UpdateUser): void {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.userService
       .update(user.id, user)
       .pipe(take(1), catchError(this.throwError))
       .subscribe((user) => {
-        this.setState({user, loading: false})
+        this.patch({user, loading: false})
       })
   }
 
   throwError = <T>(err: HttpErrorResponse, caught: T) => {
     if (err && err.error) {
-      this.setState({error: err.error.message})
+      this.patch({error: err.error.message})
       throw err
     }
     return caught

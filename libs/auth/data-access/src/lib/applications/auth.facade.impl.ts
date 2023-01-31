@@ -41,7 +41,7 @@ export class AuthFacadeImpl extends State<AuthState> implements AuthFacade {
   }
 
   signIn(request: AuthRequest) {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.authService
       .login(request)
       .pipe(
@@ -53,12 +53,12 @@ export class AuthFacadeImpl extends State<AuthState> implements AuthFacade {
         })
       )
       .subscribe((user) => {
-        this.setState({user, isAuthenticated: true, loading: false})
+        this.patch({user, isAuthenticated: true, loading: false})
       })
   }
 
   signUp(createUser: CreateUser) {
-    this.setState({loading: true})
+    this.update('loading', true)
     this.authService
       .createUser(createUser)
       .pipe(
@@ -71,7 +71,7 @@ export class AuthFacadeImpl extends State<AuthState> implements AuthFacade {
       )
       .subscribe((request) => {
         this.signIn(request)
-        this.setState({loading: false})
+        this.update('loading', false)
       })
   }
 
@@ -79,7 +79,7 @@ export class AuthFacadeImpl extends State<AuthState> implements AuthFacade {
     return this.authService.validateUser().pipe(
       take(1),
       tap((user) => {
-        this.setState({user})
+        this.patch({user})
       })
     )
   }
@@ -90,7 +90,7 @@ export class AuthFacadeImpl extends State<AuthState> implements AuthFacade {
 
   throwError = <T>(err: HttpErrorResponse, caught: T) => {
     if (err && err.error) {
-      this.setState({error: err.error.message})
+      this.patch({error: err.error.message})
       throw err
     }
     return caught
