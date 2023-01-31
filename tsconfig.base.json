@@ -17,6 +17,7 @@
     "paths": {
       "@contact/auth/data-access": ["libs/auth/data-access/src/index.ts"],
       "@contact/auth/feature": ["libs/auth/feature/src/index.ts"],
+      "@contact/inter/types": ["libs/inter/types/src/index.ts"],
       "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
       "@contact/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@contact/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],
