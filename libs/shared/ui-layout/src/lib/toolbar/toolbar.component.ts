@@ -6,7 +6,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core'
 import {ThemePalette} from '@angular/material/core'
-import {AuthUserLogged} from '@contact/type'
 
 @Component({
   selector: 'contact-toolbar',
@@ -15,7 +14,6 @@ import {AuthUserLogged} from '@contact/type'
   encapsulation: ViewEncapsulation.None,
 })
 export class ToolbarComponent {
-  @Input() user?: AuthUserLogged
   @Input() color: ThemePalette = 'primary'
   @Input() goBackRoute: string | string[] = ['/']
 

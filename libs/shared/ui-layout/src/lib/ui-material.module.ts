@@ -1,6 +1,11 @@
 import {NgModule} from '@angular/core'
+import {MatMenuModule} from '@angular/material/menu'
+import {LayoutModule} from '@angular/cdk/layout'
 import {MatIconModule} from '@angular/material/icon'
 import {MatCardModule} from '@angular/material/card'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatExpansionModule} from '@angular/material/expansion'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {MatListModule} from '@angular/material/list'
 import {MatTooltipModule} from '@angular/material/tooltip'
 import {MatDatepickerModule} from '@angular/material/datepicker'
@@ -17,10 +22,15 @@ import {MatNativeDateModule} from '@angular/material/core'
 
 @NgModule({
   exports: [
+    LayoutModule,
+    MatMenuModule,
     MatIconModule,
     MatCardModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
     MatTabsModule,
+    MatToolbarModule,
+    MatExpansionModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,

@@ -2,8 +2,10 @@ import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {RouterModule} from '@angular/router'
 import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatButtonModule} from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon'
+import {MatListModule} from '@angular/material/list'
 import {MatDividerModule} from '@angular/material/divider'
 import {MatTooltipModule} from '@angular/material/tooltip'
 import {MatMenuModule} from '@angular/material/menu'
@@ -16,13 +18,16 @@ import {ShareService} from './dialogs/share/share.service'
 import {ToolbarDropdownComponent} from './toolbar/toolbar-dropdown.component'
 import {FabMenuComponent} from './fab-menu/fab-menu.component'
 import {SvgLoaderComponent} from './svg-loader/svg-loader.component'
+import {NavDrawerComponent} from './nav-drawer/nav-drawer.component'
 
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     MatToolbarModule,
+    MatSidenavModule,
     MatMenuModule,
+    MatListModule,
     MatTooltipModule,
     MatDialogModule,
     MatButtonModule,
@@ -37,6 +42,7 @@ import {SvgLoaderComponent} from './svg-loader/svg-loader.component'
     SvgLoaderComponent,
     ShareDialog,
     ToolbarDropdownComponent,
+    NavDrawerComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -45,6 +51,7 @@ import {SvgLoaderComponent} from './svg-loader/svg-loader.component'
     SvgLoaderComponent,
     ShareDialog,
     ToolbarDropdownComponent,
+    NavDrawerComponent,
   ],
   providers: [ShareService],
 })
