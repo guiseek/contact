@@ -4,6 +4,6 @@ import type {Length} from './length'
 
 export type Last<T extends unknown[]> = Equals<Length<T>, number> extends 1
   ? ArrayInfer<T>
-  : T extends [...any, infer U]
+  : T extends [...T, infer U]
   ? U
   : never

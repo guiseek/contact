@@ -39,17 +39,24 @@ registerLocaleData(pt, 'pt-BR', ptBr)
             import('@contact/user/feature').then((m) => m.UserFeatureModule),
         },
         {
+          path: 'meet',
+          loadChildren: () =>
+            import('@contact/client/feature-meet').then(
+              (m) => m.FeatureMeetModule
+            ),
+        },
+        {
           path: '',
           loadChildren: () =>
             import('@contact/client/feature-home').then(
               (m) => m.FeatureHomeModule
             ),
         },
-        {
-          path: '',
-          loadChildren: () =>
-            import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
-        },
+        // {
+        //   path: '',
+        //   loadChildren: () =>
+        //     import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
+        // },
       ],
       {useHash: true}
     ),

@@ -19,6 +19,7 @@ import {ToolbarDropdownComponent} from './toolbar/toolbar-dropdown.component'
 import {FabMenuComponent} from './fab-menu/fab-menu.component'
 import {SvgLoaderComponent} from './svg-loader/svg-loader.component'
 import {NavDrawerComponent} from './nav-drawer/nav-drawer.component'
+import {ProgressBarComponent} from './progress-bar/progress-bar.component'
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import {NavDrawerComponent} from './nav-drawer/nav-drawer.component'
     ShareDialog,
     ToolbarDropdownComponent,
     NavDrawerComponent,
+    ProgressBarComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -52,6 +54,7 @@ import {NavDrawerComponent} from './nav-drawer/nav-drawer.component'
     ShareDialog,
     ToolbarDropdownComponent,
     NavDrawerComponent,
+    ProgressBarComponent,
   ],
   providers: [ShareService],
 })

@@ -1,0 +1,24 @@
+<div></div>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-subtitle>Alto-falantes</mat-card-subtitle>
+  </mat-card-header>
+
+  <meet-device-list
+    kind="audiooutput"
+    [formControl]="formControl"
+    (valueChange)="onDevicesChanges($event)"
+  ></meet-device-list>
+</mat-card>
+
+<section class="flex row justify-center">
+  <audio #audioRef autoplay [srcObject]="stream$ | async"></audio>
+</section>
+
+<mat-card class="card">
+  <mat-divider></mat-divider>
+  <section class="flex row gap-16 align-center p-16">
+    <mat-icon [ngClass]="{muted: (stream$ | async) === null}">mic</mat-icon>
+    <contact-progress-bar [value]="progress$ | async"></contact-progress-bar>
+  </section>
+</mat-card>

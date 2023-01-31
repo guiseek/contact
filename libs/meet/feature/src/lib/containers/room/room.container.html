@@ -26,12 +26,8 @@
     <mat-icon>share</mat-icon>
   </button>
 
-  <contact-toolbar-dropdown
-    [user]="authFacade.user$"
-  >
-
+  <contact-toolbar-dropdown [user]="authFacade.user$">
   </contact-toolbar-dropdown>
-
 </contact-toolbar>
 
 <main>
@@ -43,7 +39,14 @@
     *ngIf="(peerFacade.connection$ | async) !== 'connected'"
   ></mat-progress-spinner> -->
 
-  <video autoplay playsinline [srcObject]="peerFacade.local$ | async"></video>
+  <ng-container *ngIf="peerFacade.local$ | async as localStream">
+    <video
+      autoplay
+      playsinline
+      [srcObject]="localStream"
+      [muted]="!!localStream"
+    ></video>
+  </ng-container>
 </main>
 
 <mat-toolbar color="primary">

@@ -1,17 +1,17 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing'
 
-import {FabMenuComponent} from './fab-menu.component'
+import {ProgressBarComponent} from './progress-bar.component'
 
-describe('FabMenuComponent', () => {
-  let component: FabMenuComponent
-  let fixture: ComponentFixture<FabMenuComponent>
+describe('ProgressBarComponent', () => {
+  let component: ProgressBarComponent
+  let fixture: ComponentFixture<ProgressBarComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FabMenuComponent],
+      declarations: [ProgressBarComponent],
     }).compileComponents()
 
-    fixture = TestBed.createComponent(FabMenuComponent)
+    fixture = TestBed.createComponent(ProgressBarComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

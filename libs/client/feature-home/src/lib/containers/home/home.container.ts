@@ -26,7 +26,7 @@ export class HomeContainer implements OnInit {
       icon: 'schedule',
     },
     {
-      route: ['/', crypto.randomUUID().slice(-12)],
+      route: ['/', 'meet', crypto.randomUUID().slice(-12)],
       isActive: true,
       label: 'Iniciar agora',
       icon: 'add_circle',
@@ -37,37 +37,20 @@ export class HomeContainer implements OnInit {
     {
       id: 1,
       name: 'Lucia',
-      photoUrl: '/assets/photos/avatar.png'
+      photoUrl: '/assets/photos/avatar.png',
     },
     {
       id: 2,
       name: 'Luciane',
-      photoUrl: '/assets/photos/avatar.png'
+      photoUrl: '/assets/photos/avatar.png',
     },
     {
       id: 3,
       name: 'Gustavo',
-      photoUrl: '/assets/photos/avatar.png'
-    }
+      photoUrl: '/assets/photos/avatar.png',
+    },
   ]
 
-  tabLinks = [
-    {
-      isActive: false,
-      label: 'Vídeo',
-      icon: 'video_settings',
-    },
-    {
-      isActive: false,
-      label: 'Contatos',
-      icon: 'contacts',
-    },
-    {
-      isActive: false,
-      label: 'Áudio',
-      icon: 'settings_voice',
-    },
-  ]
   items = of([])
 
   ngOnInit() {

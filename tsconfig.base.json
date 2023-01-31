@@ -17,10 +17,12 @@
     "paths": {
       "@contact/auth/data-access": ["libs/auth/data-access/src/index.ts"],
       "@contact/auth/feature": ["libs/auth/feature/src/index.ts"],
+      "@contact/client/feature-home": ["libs/client/feature-home/src/index.ts"],
+      "@contact/client/feature-meet": ["libs/client/feature-meet/src/index.ts"],
       "@contact/client/types": ["libs/client/types/src/index.ts"],
       "@contact/inter/types": ["libs/inter/types/src/index.ts"],
-      "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
       "@contact/meet/data-access": ["libs/meet/data-access/src/index.ts"],
+      "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
       "@contact/server/types": ["libs/server/types/src/index.ts"],
       "@contact/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@contact/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],

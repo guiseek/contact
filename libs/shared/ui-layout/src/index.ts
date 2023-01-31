@@ -8,3 +8,5 @@ export * from './lib/dialogs'
 export * from './lib/toolbar/toolbar-dropdown.component'
 
 export * from './lib/nav-drawer/nav-drawer.component'
+
+export * from './lib/progress-bar/progress-bar.component'

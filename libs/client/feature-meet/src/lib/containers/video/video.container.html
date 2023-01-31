@@ -1,0 +1,28 @@
+<div></div>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-subtitle>Câmeras</mat-card-subtitle>
+  </mat-card-header>
+
+  <meet-device-list
+    kind="videoinput"
+    [formControl]="formControl"
+    (valueChange)="onDevicesChanges($event)"
+  ></meet-device-list>
+</mat-card>
+
+<mat-card class="card">
+  <mat-expansion-panel class="p-0" [expanded]="stream$ | async">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Visualização </mat-panel-title>
+      <mat-panel-description> </mat-panel-description>
+    </mat-expansion-panel-header>
+    <video
+      autoplay
+      playsinline
+      [srcObject]="stream$ | async"
+      poster="/assets/vectors/poster.svg"
+      muted
+    ></video>
+  </mat-expansion-panel>
+</mat-card>

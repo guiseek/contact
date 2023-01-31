@@ -3,14 +3,6 @@
     [showToggleMenu]="true"
     (menuToggled)="drawer.sidenav.toggle()"
   >
-    <button
-      mat-icon-button
-      class="toolbar-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-    >
-      <mat-icon>search</mat-icon>
-    </button>
-
     <contact-toolbar-dropdown
       [items]="items"
       [user]="authFacade.user$"
@@ -28,13 +20,17 @@
     </mat-list-item>
   </mat-list>
 
-  <mat-divider></mat-divider>
-
   <mat-nav-list>
-    <mat-list-item *ngFor="let contact of contacts">
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLink="/meet/settings">
+      <mat-icon matListItemIcon>settings</mat-icon>
+      <p matListItemTitle>Configurações</p>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item *ngFor="let contact of contacts">
       <mat-icon matListItemIcon>person_outline</mat-icon>
       <p matListItemTitle>{{contact.name}}</p>
-    </mat-list-item>
+    </a>
   </mat-nav-list>
 
   <main>
@@ -50,18 +46,3 @@
     </mat-nav-list>
   </main>
 </contact-nav-drawer>
-<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-
-<nav class="flex col p-8 align-center" mat-tab-nav-bar [tabPanel]="tabPanel">
-  <a
-    mat-tab-link
-    *ngFor="let link of tabLinks"
-    (click)="activeLink = link.label"
-    [active]="activeLink === link.label"
-  >
-    <span class="flex col gap-8 align-center">
-      <mat-icon>{{link.icon}}</mat-icon>
-      {{link.label}}
-    </span>
-  </a>
-</nav>

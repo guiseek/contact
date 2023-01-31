@@ -1,1 +1,1 @@
-export type Reject = (reason: any) => void
+export type Reject = (reason: unknown) => void

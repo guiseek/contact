@@ -1,17 +1,17 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing'
 
-import {NavDrawerComponent} from './nav-drawer.component'
+import {AudioContainer} from './audio.container'
 
-describe('NavDrawerComponent', () => {
-  let component: NavDrawerComponent
-  let fixture: ComponentFixture<NavDrawerComponent>
+describe('AudioContainer', () => {
+  let component: AudioContainer
+  let fixture: ComponentFixture<AudioContainer>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavDrawerComponent],
+      declarations: [AudioContainer],
     }).compileComponents()
 
-    fixture = TestBed.createComponent(NavDrawerComponent)
+    fixture = TestBed.createComponent(AudioContainer)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
