@@ -15,6 +15,7 @@ import {HttpService} from '@contact/type'
 import {userDataProviders} from '@contact/user/data-access'
 import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
 import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'
+import {meetDataProviders} from '@contact/meet/data-access'
 import {MAT_DATE_LOCALE} from '@angular/material/core'
 
 registerLocaleData(pt, 'pt-BR', ptBr)
@@ -28,11 +29,6 @@ registerLocaleData(pt, 'pt-BR', ptBr)
     RouterModule.forRoot(
       [
         {
-          path: '',
-          loadChildren: () =>
-            import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
-        },
-        {
           path: 'auth',
           loadChildren: () =>
             import('@contact/auth/feature').then((m) => m.AuthFeatureModule),
@@ -41,6 +37,18 @@ registerLocaleData(pt, 'pt-BR', ptBr)
           path: 'user',
           loadChildren: () =>
             import('@contact/user/feature').then((m) => m.UserFeatureModule),
+        },
+        {
+          path: '',
+          loadChildren: () =>
+            import('@contact/client/feature-home').then(
+              (m) => m.FeatureHomeModule
+            ),
+        },
+        {
+          path: '',
+          loadChildren: () =>
+            import('@contact/meet/feature').then((m) => m.MeetFeatureModule),
         },
       ],
       {useHash: true}
@@ -62,6 +70,7 @@ registerLocaleData(pt, 'pt-BR', ptBr)
     ...sharedDataProviders(),
     ...authDataProviders(),
     ...userDataProviders(),
+    ...meetDataProviders(),
   ],
   bootstrap: [AppComponent],
 })
