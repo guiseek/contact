@@ -15,7 +15,7 @@ import {HttpService} from '@contact/type'
 import {userDataProviders} from '@contact/user/data-access'
 import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
 import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'
-import {meetDataProviders} from '@contact/meet/data-access'
+import {clientDataAccessMeet} from '@contact/client/data-access-meet'
 import {MAT_DATE_LOCALE} from '@angular/material/core'
 
 registerLocaleData(pt, 'pt-BR', ptBr)
@@ -75,9 +75,9 @@ registerLocaleData(pt, 'pt-BR', ptBr)
     {provide: LOCALE_ID, useValue: 'pt-BR'},
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     ...sharedDataProviders(),
+    ...clientDataAccessMeet(),
     ...authDataProviders(),
     ...userDataProviders(),
-    ...meetDataProviders(),
   ],
   bootstrap: [AppComponent],
 })

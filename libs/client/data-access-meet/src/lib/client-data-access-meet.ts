@@ -9,11 +9,8 @@ import {PeerService} from './domain/peer.service'
 import {PeerServiceImpl} from './infrastructure/peer.service.impl'
 import {PeerData} from '@contact/inter/types'
 
-export function meetDataAccess(): string {
-  return 'meet-data-access'
-}
 
-export function meetDataProviders(peerConfig: RTCConfiguration = {}) {
+export function clientDataAccessMeet(peerConfig: RTCConfiguration = {}) {
   return [
     {
       provide: SignalingService,
@@ -33,7 +30,11 @@ export function meetDataProviders(peerConfig: RTCConfiguration = {}) {
     },
     {
       provide: PeerFacade,
-      useFactory: (signaling: SignalingService, peerState: PeerStateFacade, peer: PeerService) => {
+      useFactory: (
+        signaling: SignalingService,
+        peerState: PeerStateFacade,
+        peer: PeerService
+      ) => {
         return new PeerFacadeImpl(signaling, peerState, peer)
       },
       deps: [SignalingService, PeerStateFacade, PeerService],

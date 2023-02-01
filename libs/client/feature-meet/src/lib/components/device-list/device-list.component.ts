@@ -35,7 +35,7 @@ import {BehaviorSubject} from 'rxjs'
       </mat-list-option>
     </mat-selection-list>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DeviceListComponent
   extends SelectControlValueAccessor

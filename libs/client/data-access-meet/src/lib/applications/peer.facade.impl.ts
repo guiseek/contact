@@ -2,15 +2,9 @@ import {
   PeerOffer,
   PeerAnswer,
   PeerCandidate,
-  PeerConnection,
-  SignalingState,
-  ConnectionState,
-  IceConnectionState,
-  IceGatheringState,
   PeerChannel,
 } from '@contact/client/types'
 import {PeerData, PeerEvent, PeerSdpInit} from '@contact/inter/types'
-import {combineLatest, distinctUntilChanged, filter} from 'rxjs'
 import {SignalingService} from '../domain/signaling.service'
 import {State, freeze} from '@contact/shared/data-access'
 import {PeerFacade} from '../domain/peer.facade'

@@ -1,6 +1,8 @@
+import {RouterTestingModule} from '@angular/router/testing'
 import {ComponentFixture, TestBed} from '@angular/core/testing'
 
 import {SettingsContainer} from './settings.container'
+import { UiMaterialModule } from '@contact/shared/ui-layout'
 
 describe('SettingsContainer', () => {
   let component: SettingsContainer
@@ -8,6 +10,7 @@ describe('SettingsContainer', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule, UiMaterialModule],
       declarations: [SettingsContainer],
     }).compileComponents()
 

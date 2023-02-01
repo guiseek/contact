@@ -17,6 +17,9 @@
     "paths": {
       "@contact/auth/data-access": ["libs/auth/data-access/src/index.ts"],
       "@contact/auth/feature": ["libs/auth/feature/src/index.ts"],
+      "@contact/client/data-access-meet": [
+        "libs/client/data-access-meet/src/index.ts"
+      ],
       "@contact/client/feature-home": ["libs/client/feature-home/src/index.ts"],
       "@contact/client/feature-meet": ["libs/client/feature-meet/src/index.ts"],
       "@contact/client/types": ["libs/client/types/src/index.ts"],
