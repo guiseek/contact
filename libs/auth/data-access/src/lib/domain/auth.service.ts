@@ -6,7 +6,7 @@ import {
   AuthResponse,
   CheckUserResponse,
   AuthUserLogged,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {Observable} from 'rxjs'
 
 export abstract class AuthService {

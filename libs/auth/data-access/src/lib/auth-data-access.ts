@@ -1,4 +1,4 @@
-import {HttpService} from '@contact/type'
+import {HttpService} from '@contact/shared/types'
 import {AuthService} from './domain/auth.service'
 import {AuthServiceImpl} from './infrastructure/auth.service.impl'
 import {AuthFacade} from './domain/auth.facade'

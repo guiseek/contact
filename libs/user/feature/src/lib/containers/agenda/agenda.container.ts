@@ -5,7 +5,7 @@ import {
   AgendaResponse,
   CreateMeeting,
   UserRole,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {UserFacade} from '@contact/user/data-access'
 import {CreateMeetingDialog, SearchUserDialog} from '../../dialogs'
 

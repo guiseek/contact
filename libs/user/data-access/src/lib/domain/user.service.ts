@@ -7,7 +7,7 @@ import {
   UpdateMeeting,
   UpdateUser,
   UserResponse,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {Observable} from 'rxjs'
 
 export abstract class UserService {

@@ -2,7 +2,7 @@ import {Component, OnDestroy, inject} from '@angular/core'
 import {ActivatedRoute, Router} from '@angular/router'
 import {AuthFacade} from '@contact/auth/data-access'
 import {SubAsync} from '@contact/shared/data-access'
-import {AuthRequest, CreateUser} from '@contact/type'
+import {AuthRequest, CreateUser} from '@contact/shared/types'
 
 interface AuthParams {
   action?: 'in' | 'up'

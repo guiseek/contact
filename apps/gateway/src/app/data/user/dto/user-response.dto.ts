@@ -1,4 +1,4 @@
-import {UserResponse, User, UserRole, Device, Meeting} from '@contact/type'
+import {UserResponse, User, UserRole, Device, Meeting} from '@contact/shared/types'
 import {ApiHideProperty, ApiProperty} from '@nestjs/swagger'
 import {Exclude} from 'class-transformer'
 

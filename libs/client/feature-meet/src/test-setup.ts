@@ -60,16 +60,7 @@ Object.defineProperty(window, 'RTCPeerConnection', {
     onicegatheringstatechange = null
     onidentityresult = null
     onidentitychange = null
-    createDataChannel(label: string, dataChannelDict?: RTCDataChannelInit) {
-      return {
-        send(data: string) {
-          return
-        },
-        addEventListener(type: string, listener: any) {
-          return
-        },
-      } as RTCDataChannel
-    }
+    createDataChannel = jest.fn()
   },
 })
 

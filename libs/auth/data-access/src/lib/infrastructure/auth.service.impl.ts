@@ -7,7 +7,7 @@ import {
   HttpService,
   CheckUserResponse,
   AuthUserLogged,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {AuthService} from '../domain/auth.service'
 
 export class AuthServiceImpl implements AuthService {

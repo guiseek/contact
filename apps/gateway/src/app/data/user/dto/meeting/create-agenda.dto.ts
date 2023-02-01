@@ -1,4 +1,4 @@
-import {CreateAgenda, User, UserRole} from '@contact/type'
+import {CreateAgenda, User, UserRole} from '@contact/shared/types'
 import {IsArray, IsNotEmpty} from 'class-validator'
 import {ApiProperty} from '@nestjs/swagger'
 

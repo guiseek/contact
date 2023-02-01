@@ -1,5 +1,5 @@
 import {BehaviorSubject, distinctUntilChanged, map} from 'rxjs'
-import {CheckUserResponse} from '@contact/type'
+import {CheckUserResponse} from '@contact/shared/types'
 import {AuthService} from './auth.service'
 
 export abstract class CheckUserValidator {

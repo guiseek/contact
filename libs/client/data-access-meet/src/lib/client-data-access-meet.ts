@@ -7,8 +7,7 @@ import {PeerStateFacade} from './domain/peer-state.facade'
 import {PeerStateFacadeImpl} from './applications/peer-state.facade.impl'
 import {PeerService} from './domain/peer.service'
 import {PeerServiceImpl} from './infrastructure/peer.service.impl'
-import {PeerData} from '@contact/inter/types'
-
+import {PeerData} from '@contact/shared/types'
 
 export function clientDataAccessMeet(peerConfig: RTCConfiguration = {}) {
   return [

@@ -1,20 +1,14 @@
 import {
   PeerOffer,
   PeerAnswer,
-  PeerCandidate,
-  PeerChannel,
+  PeerCandidate
 } from '@contact/client/types'
-import {PeerData, PeerEvent, PeerSdpInit} from '@contact/inter/types'
+import {PeerData, PeerEvent, PeerSdpInit} from '@contact/shared/types'
 import {SignalingService} from '../domain/signaling.service'
 import {State, freeze} from '@contact/shared/data-access'
 import {PeerFacade} from '../domain/peer.facade'
 import {PeerStateFacade} from '../domain/peer-state.facade'
 import {PeerService} from '../domain/peer.service'
-
-interface FullChannel {
-  send: PeerChannel | null
-  receive: PeerChannel | null
-}
 
 interface PeerState {
   // signaling: SignalingState
@@ -53,9 +47,9 @@ export class PeerFacadeImpl extends State<PeerState> implements PeerFacade {
   constructor(
     private signalingService: SignalingService,
     private peerStateFacade: PeerStateFacade,
-    private peerService: PeerService,
-    // peerConfig: RTCConfiguration = {}
-  ) {
+    private peerService: PeerService
+  ) // peerConfig: RTCConfiguration = {}
+  {
     super(initialState)
 
     // this.peer = new PeerConnection(peerConfig)
@@ -85,7 +79,9 @@ export class PeerFacadeImpl extends State<PeerState> implements PeerFacade {
     this.signalingService.on(PeerEvent.Candidate, (value) => {
       if (this.isFromAnotherUser(value)) {
         if (this.peerService.peer.remoteDescription !== null) {
-          this.peerService.peer.addIceCandidate(new PeerCandidate(value.payload))
+          this.peerService.peer.addIceCandidate(
+            new PeerCandidate(value.payload)
+          )
         }
       }
     })
@@ -99,7 +95,9 @@ export class PeerFacadeImpl extends State<PeerState> implements PeerFacade {
 
     this.signalingService.on(PeerEvent.Answer, async (value) => {
       if (this.isFromAnotherUser(value)) {
-        this.peerService.peer.setRemoteDescription(new PeerAnswer(value.payload))
+        this.peerService.peer.setRemoteDescription(
+          new PeerAnswer(value.payload)
+        )
 
         // this.peerService.peer.onsignalingstatechange = () => {
         //   if (this.peerService.peer.signalingState !== 'stable') {

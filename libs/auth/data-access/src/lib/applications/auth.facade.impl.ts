@@ -5,7 +5,7 @@ import {
   AuthUserLogged,
   CreateUser,
   HttpErrorResponse,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {State, StorageService} from '@contact/shared/data-access'
 import {AuthService} from '../domain/auth.service'
 import {AuthFacade} from '../domain/auth.facade'

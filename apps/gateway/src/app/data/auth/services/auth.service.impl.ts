@@ -4,7 +4,7 @@ import {createPassword, validatePassword} from '../utilities'
 import {AuthRequestDto, AuthResponseDto, CheckUserDto} from '../dto'
 import {UserService} from '../../user/ports/user.service'
 import {AuthService} from '../ports/auth.service'
-import {User} from '@contact/type'
+import {User} from '@contact/shared/types'
 
 export class AuthServiceImpl implements AuthService {
   constructor(

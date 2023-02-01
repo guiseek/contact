@@ -4,8 +4,6 @@ import {
   WebSocketServer,
   WebSocketGateway,
   SubscribeMessage,
-  OnGatewayConnection,
-  OnGatewayInit,
 } from '@nestjs/websockets'
 import {Socket, Server} from 'socket.io'
 import {PeerServerEvents} from '@contact/server/types'
@@ -15,7 +13,7 @@ import {
   PeerEvent,
   PeerEvents,
   PeerMessage,
-} from '@contact/inter/types'
+} from '@contact/shared/types'
 
 type SocketServer = Server<
   PeerClientEvents,

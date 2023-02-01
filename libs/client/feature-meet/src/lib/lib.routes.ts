@@ -1,15 +1,19 @@
 import {Route} from '@angular/router'
-import {AudioContainer} from './containers/audio/audio.container'
-import {VideoContainer} from './containers/video/video.container'
-import {RoomContainer} from './containers/room/room.container'
 import {FeatureMeetShell} from './feature-meet.shell'
-import {SettingsContainer} from './containers/settings/settings.container'
-import {SpeakerContainer} from './containers'
+import {MeetGuard} from './guards/meet.guard'
+import {
+  RoomContainer,
+  AudioContainer,
+  VideoContainer,
+  SpeakerContainer,
+  SettingsContainer,
+} from './containers'
 
 export const featureMeetRoutes: Route[] = [
   {
     path: '',
     component: FeatureMeetShell,
+    canActivate: [MeetGuard],
     children: [
       {
         path: 'settings',

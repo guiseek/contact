@@ -5,7 +5,7 @@ import {
   CreateUser,
   UpdateUser,
   Meeting,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {
   CreateAgendaDto,
   CreateMeetingDto,

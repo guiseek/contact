@@ -1,4 +1,4 @@
-import {PeerData} from '@contact/inter/types'
+import {PeerData} from '@contact/shared/types'
 import {Observable} from 'rxjs'
 
 export abstract class PeerFacade {

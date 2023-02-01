@@ -1,5 +1,5 @@
 import {UserImpl} from '../data/user/entities/user.impl'
-import {CreateUser, User} from '@contact/type'
+import {CreateUser, User} from '@contact/shared/types'
 import {Injectable} from '@nestjs/common'
 import {Repository} from 'typeorm'
 

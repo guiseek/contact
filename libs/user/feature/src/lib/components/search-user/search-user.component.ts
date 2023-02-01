@@ -16,7 +16,7 @@ import {
 } from 'rxjs'
 import {SubAsync} from '@contact/shared/data-access'
 import {FormControl} from '@angular/forms'
-import {UserResponse} from '@contact/type'
+import {UserResponse} from '@contact/shared/types'
 import {UserFacade} from '@contact/user/data-access'
 
 @Component({

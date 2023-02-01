@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core'
-import {AgendaItemAction, AgendaResponse} from '@contact/type'
+import {AgendaItemAction, AgendaResponse} from '@contact/shared/types'
 
 @Component({
   selector: 'user-agenda-item',

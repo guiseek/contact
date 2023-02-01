@@ -11,7 +11,7 @@ import {
   HttpClient,
   HttpClientModule,
 } from '@angular/common/http'
-import {HttpService} from '@contact/type'
+import {HttpService} from '@contact/shared/types'
 import {userDataProviders} from '@contact/user/data-access'
 import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
 import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'

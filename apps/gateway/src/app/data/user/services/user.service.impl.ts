@@ -14,7 +14,7 @@ import {UserService} from '../ports/user.service'
 import {NotFoundException} from '@nestjs/common'
 import {UserImpl} from '../entities/user.impl'
 import {CreateDeviceDto} from '../dto/device'
-import {UserRole} from '@contact/type'
+import {UserRole} from '@contact/shared/types'
 
 export class UserServiceImpl implements UserService {
   constructor(

@@ -1,4 +1,4 @@
-import {AuthRequest, AuthUserLogged, CreateUser} from '@contact/type'
+import {AuthRequest, AuthUserLogged, CreateUser} from '@contact/shared/types'
 import {Observable} from 'rxjs'
 
 export abstract class AuthFacade {

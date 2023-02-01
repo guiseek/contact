@@ -7,7 +7,7 @@ import {
   AuthResponse,
   AuthUserLogged,
   CheckUserResponse,
-} from '@contact/type'
+} from '@contact/shared/types'
 
 export abstract class AuthService {
   abstract validateUser({

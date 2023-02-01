@@ -1,4 +1,4 @@
-import {PeerEvents} from '@contact/inter/types'
+import {PeerEvents} from '@contact/shared/types'
 
 export interface PeerServerEvents extends PeerEvents {
   joined: (user: string) => void

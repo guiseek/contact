@@ -31,7 +31,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common'
 import {CaslAbilityFactory} from '../casl/casl-ability.factory'
-import {AuthUserLogged, UserRole} from '@contact/type'
+import {AuthUserLogged, UserRole} from '@contact/shared/types'
 import {User} from '../../data/user/ports/user'
 import {Logged, Roles} from '../../utils'
 

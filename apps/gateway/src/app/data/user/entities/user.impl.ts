@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   Index,
 } from 'typeorm'
-import {Agenda, Device, User, UserRole} from '@contact/type'
+import {Agenda, Device, User, UserRole} from '@contact/shared/types'
 import {entityContainer} from '../../../utils'
 import {DeviceImpl} from './device.impl'
 import {AgendaImpl} from './agenda.impl'

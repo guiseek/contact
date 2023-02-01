@@ -4,7 +4,7 @@ import {
   HttpRequest,
   HttpInterceptor,
   HttpErrorResponse,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {catchError, Observable} from 'rxjs'
 import {StorageService} from '@contact/shared/data-access'
 

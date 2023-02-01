@@ -1,6 +1,6 @@
 import {IsEmail, IsString, MaxLength, MinLength} from 'class-validator'
 import {ApiProperty, ApiHideProperty} from '@nestjs/swagger'
-import {CreateUser} from '@contact/type'
+import {CreateUser} from '@contact/shared/types'
 
 export class CreateUserDto implements CreateUser {
   @IsString()

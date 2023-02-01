@@ -9,7 +9,7 @@ import {
   PeerEvent,
   PeerPayload,
   PeerSdpInit,
-} from '@contact/inter/types'
+} from '@contact/shared/types'
 import {SignalingService} from '../domain/signaling.service'
 import {StorageService} from '@contact/shared/data-access'
 import {PeerService} from '../domain/peer.service'

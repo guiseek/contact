@@ -1,3 +1,3 @@
-import {PeerSdp} from '@contact/inter/types'
+import {PeerSdp} from '@contact/shared/types'
 
 export class PeerOffer extends RTCSessionDescription implements PeerSdp {}

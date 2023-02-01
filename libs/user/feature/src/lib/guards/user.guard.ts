@@ -6,7 +6,7 @@ import {
 } from '@angular/router'
 import {inject, Injectable} from '@angular/core'
 import {AuthFacade} from '@contact/auth/data-access'
-import {HttpErrorResponse} from '@contact/type'
+import {HttpErrorResponse} from '@contact/shared/types'
 import {catchError, map} from 'rxjs'
 
 @Injectable({

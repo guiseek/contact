@@ -8,7 +8,7 @@ import {
   MeetingResponse,
   SearchUser,
   CreateAgenda,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {UserService} from '../domain/user.service'
 
 export class UserServiceImpl implements UserService {

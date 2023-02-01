@@ -8,7 +8,7 @@ import {
   UpdateMeeting,
   UpdateUser,
   UserResponse,
-} from '@contact/type'
+} from '@contact/shared/types'
 import {UserService} from '../domain/user.service'
 import {State} from '@contact/shared/data-access'
 import {UserFacade} from '../domain/user.facade'

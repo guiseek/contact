@@ -17,7 +17,7 @@ import {
   CreateUserDto,
   UserResponseDto,
 } from '../../data'
-import {AuthUserRequest, AuthUserLogged} from '@contact/type'
+import {AuthUserRequest, AuthUserLogged} from '@contact/shared/types'
 import {Allowed, Logged} from '../../utils'
 import {JwtAuthGuard, LocalAuthGuard} from './guards'
 

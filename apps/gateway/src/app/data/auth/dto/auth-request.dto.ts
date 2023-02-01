@@ -1,6 +1,6 @@
 import {IsString, MinLength} from 'class-validator'
 import {ApiProperty} from '@nestjs/swagger'
-import {AuthRequest} from '@contact/type'
+import {AuthRequest} from '@contact/shared/types'
 
 export class AuthRequestDto implements AuthRequest {
   @IsString()

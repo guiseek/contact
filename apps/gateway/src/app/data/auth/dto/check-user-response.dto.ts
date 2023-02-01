@@ -1,5 +1,5 @@
 import {ApiProperty} from '@nestjs/swagger'
-import {CheckUserResponse} from '@contact/type'
+import {CheckUserResponse} from '@contact/shared/types'
 
 export class CheckUserResponseDto implements CheckUserResponse {
   @ApiProperty()

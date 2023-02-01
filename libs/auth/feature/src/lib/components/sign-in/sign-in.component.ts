@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core'
 import {FormGroup, FormControl, Validators} from '@angular/forms'
-import {AuthRequest} from '@contact/type'
+import {AuthRequest} from '@contact/shared/types'
 import {SignComponent, SignForm} from '../sign.component'
 
 @Component({

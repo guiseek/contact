@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild, inject} from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
-import {HttpService} from '@contact/type'
+import {HttpService} from '@contact/shared/types'
 
 export function createProcessor() {
   if (typeof Worker === 'undefined') {
@@ -71,33 +71,35 @@ export class AppComponent implements OnInit, AfterViewInit {
   map = new Map<number, PingPong>()
 
   async ngOnInit() {
-    pong(1000, (value) => {
-      this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
-        console.log(value);
-        this.map.set(value.userId, value)
-      })
-    })
+    // pong(1000, (value) => {
+    //   this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
+    //     console.log(value);
+    //     this.map.set(value.userId, value)
+    //   })
+    // })
 
-    setInterval(() => {
-      const userId = 1
-      const lastPong = this.map.get(userId)
+    // setInterval(() => {
+    //   const userId = 1
+    //   const lastPong = this.map.get(userId)
 
-      if (lastPong) {
-        const diff = Date.now() - lastPong.pong
-        console.log(diff);
+    //   if (lastPong) {
+    //     const diff = Date.now() - lastPong.pong
+    //     console.log(diff);
 
 
-        if (diff > 5000) {
-          pong(1000, (value) => {
-            this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
-              console.log(value);
+    //     if (diff > 5000) {
+    //       pong(1000, (value) => {
+    //         this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
+    //           console.log(value);
 
-              this.map.set(value.userId, value)
-            })
-          })
-        }
-      }
-    }, 5000)
+    //           this.map.set(value.userId, value)
+    //         })
+    //       })
+    //     }
+    //   }
+    // }, 5000)
+    console.log();
+
   }
 
   onRing() {

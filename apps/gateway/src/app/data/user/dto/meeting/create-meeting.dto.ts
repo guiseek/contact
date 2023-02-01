@@ -1,5 +1,5 @@
 import {IsBoolean, IsOptional, IsString} from 'class-validator'
-import {CreateMeeting} from '@contact/type'
+import {CreateMeeting} from '@contact/shared/types'
 import {ApiProperty} from '@nestjs/swagger'
 
 export class CreateMeetingDto implements CreateMeeting {

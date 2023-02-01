@@ -4,7 +4,7 @@ import {
   PeerConnection,
   PeerOffer,
 } from '@contact/client/types'
-import {PeerData, PeerPayload, PeerSdpInit} from '@contact/inter/types'
+import {PeerData, PeerPayload, PeerSdpInit} from '@contact/shared/types'
 
 export abstract class PeerService {
   abstract peer: PeerConnection

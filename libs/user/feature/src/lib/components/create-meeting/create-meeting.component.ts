@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core'
 import {AgendaForm} from '../../forms'
-import {CreateMeeting} from '@contact/type'
+import {CreateMeeting} from '@contact/shared/types'
 
 @Component({
   selector: 'user-create-meeting',
