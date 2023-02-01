@@ -1,4 +1,6 @@
-import {Component, ElementRef, OnInit} from '@angular/core'
+import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild, inject} from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
+import {HttpService} from '@contact/type'
 
 export function createProcessor() {
   if (typeof Worker === 'undefined') {
@@ -10,50 +12,110 @@ export function createProcessor() {
   )
 }
 
+interface Ping {
+  userId: number
+  ping: number
+}
+interface Pong extends Ping {
+  pong: number
+}
+interface PingPong extends Pong {
+  latency: number
+}
+
+// this.http.post('/api/sse', value).subscribe()
+
+const pong = (seconds: number, cb: (value: unknown) => void) => {
+  const eventSource = new EventSource('/api/sse')
+  eventSource.onmessage = ({data}) => {
+    console.log(JSON.parse(data))
+    const value = JSON.parse(data)
+    cb({...value, pong: Date.now()})
+  }
+}
+
 @Component({
   selector: 'contact-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `
+    <router-outlet></router-outlet>
+    <ng-template #ringTmpl>
+      <h1>Ring</h1>
+      <button [mat-dialog-close]="false">
+        Não
+      </button>
+      <button [mat-dialog-close]="true">
+        Sim
+      </button>
+    </ng-template>
+    <ng-template #callTmpl>
+      <h1>Call</h1>
+      <button [mat-dialog-close]="false">
+        Desligar
+      </button>
+    </ng-template>
+  `,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild('ringTmpl')
+  ringTmplRef!: TemplateRef<HTMLElement>
+
+  @ViewChild('callTmpl')
+  callTmplRef!: TemplateRef<HTMLElement>
+
   title = 'desktop'
 
-  constructor(private _elRef: ElementRef<HTMLElement>) {}
+  http = inject(HttpService)
+  dialog = inject(MatDialog)
+
+  map = new Map<number, PingPong>()
 
   async ngOnInit() {
-    console.log('')
+    pong(1000, (value) => {
+      this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
+        console.log(value);
+        this.map.set(value.userId, value)
+      })
+    })
 
-    // const audioCtx = new AudioContext();
-    // const canvasEl = document.createElement('canvas');
-    // const canvas = canvasEl.transferControlToOffscreen();
-    // this._elRef.nativeElement.appendChild(canvasEl)
-    // // const canvas = new OffscreenCanvas(200, 10)
+    setInterval(() => {
+      const userId = 1
+      const lastPong = this.map.get(userId)
 
-    // const worker = new Worker(
-    //   new URL('../workers/volume-meter.worker.ts', import.meta.url)
-    // );
+      if (lastPong) {
+        const diff = Date.now() - lastPong.pong
+        console.log(diff);
 
-    // worker.postMessage({ canvas }, [canvas]);
 
-    // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        if (diff > 5000) {
+          pong(1000, (value) => {
+            this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
+              console.log(value);
 
-    // const audio = new Audio();
-    // audio.srcObject = stream;
-    // // audio.play()
-    // const audioSource = audioCtx.createMediaElementSource(audio);
-    // const analyser = audioCtx.createAnalyser();
-    // audioSource.connect(analyser);
-    // analyser.connect(audioCtx.destination);
-    // analyser.fftSize = 128;
-    // const bufferLength = analyser.frequencyBinCount;
-    // const dataArray = new Uint8Array(bufferLength);
+              this.map.set(value.userId, value)
+            })
+          })
+        }
+      }
+    }, 5000)
+  }
 
-    // function animate() {
-    //   analyser.getByteFrequencyData(dataArray);
-    //   worker.postMessage({ bufferLength, dataArray }, {});
-    //   requestAnimationFrame(animate);
-    // }
+  onRing() {
+    const ring = this.dialog.open(this.ringTmplRef, {
+      disableClose: true
+    })
+    ring.afterClosed().subscribe(accept => {
+      if (accept) {
+        this.dialog.open(this.callTmplRef, {
+          disableClose: true
+        })
+      }
+    })
+  }
 
-    // animate();
+  ngAfterViewInit(): void {
+    console.log(this.ringTmplRef);
+    this.onRing()
+
   }
 }

@@ -17,6 +17,7 @@ import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
 import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'
 import {clientDataAccessMeet} from '@contact/client/data-access-meet'
 import {MAT_DATE_LOCALE} from '@angular/material/core'
+import { MatDialogModule } from '@angular/material/dialog'
 
 registerLocaleData(pt, 'pt-BR', ptBr)
 
@@ -24,6 +25,7 @@ registerLocaleData(pt, 'pt-BR', ptBr)
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    MatDialogModule,
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(

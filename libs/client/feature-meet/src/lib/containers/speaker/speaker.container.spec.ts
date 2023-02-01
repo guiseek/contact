@@ -2,7 +2,10 @@ import {ComponentFixture, TestBed} from '@angular/core/testing'
 
 import {SpeakerContainer} from './speaker.container'
 import {DeviceListComponent} from '../../components'
-import {UiLayoutModule, UiMaterialModule} from '@contact/shared/ui-layout'
+import {
+  UiLayoutModule,
+  UiMaterialModule,
+} from '@contact/client/shared/ui-layout'
 import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms'
 import {NO_ERRORS_SCHEMA, forwardRef} from '@angular/core'
 

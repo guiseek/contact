@@ -10,3 +10,6 @@ export * from './lib/toolbar/toolbar-dropdown.component'
 export * from './lib/nav-drawer/nav-drawer.component'
 
 export * from './lib/progress-bar/progress-bar.component'
+
+export * from './lib/navigation/navigation.component'
+export * from './lib/navigation/navigation.service'

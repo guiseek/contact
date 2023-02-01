@@ -24,11 +24,7 @@ export class SpeakerContainer implements OnDestroy {
 
   onDevicesChanges<T extends MediaDeviceInfo>(devices: T[] = []) {
     if (devices.length) {
-      const stream = this._stream.getValue()
-
-      if (stream instanceof MediaStream) {
-        stream.getTracks().forEach((track) => track.stop())
-      }
+      this.cancelStream(this._stream.value)
 
       const [{deviceId}] = devices
 
@@ -39,6 +35,7 @@ export class SpeakerContainer implements OnDestroy {
         this.renderAnimation(stream)
       })
     } else {
+      this.cancelStream(this._stream.value)
       this._stream.next(null)
     }
   }
@@ -62,10 +59,14 @@ export class SpeakerContainer implements OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    if (this._stream.value) {
-      this._stream.value.getTracks().forEach((track) => track.stop())
+  cancelStream(stream: MediaStream | null) {
+    if (stream instanceof MediaStream) {
+      stream.getTracks().forEach((track) => track.stop())
     }
+  }
+
+  ngOnDestroy() {
+    this.cancelStream(this._stream.value)
   }
 }
 

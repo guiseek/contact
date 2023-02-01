@@ -1,6 +1,6 @@
 import {Component, OnInit, inject} from '@angular/core'
 import {AuthFacade} from '@contact/auth/data-access'
-import {ShareService} from '@contact/shared/ui-layout'
+import {ShareService} from '@contact/client/shared/ui-layout'
 import {UserFacade} from '@contact/user/data-access'
 
 @Component({

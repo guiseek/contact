@@ -2,7 +2,10 @@ import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {ReactiveFormsModule} from '@angular/forms'
 import {RouterModule} from '@angular/router'
-import {UiLayoutModule, UiMaterialModule} from '@contact/shared/ui-layout'
+import {
+  UiLayoutModule,
+  UiMaterialModule,
+} from '@contact/client/shared/ui-layout'
 import {DeviceContainer, AccountContainer, AgendaContainer} from './containers'
 import {UserFeatureShell} from './user-feature.shell'
 import {userFeatureRoutes} from './lib.routes'

@@ -3,7 +3,11 @@ import {CommonModule} from '@angular/common'
 import {RouterModule} from '@angular/router'
 import {featureHomeRoutes} from './lib.routes'
 import {HomeContainer} from './containers/home/home.container'
-import {UiCdkModule, UiLayoutModule, UiMaterialModule} from '@contact/shared/ui-layout'
+import {
+  UiCdkModule,
+  UiLayoutModule,
+  UiMaterialModule,
+} from '@contact/client/shared/ui-layout'
 
 @NgModule({
   imports: [

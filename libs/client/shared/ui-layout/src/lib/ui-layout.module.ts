@@ -5,6 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatButtonModule} from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon'
+import {MatExpansionModule} from '@angular/material/expansion'
 import {MatListModule} from '@angular/material/list'
 import {MatDividerModule} from '@angular/material/divider'
 import {MatTooltipModule} from '@angular/material/tooltip'
@@ -20,6 +21,8 @@ import {FabMenuComponent} from './fab-menu/fab-menu.component'
 import {SvgLoaderComponent} from './svg-loader/svg-loader.component'
 import {NavDrawerComponent} from './nav-drawer/nav-drawer.component'
 import {ProgressBarComponent} from './progress-bar/progress-bar.component'
+import {NavigationComponent} from './navigation/navigation.component'
+import {NavigationService} from './navigation/navigation.service'
 
 @NgModule({
   imports: [
@@ -27,6 +30,7 @@ import {ProgressBarComponent} from './progress-bar/progress-bar.component'
     CommonModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatExpansionModule,
     MatMenuModule,
     MatListModule,
     MatTooltipModule,
@@ -45,6 +49,7 @@ import {ProgressBarComponent} from './progress-bar/progress-bar.component'
     ToolbarDropdownComponent,
     NavDrawerComponent,
     ProgressBarComponent,
+    NavigationComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -55,7 +60,8 @@ import {ProgressBarComponent} from './progress-bar/progress-bar.component'
     ToolbarDropdownComponent,
     NavDrawerComponent,
     ProgressBarComponent,
+    NavigationComponent,
   ],
-  providers: [ShareService],
+  providers: [ShareService, NavigationService],
 })
 export class UiLayoutModule {}

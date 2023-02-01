@@ -2,7 +2,7 @@ import {RouterTestingModule} from '@angular/router/testing'
 import {ComponentFixture, TestBed} from '@angular/core/testing'
 
 import {SettingsContainer} from './settings.container'
-import { UiMaterialModule } from '@contact/shared/ui-layout'
+import {UiMaterialModule} from '@contact/client/shared/ui-layout'
 
 describe('SettingsContainer', () => {
   let component: SettingsContainer

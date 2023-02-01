@@ -1,15 +1,15 @@
 {
-  "name": "shared-ui-layout",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "client-shared-ui-layout",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/shared/ui-layout/src",
+  "sourceRoot": "libs/client/shared/ui-layout/src",
   "prefix": "contact",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/shared/ui-layout/jest.config.ts",
+        "jestConfig": "libs/client/shared/ui-layout/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,8 +18,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/shared/ui-layout/**/*.ts",
-          "libs/shared/ui-layout/**/*.html"
+          "libs/client/shared/ui-layout/**/*.ts",
+          "libs/client/shared/ui-layout/**/*.html"
         ]
       }
     }

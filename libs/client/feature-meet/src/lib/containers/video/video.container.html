@@ -15,7 +15,9 @@
   <mat-expansion-panel class="p-0" [expanded]="stream$ | async">
     <mat-expansion-panel-header>
       <mat-panel-title> Visualização </mat-panel-title>
-      <mat-panel-description> </mat-panel-description>
+      <mat-panel-description *ngIf="loader$ | async">
+        carregando stream...
+      </mat-panel-description>
     </mat-expansion-panel-header>
     <video
       autoplay

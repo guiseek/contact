@@ -1,5 +1,6 @@
-import {Component, inject} from '@angular/core'
+import {Component, OnInit, inject} from '@angular/core'
 import {AuthFacade} from '@contact/auth/data-access'
+import {NavigationService} from '@contact/client/shared/ui-layout'
 
 @Component({
   selector: 'meet-shell',
@@ -24,7 +25,18 @@ import {AuthFacade} from '@contact/auth/data-access'
         </mat-list-item>
       </mat-list>
 
+      <mat-nav-list>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/meet/settings">
+          <mat-icon matListItemIcon>settings</mat-icon>
+          <p matListItemTitle>Configurações</p>
+        </a>
+        <mat-divider></mat-divider>
+      </mat-nav-list>
+
       <mat-divider></mat-divider>
+
+      <nav contact-navigation></nav>
 
       <main>
         <router-outlet></router-outlet>
@@ -46,8 +58,9 @@ import {AuthFacade} from '@contact/auth/data-access'
     `,
   ],
 })
-export class FeatureMeetShell {
+export class FeatureMeetShell implements OnInit {
   authFacade = inject(AuthFacade)
+  navigationService = inject(NavigationService)
 
   activeLink = ''
 
@@ -71,6 +84,31 @@ export class FeatureMeetShell {
       path: ['/', 'meet', 'audio'],
     },
   ]
+
+  ngOnInit(): void {
+    this.navigationService.setItems([
+      {
+        type: 'heading',
+        label: 'Contatos'
+      },
+      {
+        icon: 'person',
+        type: 'link',
+        label: 'Lucia',
+        route: [],
+      },
+      {
+        type: 'link',
+        label: 'Luciane',
+        route: [],
+      },
+      {
+        type: 'link',
+        label: 'Gustavo',
+        route: [],
+      },
+    ])
+  }
 
   onMenuToggled<T>(value: T) {
     console.log(value)

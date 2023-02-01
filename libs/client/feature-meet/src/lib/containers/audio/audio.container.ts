@@ -18,11 +18,7 @@ export class AudioContainer implements OnDestroy {
 
   onDevicesChanges<T extends MediaDeviceInfo>(devices: T[] = []) {
     if (devices.length) {
-      const stream = this._stream.getValue()
-
-      if (stream instanceof MediaStream) {
-        stream.getTracks().forEach((track) => track.stop())
-      }
+      this.cancelStream(this._stream.value)
 
       const [{deviceId}] = devices
       navigator.mediaDevices
@@ -32,6 +28,7 @@ export class AudioContainer implements OnDestroy {
           this.renderAnimation(stream)
         })
     } else {
+      this.cancelStream(this._stream.value)
       this._stream.next(null)
     }
   }
@@ -54,10 +51,13 @@ export class AudioContainer implements OnDestroy {
       frequencyLoop()
     }
   }
+  cancelStream(stream: MediaStream | null) {
+    if (stream instanceof MediaStream) {
+      stream.getTracks().forEach((track) => track.stop())
+    }
+  }
 
   ngOnDestroy() {
-    if (this._stream.value) {
-      this._stream.value.getTracks().forEach((track) => track.stop())
-    }
+    this.cancelStream(this._stream.value)
   }
 }

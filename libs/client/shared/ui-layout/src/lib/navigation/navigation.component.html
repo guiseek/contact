@@ -1,0 +1,13 @@
+<mat-nav-list class="nav-list" *ngIf="service.items$ | async as items">
+  <ng-container *ngFor="let item of items">
+    <div *ngIf="item.type === 'heading'" mat-subheader class="muted">
+      {{ item.label }}
+      <mat-divider></mat-divider>
+    </div>
+    <a mat-list-item *ngIf="item.type === 'link'" [routerLink]="item.route">
+      <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+      <span>{{ item.label }}</span>
+    </a>
+    <mat-divider *ngIf="item.type === 'divider'"></mat-divider>
+  </ng-container>
+</mat-nav-list>

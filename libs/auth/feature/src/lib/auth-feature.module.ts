@@ -9,7 +9,7 @@ import {
 } from './components'
 import {AuthContainer} from './containers'
 import {authFeatureRoutes} from './lib.routes'
-import {UiMaterialModule} from '@contact/shared/ui-layout'
+import {UiMaterialModule} from '@contact/client/shared/ui-layout'
 
 @NgModule({
   imports: [

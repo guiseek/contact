@@ -6,7 +6,7 @@ import {
   UiCdkModule,
   UiLayoutModule,
   UiMaterialModule,
-} from '@contact/shared/ui-layout'
+} from '@contact/client/shared/ui-layout'
 import {meetFeatureRoutes} from './lib.routes'
 
 import {RoomContainer, AwaitContainer} from './containers'
@@ -19,8 +19,8 @@ import {FormatDeviceLabelPipe} from './shared/pipes/format-device-label.pipe'
 import {ResolutionsComponent} from './shared/components/resolutions.component'
 import {SettingsService} from './settings/settings.service'
 import {AudioConfigDialog} from './dialogs/audio-config/audio-config.dialog'
-import {VideoConfigDialog} from './dialogs/video-config/video-config.dialog';
-import { ConnectionStatePipe } from './pipes/connection-state.pipe'
+import {VideoConfigDialog} from './dialogs/video-config/video-config.dialog'
+import {ConnectionStatePipe} from './pipes/connection-state.pipe'
 
 @NgModule({
   imports: [

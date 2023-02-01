@@ -8,31 +8,38 @@ import {BehaviorSubject} from 'rxjs'
   styleUrls: ['./video.container.scss'],
 })
 export class VideoContainer implements OnDestroy {
+  private _loader = new BehaviorSubject(false)
+  loader$ = this._loader.asObservable()
+
   formControl = new FormControl()
 
   private _stream = new BehaviorSubject<MediaStream | null>(null)
   readonly stream$ = this._stream.asObservable()
 
-  onDevicesChanges<T extends MediaDeviceInfo>(devices: T[] = []) {
+  async onDevicesChanges<T extends MediaDeviceInfo>(devices: T[] = []) {
     if (devices.length) {
-      const stream = this._stream.getValue()
+      this._loader.next(true)
+      this.cancelStream(this._stream.value)
 
-      if (stream instanceof MediaStream) {
-        stream.getTracks().forEach((track) => track.stop())
-      }
-
-      const [{deviceId}] = devices
-      navigator.mediaDevices
-        .getUserMedia({video: {deviceId}})
-        .then((stream) => this._stream.next(stream))
+      const deviceId = devices.at(0)?.deviceId
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {deviceId},
+      })
+      this._stream.next(stream)
+      this._loader.next(false)
     } else {
+      this.cancelStream(this._stream.value)
       this._stream.next(null)
     }
   }
 
-  ngOnDestroy() {
-    if (this._stream.value) {
-      this._stream.value.getTracks().forEach((track) => track.stop())
+  cancelStream(stream: MediaStream | null) {
+    if (stream instanceof MediaStream) {
+      stream.getTracks().forEach((track) => track.stop())
     }
+  }
+
+  ngOnDestroy() {
+    this.cancelStream(this._stream.value)
   }
 }

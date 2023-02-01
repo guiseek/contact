@@ -7,7 +7,7 @@ import {
   UiCdkModule,
   UiLayoutModule,
   UiMaterialModule,
-} from '@contact/shared/ui-layout'
+} from '@contact/client/shared/ui-layout'
 import {FeatureMeetShell} from './feature-meet.shell'
 import {
   AudioContainer,
