@@ -1,0 +1,149 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .ring-ph-circle {
+    width: 160px;
+    height: 160px;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    background-color: transparent;
+    border-radius: 100%;
+    border: 2px solid rgba(30, 30, 30, 0.4);
+    opacity: 0.1;
+    animation: ring-circle-anim 1.2s infinite ease-in-out;
+    transition: all 0.5s;
+  }
+
+  .ring-phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    background-color: transparent;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    z-index: 200000 !important;
+    transition: visibility 0.5s;
+  }
+
+  .ring-phone.ring-green .ring-ph-circle-fill {
+    background-color: rgba(0, 175, 242, 0.5);
+    opacity: 0.75 !important;
+  }
+
+  .ring-ph-circle-fill {
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: 50px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    opacity: 0.1;
+    animation: ring-circle-fill-anim 2.3s infinite ease-in-out;
+    transition: all 0.5s;
+  }
+
+  .ring-ph-img-circle {
+    width: 60px;
+    height: 60px;
+    top: 70px;
+    left: 70px;
+    position: absolute;
+    background: rgba(30, 30, 30, 0.1)
+      url(https://drive.google.com/uc?id=1V3N2b79QjDWetC_ss9wI3c-xpWDymn9R)
+      no-repeat center center;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    opacity: 0.7;
+    animation: ring-circle-img-anim 1s infinite ease-in-out;
+  }
+
+  .ring-phone.ring-green .ring-ph-img-circle {
+    background-color: #00aff2;
+  }
+
+  .ring-phone.ring-green .ring-ph-circle {
+    border-color: #00aff2;
+    opacity: 0.5;
+  }
+
+  .ring-phone.ring-green.ring-hover .ring-ph-circle,
+  .ring-phone.ring-green:hover .ring-ph-circle {
+    border-color: #75eb50;
+    opacity: 0.5;
+  }
+
+  .ring-phone.ring-green.ring-hover .ring-ph-circle-fill,
+  .ring-phone.ring-green:hover .ring-ph-circle-fill {
+    background-color: rgba(117, 235, 80, 0.5);
+    opacity: 0.75 !important;
+  }
+
+  .ring-phone.ring-green.ring-hover .ring-ph-img-circle,
+  .ring-phone.ring-green:hover .ring-ph-img-circle {
+    background-color: #75eb50;
+  }
+
+  @keyframes ring-circle-anim {
+    0% {
+      transform: rotate(0) scale(0.5) skew(1deg);
+      opacity: 0.1;
+    }
+    30% {
+      transform: rotate(0) scale(0.7) skew(1deg);
+      opacity: 0.5;
+    }
+    100% {
+      transform: rotate(0) scale(1) skew(1deg);
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes ring-circle-fill-anim {
+    0% {
+      transform: rotate(0) scale(0.7) skew(1deg);
+      opacity: 0.2;
+    }
+    50% {
+      transform: rotate(0) scale(1) skew(1deg);
+      opacity: 0.2;
+    }
+    100% {
+      transform: rotate(0) scale(0.7) skew(1deg);
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes ring-circle-img-anim {
+    0% {
+      transform: rotate(0) scale(1) skew(1deg);
+    }
+    10% {
+      transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    20% {
+      transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    30% {
+      transform: rotate(-25deg) scale(1) skew(1deg);
+    }
+    40% {
+      transform: rotate(25deg) scale(1) skew(1deg);
+    }
+    50% {
+      transform: rotate(0) scale(1) skew(1deg);
+    }
+    100% {
+      transform: rotate(0) scale(1) skew(1deg);
+    }
+  }
+}

@@ -89,20 +89,22 @@ export class FeatureMeetShell implements OnInit {
     this.navigationService.setItems([
       {
         type: 'heading',
-        label: 'Contatos'
+        label: 'Contatos',
       },
       {
-        icon: 'person',
+        icon: 'person_outline',
         type: 'link',
         label: 'Lucia',
         route: [],
       },
       {
+        icon: 'person_outline',
         type: 'link',
         label: 'Luciane',
         route: [],
       },
       {
+        icon: 'person_outline',
         type: 'link',
         label: 'Gustavo',
         route: [],

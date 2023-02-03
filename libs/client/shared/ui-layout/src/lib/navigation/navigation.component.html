@@ -5,7 +5,9 @@
       <mat-divider></mat-divider>
     </div>
     <a mat-list-item *ngIf="item.type === 'link'" [routerLink]="item.route">
-      <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+      <mat-icon *ngIf="item.icon" class="muted">
+        {{ item.icon }}
+      </mat-icon>
       <span>{{ item.label }}</span>
     </a>
     <mat-divider *ngIf="item.type === 'divider'"></mat-divider>

@@ -17,7 +17,7 @@ import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
 import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'
 import {clientDataAccessMeet} from '@contact/client/data-access-meet'
 import {MAT_DATE_LOCALE} from '@angular/material/core'
-import { MatDialogModule } from '@angular/material/dialog'
+import {UiMeetModule} from '@contact/client/shared/ui-meet'
 
 registerLocaleData(pt, 'pt-BR', ptBr)
 
@@ -25,8 +25,8 @@ registerLocaleData(pt, 'pt-BR', ptBr)
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    MatDialogModule,
     HttpClientModule,
+    UiMeetModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       [

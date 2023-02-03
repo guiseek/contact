@@ -7,9 +7,10 @@ import {UserModule} from './apis/user/user.module'
 import {AuthModule} from './apis/auth/auth.module'
 import {CaslModule} from './apis/casl/casl.module'
 import {AppGateway} from './app.gateway'
+import { CallModule } from './apis/call/call.module'
 
 @Module({
-  imports: [DataModule, UserModule, AuthModule, CaslModule],
+  imports: [DataModule, UserModule, AuthModule, CaslModule, CallModule],
   controllers: [AppController],
   providers: [AppService, AppGateway],
 })

@@ -22,3 +22,4 @@ export * from './return-pipe-type';
 export * from './tail';
 export * from './truty-types-of';
 export * from './value';
+export * from './callback';

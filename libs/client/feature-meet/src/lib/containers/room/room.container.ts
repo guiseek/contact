@@ -1,4 +1,4 @@
-import {Component, OnInit, inject} from '@angular/core'
+import {Component, OnDestroy, OnInit, inject} from '@angular/core'
 import {ActivatedRoute} from '@angular/router'
 import {AuthFacade} from '@contact/auth/data-access'
 import {PeerFacade} from '@contact/client/data-access-meet'
@@ -8,7 +8,7 @@ import {PeerFacade} from '@contact/client/data-access-meet'
   templateUrl: './room.container.html',
   styleUrls: ['./room.container.scss'],
 })
-export class RoomContainer implements OnInit {
+export class RoomContainer implements OnInit, OnDestroy {
   authFacade = inject(AuthFacade)
   peerFacade = inject(PeerFacade)
 
@@ -31,5 +31,10 @@ export class RoomContainer implements OnInit {
     }
 
     this.authFacade.validate().subscribe(console.log)
+  }
+
+  ngOnDestroy() {
+    this.peerFacade.stopStream('local')
+    this.peerFacade.stopStream('remote')
   }
 }

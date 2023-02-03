@@ -83,3 +83,16 @@ body {
 .cdk-overlay-dark-backdrop {
   background: rgba(0, 0, 0, 0.9);
 }
+
+.drag-icon {
+  cursor: grab;
+}
+
+.ring-backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.ring-dialog {
+  background-color: #212121;
+  color: white;
+}

@@ -20,7 +20,7 @@ export class UserImpl extends BaseEntity implements User {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Index({fulltext: true})
+  // @Index({fulltext: true})
   @Column({
     type: 'varchar',
     nullable: false,
@@ -52,7 +52,6 @@ export class UserImpl extends BaseEntity implements User {
   })
   birthday?: string
 
-  @Index({fulltext: true})
   @Column({
     type: 'varchar',
     nullable: false,

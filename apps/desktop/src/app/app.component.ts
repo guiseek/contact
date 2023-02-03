@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild, inject} from '@angular/core'
-import { MatDialog } from '@angular/material/dialog'
-import {HttpService} from '@contact/shared/types'
+import {Component, OnInit, inject} from '@angular/core'
+import {AuthService} from '@contact/auth/data-access'
+import {ClientFacade} from '@contact/client/data-access-meet'
+import {RingService} from '@contact/client/shared/ui-meet'
 
 export function createProcessor() {
   if (typeof Worker === 'undefined') {
@@ -12,112 +13,47 @@ export function createProcessor() {
   )
 }
 
-interface Ping {
-  userId: number
-  ping: number
-}
-interface Pong extends Ping {
-  pong: number
-}
-interface PingPong extends Pong {
-  latency: number
-}
-
-// this.http.post('/api/sse', value).subscribe()
-
-const pong = (seconds: number, cb: (value: unknown) => void) => {
-  const eventSource = new EventSource('/api/sse')
-  eventSource.onmessage = ({data}) => {
-    console.log(JSON.parse(data))
-    const value = JSON.parse(data)
-    cb({...value, pong: Date.now()})
-  }
-}
-
 @Component({
   selector: 'contact-root',
-  template: `
-    <router-outlet></router-outlet>
-    <ng-template #ringTmpl>
-      <h1>Ring</h1>
-      <button [mat-dialog-close]="false">
-        Não
-      </button>
-      <button [mat-dialog-close]="true">
-        Sim
-      </button>
-    </ng-template>
-    <ng-template #callTmpl>
-      <h1>Call</h1>
-      <button [mat-dialog-close]="false">
-        Desligar
-      </button>
-    </ng-template>
-  `,
+  // template: `<button (click)="onClick()">Ligar</button>`,
+  template: ` <router-outlet></router-outlet> `,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild('ringTmpl')
-  ringTmplRef!: TemplateRef<HTMLElement>
-
-  @ViewChild('callTmpl')
-  callTmplRef!: TemplateRef<HTMLElement>
-
+export class AppComponent implements OnInit {
   title = 'desktop'
 
-  http = inject(HttpService)
-  dialog = inject(MatDialog)
+  auth = inject(AuthService)
+  client = inject(ClientFacade)
+  ring = inject(RingService)
 
-  map = new Map<number, PingPong>()
+  ngOnInit() {
+    this.client.ring$.subscribe(({target, source}) => {
+      console.log('source', source)
 
-  async ngOnInit() {
-    // pong(1000, (value) => {
-    //   this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
-    //     console.log(value);
-    //     this.map.set(value.userId, value)
-    //   })
-    // })
+      const displayName = source === 1 ? 'Gui' : 'Demo'
+      const ring$ = this.ring
+        .ring({audio: '/assets/audio/modem-tones.mp3', displayName})
+        .afterClosed()
+      ring$.subscribe(console.log)
+    })
 
-    // setInterval(() => {
-    //   const userId = 1
-    //   const lastPong = this.map.get(userId)
-
-    //   if (lastPong) {
-    //     const diff = Date.now() - lastPong.pong
-    //     console.log(diff);
-
-
-    //     if (diff > 5000) {
-    //       pong(1000, (value) => {
-    //         this.http.post<PingPong>('/api/sse', value).subscribe((value) => {
-    //           console.log(value);
-
-    //           this.map.set(value.userId, value)
-    //         })
-    //       })
-    //     }
-    //   }
-    // }, 5000)
-    console.log();
-
+    this.client.connect$.subscribe(() => {
+      this.auth.validateUser().subscribe((user) => {
+        this.client.register(user.id)
+      })
+    })
   }
 
-  onRing() {
-    const ring = this.dialog.open(this.ringTmplRef, {
-      disableClose: true
-    })
-    ring.afterClosed().subscribe(accept => {
-      if (accept) {
-        this.dialog.open(this.callTmplRef, {
-          disableClose: true
-        })
+  onClick() {
+    this.auth.validateUser().subscribe((user) => {
+      console.log(user)
+
+      const data = {
+        target: user.id === 1 ? 2 : 1,
+        source: user.id,
       }
+
+      this.client.call(data)
     })
-  }
-
-  ngAfterViewInit(): void {
-    console.log(this.ringTmplRef);
-    this.onRing()
-
   }
 }

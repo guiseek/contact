@@ -45,7 +45,8 @@ export class AudioContainer implements OnDestroy {
       const frequencyLoop = () => {
         requestAnimationFrame(frequencyLoop)
         analyser.getByteFrequencyData(frequency)
-        this._progress.next(frequency[0])
+        const [progress] = frequency
+        this._progress.next(progress)
       }
 
       frequencyLoop()

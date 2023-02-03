@@ -3,6 +3,7 @@ import {entityContainer} from '../utils'
 import {SnakeNamingStrategy} from './strategies'
 import {dataOptions} from './config/data-options'
 import {Provider} from '@nestjs/common'
+import mongoose from 'mongoose'
 
 export const DATA_PROVIDERS: Provider<unknown>[] = [
   {
@@ -19,5 +20,11 @@ export const DATA_PROVIDERS: Provider<unknown>[] = [
       return dataSource.initialize()
     },
     inject: ['data.options'],
+  },
+  {
+    provide: 'data.mongo',
+    useFactory: (): Promise<typeof mongoose> => {
+      return mongoose.connect(`mongodb://127.0.0.1:27020/contact`)
+    },
   },
 ]

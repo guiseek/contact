@@ -1,22 +1,12 @@
-import {Body, Controller, Get, Post, Sse} from '@nestjs/common'
+import {Body, Controller, Get, Post, Sse, MessageEvent} from '@nestjs/common'
 
 import {AppService} from './app.service'
 import {interval, map} from 'rxjs'
 import {Allowed} from './utils'
+import {Ping, PingPong, Pong} from '@contact/shared/types'
 
-interface Ping {
-  userId: number
-  ping: number
-}
-interface Pong extends Ping {
-  pong: number
-}
-interface PingPong extends Pong {
-  latency: number
-}
-
-
-class CheckUpMessage<T extends string | object> {
+class CheckUpMessage<T extends string | object> implements MessageEvent {
+  retry = 10000
   constructor(public data: T) {}
 }
 
@@ -41,13 +31,29 @@ export class AppController {
   @Allowed()
   @Sse('sse')
   sse() {
-    return ping(1)
+    return ping(2)
   }
 
+  @Allowed()
   @Post('sse')
   pong(@Body() data: Pong) {
     const result = {...data, latency: data.pong - data.ping}
-    console.log(result);
+    this.map.set(data.userId, result)
+    console.log(result)
+
+    const eachSeconds = 10
+    const reCheckAfterSeconds = eachSeconds * 2
+
+    setTimeout(() => {
+      const last = this.map.get(data.userId)
+      if (last) {
+        const timeExceeded = Date.now() - last.pong > 1000 * reCheckAfterSeconds
+
+        if (timeExceeded) {
+          console.log('salva o user como inativo')
+        }
+      }
+    }, 1000 * eachSeconds)
 
     return result
   }

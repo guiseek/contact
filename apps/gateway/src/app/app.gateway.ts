@@ -4,6 +4,7 @@ import {
   WebSocketServer,
   WebSocketGateway,
   SubscribeMessage,
+  OnGatewayDisconnect,
 } from '@nestjs/websockets'
 import {Socket, Server} from 'socket.io'
 import {PeerServerEvents} from '@contact/server/types'
@@ -14,7 +15,7 @@ import {
   PeerEvents,
   PeerMessage,
 } from '@contact/shared/types'
-
+import {ExecutionContext, createParamDecorator} from '@nestjs/common'
 type SocketServer = Server<
   PeerClientEvents,
   PeerServerEvents,
@@ -28,16 +29,49 @@ type SocketClient = Socket<
   PeerData
 >
 
+export const Logged = createParamDecorator(
+  (data: unknown, ctx: ExecutionContext) => {
+    console.log(ctx)
+    // console.log(data);
+
+    const client = ctx.switchToWs().getClient()
+    console.log(client)
+
+    const {user} = client
+    return user
+  }
+)
+
 @WebSocketGateway({cors: {origin: '*'}})
-export class AppGateway {
+export class AppGateway implements OnGatewayDisconnect {
   @WebSocketServer()
   server: SocketServer
 
+  onInit() {
+    this.server.use(async (socket, next) => {
+      try {
+        // const user = await fetch(socket)
+      } catch (e) {
+        next(new Error('User not found'))
+      }
+    })
+  }
+
+  handleDisconnect(@ConnectedSocket() client: SocketClient) {
+    for (const room of client.rooms) {
+      if (room !== client.id) {
+        client.to(room).emit(PeerEvent.Message, `user ${client.id} has left room`)
+      }
+    }
+  }
+
   @SubscribeMessage(PeerEvent.Hello)
   async handleHello(
+    @Logged() user: any,
     @ConnectedSocket() client: SocketClient,
     @MessageBody() data: PeerMessage<'void'>
   ) {
+    console.log(user)
     client.data = data
     if (!client.rooms.has(data.meet)) {
       await client.join(data.meet)

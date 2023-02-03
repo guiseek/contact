@@ -25,11 +25,13 @@
       "@contact/client/shared/ui-layout": [
         "libs/client/shared/ui-layout/src/index.ts"
       ],
+      "@contact/client/shared/ui-meet": [
+        "libs/client/shared/ui-meet/src/index.ts"
+      ],
       "@contact/client/types": ["libs/client/types/src/index.ts"],
       "@contact/server/types": ["libs/server/types/src/index.ts"],
       "@contact/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@contact/shared/types": ["libs/shared/types/src/index.ts"],
-      "@contact/shared/util-media": ["libs/shared/util-media/src/index.ts"],
       "@contact/user/data-access": ["libs/user/data-access/src/index.ts"],
       "@contact/user/feature": ["libs/user/feature/src/index.ts"]
     }

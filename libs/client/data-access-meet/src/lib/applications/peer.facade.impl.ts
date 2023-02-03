@@ -1,8 +1,4 @@
-import {
-  PeerOffer,
-  PeerAnswer,
-  PeerCandidate
-} from '@contact/client/types'
+import {PeerOffer, PeerAnswer, PeerCandidate} from '@contact/client/types'
 import {PeerData, PeerEvent, PeerSdpInit} from '@contact/shared/types'
 import {SignalingService} from '../domain/signaling.service'
 import {State, freeze} from '@contact/shared/data-access'
@@ -47,9 +43,8 @@ export class PeerFacadeImpl extends State<PeerState> implements PeerFacade {
   constructor(
     private signalingService: SignalingService,
     private peerStateFacade: PeerStateFacade,
-    private peerService: PeerService
-  ) // peerConfig: RTCConfiguration = {}
-  {
+    private peerService: PeerService // peerConfig: RTCConfiguration = {}
+  ) {
     super(initialState)
 
     // this.peer = new PeerConnection(peerConfig)
@@ -118,6 +113,16 @@ export class PeerFacadeImpl extends State<PeerState> implements PeerFacade {
   hello(data: PeerData) {
     this.signalingService.emit('hello', data)
     this.patch(data)
+  }
+
+  stopStream(side: 'local' | 'remote') {
+    console.log(side)
+    const stream = this.state[side]
+    stream.getTracks().forEach((track) => {
+      track.stop()
+      track.enabled = false
+    })
+    this.patch({local: new MediaStream([]), remote: new MediaStream([])})
   }
 
   private createOffer(options?: RTCOfferOptions) {

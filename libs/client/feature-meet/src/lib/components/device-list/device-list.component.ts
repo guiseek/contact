@@ -30,12 +30,14 @@ import {BehaviorSubject} from 'rxjs'
         *ngFor="let device of devices$ | async; index as i"
         [value]="device"
       >
-        <mat-icon>drag_indicator</mat-icon>
+        <!-- <mat-icon>drag_indicator</mat-icon> -->
+        <mat-icon class="drag-icon">drag_handle</mat-icon>
+
         <span> {{ i + 1 }}°. {{ device.label }} </span>
       </mat-list-option>
     </mat-selection-list>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeviceListComponent
   extends SelectControlValueAccessor

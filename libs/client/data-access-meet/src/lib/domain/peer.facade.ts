@@ -9,6 +9,8 @@ export abstract class PeerFacade {
   abstract remote$: Observable<MediaStream>
   abstract local$: Observable<MediaStream>
 
+  abstract stopStream(side: 'local' | 'remote'): void
+
   abstract setStreams(...streams: MediaStream[]): void
   abstract hello(data: PeerData): void
 }
