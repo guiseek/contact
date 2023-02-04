@@ -1,0 +1,23 @@
+<div
+  class="layout-nav-drawer-container"
+  [class.layout-nav-drawer-is-mobile]="mobileQuery.matches"
+>
+  <ng-content select="contact-toolbar"></ng-content>
+
+  <mat-sidenav-container class="layout-nav-drawer-sidenav-container">
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <ng-content
+        select="mat-list,mat-nav-list,mat-action-list,nav"
+      ></ng-content>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="layout-nav-drawer-content">
+      <ng-content select="main"></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

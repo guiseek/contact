@@ -17,6 +17,14 @@ export abstract class State<T> {
     )
   }
 
+  protected patch(newState: Partial<T>) {
+    this._state.next({...this.state, ...newState})
+  }
+
+  protected update<K extends keyof T>(key: K, val: T[K]) {
+    this._state.next({...this.state, ...{[key]: val}})
+  }
+
   protected filter<K>(filterFn: (state: T) => boolean, mapFn: (state: T) => K) {
     return this._state.asObservable().pipe(
       filter((state: T) => filterFn(state)),
@@ -25,7 +33,7 @@ export abstract class State<T> {
     )
   }
 
-  protected setState(newState: Partial<T>) {
+  protected setState(newState: T) {
     this._state.next({
       ...this.state,
       ...newState,

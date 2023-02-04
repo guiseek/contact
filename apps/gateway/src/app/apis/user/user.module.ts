@@ -4,6 +4,7 @@ import {USER_PROVIDERS} from '../../data'
 import {UserController} from './user.controller'
 import {RolesGuard} from './guards'
 import {CaslModule} from '../casl/casl.module'
+import {UserGateway} from './user.gateway'
 
 @Module({
   imports: [CaslModule],
@@ -14,7 +15,8 @@ import {CaslModule} from '../casl/casl.module'
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
+    UserGateway,
   ],
-  // exports: [],
+  exports: [...USER_PROVIDERS],
 })
 export class UserModule {}

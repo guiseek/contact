@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{data.displayName}} Ligando</h2>
+
+<mat-dialog-content>
+  <div class="ring-phone ring-green ring-show">
+    <div class="ring-ph-circle"></div>
+    <div class="ring-ph-circle-fill"></div>
+    <div class="ring-ph-img-circle"></div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" mat-fab color="warn" (click)="dany()">
+    <mat-icon>call_end</mat-icon>
+  </button>
+  <button type="button" mat-fab color="accent" (click)="accept()">
+    <mat-icon>call</mat-icon>
+  </button>
+</mat-dialog-actions>

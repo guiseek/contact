@@ -1,3 +1,5 @@
+@use './mixins/media' as media;
+
 .flex {
   display: flex;
 
@@ -53,5 +55,55 @@
 
   &.justify-end {
     justify-content: flex-end;
+  }
+}
+
+@include media.xs-n-above() {
+  .row-xs-n-above {
+    flex-direction: row;
+  }
+  .col-xs-n-above {
+    flex-direction: column;
+  }
+}
+@include media.sm-n-above() {
+  .row-sm-n-above {
+    flex-direction: row;
+  }
+  .col-sm-n-above {
+    flex-direction: column;
+  }
+}
+.flex.col {
+  @include media.md-n-above() {
+    flex-direction: row;
+  }
+}
+.col-md-n-above {
+  flex-direction: column;
+}
+
+@include media.lg-n-above() {
+  .row-lg-n-above {
+    flex-direction: row;
+  }
+  .col-lg-n-above {
+    flex-direction: column;
+  }
+}
+@include media.lg-n-above() {
+  .row-lg-n-above {
+    flex-direction: row;
+  }
+  .col-lg-n-above {
+    flex-direction: column;
+  }
+}
+@include media.xl-n-above() {
+  .row-xl-n-above {
+    flex-direction: row;
+  }
+  .col-xl-n-above {
+    flex-direction: column;
   }
 }

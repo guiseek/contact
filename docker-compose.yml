@@ -1,18 +1,26 @@
 version: '3.1'
 
 services:
-  contact:
+  mariadb:
     image: mariadb:10.4
-    container_name: contact
+    container_name: mariadb
     restart: always
     ports:
       - '3304:3306'
     environment:
       TZ: America/Sao_Paulo
-      MYSQL_ROOT_PASSWORD: 'contact'
+      MYSQL_ROOT_PASSWORD: contact
       MYSQL_DATABASE: contact
     command:
       - '--character-set-server=utf8mb4'
       - '--collation-server=utf8mb4_unicode_ci'
     volumes:
       - ./data/mariadb:/var/lib/mysql
+  mongo:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - '27020:27017'
+    volumes:
+      - ./data/mongodb:/data/db

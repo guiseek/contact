@@ -15,15 +15,32 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@contact/auth/data-access": ["libs/auth/data-access/src/index.ts"],
-      "@contact/auth/feature": ["libs/auth/feature/src/index.ts"],
-      "@contact/meet/feature": ["libs/meet/feature/src/index.ts"],
+      "@contact/client/data-access-auth": [
+        "libs/client/data-access-auth/src/index.ts"
+      ],
+      "@contact/client/data-access-meet": [
+        "libs/client/data-access-meet/src/index.ts"
+      ],
+      "@contact/client/data-access-user": [
+        "libs/client/data-access-user/src/index.ts"
+      ],
+      "@contact/client/feature-auth": ["libs/client/feature-auth/src/index.ts"],
+      "@contact/client/feature-home": ["libs/client/feature-home/src/index.ts"],
+      "@contact/client/feature-meet": ["libs/client/feature-meet/src/index.ts"],
+      "@contact/client/feature-user": ["libs/client/feature-user/src/index.ts"],
+      "@contact/client/shared/ui-layout": [
+        "libs/client/shared/ui-layout/src/index.ts"
+      ],
+      "@contact/client/shared/ui-meet": [
+        "libs/client/shared/ui-meet/src/index.ts"
+      ],
+      "@contact/client/shared/ui-user": [
+        "libs/client/shared/ui-user/src/index.ts"
+      ],
+      "@contact/client/types": ["libs/client/types/src/index.ts"],
+      "@contact/server/types": ["libs/server/types/src/index.ts"],
       "@contact/shared/data-access": ["libs/shared/data-access/src/index.ts"],
-      "@contact/shared/ui-layout": ["libs/shared/ui-layout/src/index.ts"],
-      "@contact/shared/util-media": ["libs/shared/util-media/src/index.ts"],
-      "@contact/type": ["libs/type/src/index.ts"],
-      "@contact/user/data-access": ["libs/user/data-access/src/index.ts"],
-      "@contact/user/feature": ["libs/user/feature/src/index.ts"]
+      "@contact/shared/types": ["libs/shared/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

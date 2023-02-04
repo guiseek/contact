@@ -1,4 +1,4 @@
-import {UserRole, User as UserType} from '@contact/type'
+import {UserRole, User as UserType} from '@contact/shared/types'
 
 export class User implements UserType {
   id: number

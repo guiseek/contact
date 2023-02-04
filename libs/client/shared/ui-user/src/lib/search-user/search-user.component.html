@@ -1,0 +1,18 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    type="text"
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option
+      *ngFor="let option of user.users$ | searchUser : me | async"
+      [value]="option"
+    >
+      {{ option.displayName }}
+    </mat-option>
+  </mat-autocomplete>
+  <contact-svg-loader [show]="loader$ | async" matSuffix></contact-svg-loader>
+</mat-form-field>

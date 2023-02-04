@@ -1,11 +1,11 @@
-import {UserServiceImpl} from './services/user.service.impl'
-import {MeetingImpl} from './entities/meeting.impl'
-import {AgendaImpl} from './entities/agenda.impl'
-import {DeviceImpl} from './entities/device.impl'
-import {UserService} from './ports/user.service'
+import {UserImpl, MeetingImpl, AgendaImpl, DeviceImpl} from './entities'
+import {UserServiceImpl, ClientServiceImpl} from './services'
+import {UserService, ClientService, Client} from './ports'
+import {ClientSchema} from './schemas/client.schema'
 import {DataSource, Repository} from 'typeorm'
-import {UserImpl} from './entities/user.impl'
 import {Provider} from '@nestjs/common'
+import {Connection, Model} from 'mongoose'
+import {ContactImpl} from './entities/contact.impl'
 
 export const USER_PROVIDERS: Provider<unknown>[] = [
   {
@@ -17,6 +17,12 @@ export const USER_PROVIDERS: Provider<unknown>[] = [
     provide: 'device.repository',
     useFactory: (dataSource: DataSource) =>
       dataSource.getRepository(DeviceImpl),
+    inject: ['data.source'],
+  },
+  {
+    provide: 'contact.repository',
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(ContactImpl),
     inject: ['data.source'],
   },
   {
@@ -37,13 +43,29 @@ export const USER_PROVIDERS: Provider<unknown>[] = [
       user: Repository<UserImpl>,
       device: Repository<DeviceImpl>,
       meeting: Repository<MeetingImpl>,
+      contact: Repository<ContactImpl>,
       agenda: Repository<AgendaImpl>
-    ) => new UserServiceImpl(user, device, meeting, agenda),
+    ) => new UserServiceImpl(user, device, meeting, contact, agenda),
     inject: [
       'user.repository',
       'device.repository',
       'meeting.repository',
+      'contact.repository',
       'agenda.repository',
     ],
+  },
+  {
+    provide: 'client.model',
+    useFactory: (connection: Connection) => {
+      return connection.model('Client', ClientSchema)
+    },
+    inject: ['data.mongo'],
+  },
+  {
+    provide: ClientService,
+    useFactory: (client: Model<Client>) => {
+      return new ClientServiceImpl(client)
+    },
+    inject: ['client.model'],
   },
 ]

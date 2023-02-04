@@ -1,6 +1,6 @@
 import {ApiProperty, IntersectionType} from '@nestjs/swagger'
 import {CreateAgendaDto} from './create-agenda.dto'
-import {Agenda, AgendaResponse, Meeting} from '@contact/type'
+import {Agenda, AgendaResponse, Meeting} from '@contact/shared/types'
 import {UserResponseDto} from '../user-response.dto'
 
 export class AgendaResponseDto

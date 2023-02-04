@@ -1,5 +1,5 @@
 import {Injectable, CanActivate, ExecutionContext} from '@nestjs/common'
-import {UserRole} from '@contact/type'
+import {UserRole} from '@contact/shared/types'
 import {Reflector} from '@nestjs/core'
 import {ROLES_KEY} from '../../../utils'
 

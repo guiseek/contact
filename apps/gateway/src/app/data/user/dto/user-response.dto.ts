@@ -1,4 +1,4 @@
-import {UserResponse, User, UserRole, Device, Meeting} from '@contact/type'
+import {UserResponse, User, UserRole, Device, Meeting, Contact} from '@contact/shared/types'
 import {ApiHideProperty, ApiProperty} from '@nestjs/swagger'
 import {Exclude} from 'class-transformer'
 
@@ -52,6 +52,9 @@ export class UserResponseDto implements UserResponse {
 
   @ApiProperty()
   meetings?: Meeting[]
+
+  @ApiProperty()
+  contacts?: Contact[]
 
   @Exclude()
   @ApiHideProperty()

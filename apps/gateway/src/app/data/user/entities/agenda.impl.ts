@@ -1,5 +1,5 @@
 import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm'
-import {Agenda, Meeting, User, UserRole} from '@contact/type'
+import {Agenda, Meeting, User, UserRole} from '@contact/shared/types'
 import {entityContainer} from '../../../utils'
 import {MeetingImpl} from './meeting.impl'
 import {UserImpl} from './user.impl'

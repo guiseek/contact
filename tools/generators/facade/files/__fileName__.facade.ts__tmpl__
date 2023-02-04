@@ -1,0 +1,29 @@
+import { State } from "@contact/shared/data-access"
+
+interface <%= className %>State {
+  <%= propertyName %>: string | null
+  error: string | null
+  loading: boolean
+}
+
+const initialState = Object.freeze({
+  <%= propertyName %>: null,
+  error: null,
+  loading: false,
+})
+
+export class <%= className %>FacadeImpl extends State<<%= className %>State> {
+  loading$ = this.select((state) => state.loading)
+  error$ = this.select((state) => state.error)
+  <%= propertyName %>$ = this.select((state) => state.<%= propertyName %>)
+
+  constructor(
+
+  ) {
+    super(initialState)
+  }
+
+  set<%= className %>(<%= propertyName %>: string) {
+    this.update('<%= propertyName %>', <%= propertyName %>)
+  }
+}

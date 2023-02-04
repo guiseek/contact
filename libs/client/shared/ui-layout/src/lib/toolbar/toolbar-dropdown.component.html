@@ -1,0 +1,35 @@
+<ng-container *ngIf="user | async as tdUser">
+  <button
+    mat-icon-button
+    class="toolbar-icon"
+    [matMenuTriggerFor]="beforeMenu"
+    [matMenuTriggerData]="tdUser"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <ng-template matMenuContent let-username="username" let-email="email">
+      <a mat-menu-item routerLink="/user">
+        <mat-icon>account_circle</mat-icon>
+        <div>
+          {{ username }} <br />
+          <small>{{ email }}</small>
+        </div>
+      </a>
+    </ng-template>
+    <mat-divider></mat-divider>
+    <ng-container *ngIf="items | async as tdItems">
+      <button
+        *ngFor="let item of tdItems"
+        (click)="menuClicked.emit(item.action)"
+        mat-menu-item
+      >
+        {{ item.label }}
+      </button>
+    </ng-container>
+    <button mat-menu-item (click)="menuClicked.emit('logout')">
+      <mat-icon>logout</mat-icon>
+      Sair
+    </button>
+  </mat-menu>
+</ng-container>

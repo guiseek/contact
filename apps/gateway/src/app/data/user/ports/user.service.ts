@@ -5,14 +5,15 @@ import {
   CreateUser,
   UpdateUser,
   Meeting,
-} from '@contact/type'
+  Contact,
+} from '@contact/shared/types'
 import {
   CreateAgendaDto,
   CreateMeetingDto,
   UpdateMeetingDto,
 } from '../dto/meeting'
 import {CreateDeviceDto} from '../dto/device'
-import {SearchUserDto} from '../dto'
+import {CreateContactDto, SearchUserDto} from '../dto'
 
 export abstract class UserService {
   abstract findAll(): Promise<User[]>
@@ -20,6 +21,7 @@ export abstract class UserService {
   abstract createOne(createUser: CreateUser): Promise<User>
 
   abstract createDevice(createDeviceDto: CreateDeviceDto): Promise<Device>
+  abstract createContact(createContact: CreateContactDto): Promise<Contact>
 
   abstract searchUser(query: SearchUserDto): Promise<User[]>
   abstract findOneMeeting(where: Partial<Pick<Meeting, 'id'>>): Promise<Meeting>
@@ -41,6 +43,7 @@ export abstract class UserService {
   abstract findOneByUsername(username: string): Promise<User | null>
   abstract findMeetingsByUser(user: Pick<User, 'id'>): Promise<Meeting[]>
 
+  abstract findContacts(user: Pick<User, 'id'>): Promise<Contact[]>
   abstract findDevices(user: Pick<User, 'id'>): Promise<Device[]>
 
   abstract findAgenda(user: Pick<User, 'id'>): Promise<Agenda[]>

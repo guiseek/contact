@@ -1,0 +1,14 @@
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+<nav mat-tab-nav-bar class="flex col p-8 align-center" [tabPanel]="tabPanel">
+  <a
+    mat-tab-link
+    *ngFor="let tab of tabs"
+    [active]="tab.path === url"
+    [routerLink]="tab.path"
+  >
+    <span class="flex col align-center">
+      <mat-icon>{{ tab.icon }}</mat-icon>
+      <span> {{ tab.label }} </span>
+    </span>
+  </a>
+</nav>

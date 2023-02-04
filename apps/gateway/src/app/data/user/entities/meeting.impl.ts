@@ -1,6 +1,6 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm'
 import {entityContainer} from '../../../utils'
-import {Agenda, Meeting} from '@contact/type'
+import {Agenda, Meeting} from '@contact/shared/types'
 import {AgendaImpl} from './agenda.impl'
 
 @Entity({

@@ -1,4 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core'
+import {Component, OnInit, inject} from '@angular/core'
+import {AuthService} from '@contact/client/data-access-auth'
+import {ClientFacade} from '@contact/client/data-access-meet'
+import {RingService} from '@contact/client/shared/ui-meet'
 
 export function createProcessor() {
   if (typeof Worker === 'undefined') {
@@ -12,48 +15,31 @@ export function createProcessor() {
 
 @Component({
   selector: 'contact-root',
-  template: `<router-outlet></router-outlet>`,
+  template: ` <router-outlet></router-outlet> `,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'desktop'
 
-  constructor(private _elRef: ElementRef<HTMLElement>) {}
+  auth = inject(AuthService)
+  client = inject(ClientFacade)
+  ring = inject(RingService)
 
-  async ngOnInit() {
-    console.log('')
+  ngOnInit() {
+    this.client.ring$.subscribe(({target, source}) => {
+      console.log('source', source)
 
-    // const audioCtx = new AudioContext();
-    // const canvasEl = document.createElement('canvas');
-    // const canvas = canvasEl.transferControlToOffscreen();
-    // this._elRef.nativeElement.appendChild(canvasEl)
-    // // const canvas = new OffscreenCanvas(200, 10)
+      const displayName = source === 1 ? 'Gui' : 'Demo'
+      const ring$ = this.ring
+        .ring({audio: '/assets/audio/modem-tones.mp3', displayName})
+        .afterClosed()
+      ring$.subscribe(console.log)
+    })
 
-    // const worker = new Worker(
-    //   new URL('../workers/volume-meter.worker.ts', import.meta.url)
-    // );
-
-    // worker.postMessage({ canvas }, [canvas]);
-
-    // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-    // const audio = new Audio();
-    // audio.srcObject = stream;
-    // // audio.play()
-    // const audioSource = audioCtx.createMediaElementSource(audio);
-    // const analyser = audioCtx.createAnalyser();
-    // audioSource.connect(analyser);
-    // analyser.connect(audioCtx.destination);
-    // analyser.fftSize = 128;
-    // const bufferLength = analyser.frequencyBinCount;
-    // const dataArray = new Uint8Array(bufferLength);
-
-    // function animate() {
-    //   analyser.getByteFrequencyData(dataArray);
-    //   worker.postMessage({ bufferLength, dataArray }, {});
-    //   requestAnimationFrame(animate);
-    // }
-
-    // animate();
+    this.client.connect$.subscribe(() => {
+      this.auth.validateUser().subscribe((user) => {
+        this.client.register(user.id)
+      })
+    })
   }
 }

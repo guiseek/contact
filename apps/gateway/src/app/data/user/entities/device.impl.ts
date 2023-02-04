@@ -7,7 +7,7 @@ import {
 } from 'typeorm'
 import {UserImpl} from '../../user/entities/user.impl'
 import {entityContainer} from '../../../utils'
-import {Device, User} from '@contact/type'
+import {Device, User} from '@contact/shared/types'
 
 @Entity({
   name: 'devices',

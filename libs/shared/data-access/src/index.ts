@@ -1,5 +1,6 @@
 export * from './lib/base/storage.service'
-export * from './lib/shared-data-access'
 export * from './lib/utilities/sub-async'
 export * from './lib/utilities/to-dto'
+export * from './lib/utilities/freeze'
 export * from './lib/base/state'
+export * from './lib/providers'

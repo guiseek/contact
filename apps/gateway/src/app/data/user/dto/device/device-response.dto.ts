@@ -1,4 +1,4 @@
-import {Device, UserResponse} from '@contact/type'
+import {Device, UserResponse} from '@contact/shared/types'
 import {ApiProperty} from '@nestjs/swagger'
 import {UserResponseDto} from '../user-response.dto'
 

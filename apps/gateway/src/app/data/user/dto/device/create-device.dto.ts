@@ -1,6 +1,6 @@
 import {IsNumber, IsOptional, IsString} from 'class-validator'
 import {ApiProperty} from '@nestjs/swagger'
-import {CreateDevice, User} from '@contact/type'
+import {CreateDevice, User} from '@contact/shared/types'
 
 export class CreateDeviceDto implements CreateDevice {
   @IsString()

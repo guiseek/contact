@@ -1,5 +1,5 @@
 import {ApiProperty} from '@nestjs/swagger'
-import {AuthUserLogged, UserRole} from '@contact/type'
+import {AuthUserLogged, UserRole} from '@contact/shared/types'
 
 export class AuthUserResponseDto implements AuthUserLogged {
   @ApiProperty()

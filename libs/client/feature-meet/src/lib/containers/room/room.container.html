@@ -1,0 +1,11 @@
+<p>room works!</p>
+<video autoplay playsinline [srcObject]="peerFacade.remote$ | async"></video>
+
+<ng-container *ngIf="peerFacade.local$ | async as localStream">
+  <video
+    autoplay
+    playsinline
+    [srcObject]="localStream"
+    [muted]="!!localStream"
+  ></video>
+</ng-container>
