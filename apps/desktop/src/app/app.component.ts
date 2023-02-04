@@ -1,5 +1,5 @@
 import {Component, OnInit, inject} from '@angular/core'
-import {AuthService} from '@contact/auth/data-access'
+import {AuthService} from '@contact/client/data-access-auth'
 import {ClientFacade} from '@contact/client/data-access-meet'
 import {RingService} from '@contact/client/shared/ui-meet'
 

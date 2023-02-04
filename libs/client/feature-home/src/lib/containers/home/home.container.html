@@ -10,28 +10,40 @@
     ></contact-toolbar-dropdown>
   </contact-toolbar>
 
-  <mat-list>
-    <mat-list-item>
-      <img matListItemAvatar src="/assets/photos/avatar.png" alt="Paris" />
-      <p matListItemTitle>Guilherme Siquinelli</p>
-      <p matListItemLine>
-        <span>email@guiseek.dev</span>
-      </p>
-    </mat-list-item>
-  </mat-list>
+  <nav *ngIf="authFacade.user$ | async as authUser">
+    <mat-list>
+      <mat-list-item>
+        <img matListItemAvatar src="/assets/photos/avatar.png" alt="Paris" />
+        <p matListItemTitle>{{authUser.displayName}}</p>
+        <p matListItemLine>
+          <span>{{authUser.email}}</span>
+        </p>
+      </mat-list-item>
+    </mat-list>
 
-  <mat-nav-list>
-    <mat-divider></mat-divider>
-    <a mat-list-item routerLink="/meet/settings">
-      <mat-icon matListItemIcon>settings</mat-icon>
-      <p matListItemTitle>Configurações</p>
-    </a>
-    <mat-divider></mat-divider>
-    <a mat-list-item *ngFor="let contact of contacts">
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/meet/settings">
+        <mat-icon matListItemIcon>settings</mat-icon>
+        <p matListItemTitle>Configurações</p>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+    <mat-action-list>
+      <button
+        mat-list-item
+        *ngFor="let user of userFacade.users$ | async"
+        (click)="callTo(authUser.id, user.id)"
+      >
+        <mat-icon matListItemIcon>person_outline</mat-icon>
+        <span>{{user.displayName}}</span>
+      </button>
+    </mat-action-list>
+  </nav>
+  <!-- <a mat-list-item *ngFor="let contact of contacts">
       <mat-icon matListItemIcon>person_outline</mat-icon>
       <p matListItemTitle>{{contact.name}}</p>
-    </a>
-  </mat-nav-list>
+    </a> -->
 
   <main>
     <mat-nav-list>

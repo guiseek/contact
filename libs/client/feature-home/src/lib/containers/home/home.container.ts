@@ -1,5 +1,7 @@
 import {Component, OnInit, inject} from '@angular/core'
-import {AuthFacade} from '@contact/auth/data-access'
+import {AuthFacade} from '@contact/client/data-access-auth'
+import {ClientFacade} from '@contact/client/data-access-meet'
+import {UserFacade} from '@contact/client/data-access-user'
 import {of} from 'rxjs'
 
 @Component({
@@ -9,6 +11,8 @@ import {of} from 'rxjs'
 })
 export class HomeContainer implements OnInit {
   authFacade = inject(AuthFacade)
+  userFacade = inject(UserFacade)
+  clientFacade = inject(ClientFacade)
 
   activeLink = ''
 
@@ -55,6 +59,12 @@ export class HomeContainer implements OnInit {
 
   ngOnInit() {
     this.authFacade.validate().subscribe(console.log)
+    this.userFacade.users$.subscribe(console.log)
+    this.userFacade.loadUsers()
+  }
+
+  callTo(source: number, target: number) {
+    this.clientFacade.call({source, target})
   }
 
   onMenuToggled<T>(value: T) {

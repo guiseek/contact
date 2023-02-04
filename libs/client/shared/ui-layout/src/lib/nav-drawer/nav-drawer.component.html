@@ -11,7 +11,9 @@
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
     >
-      <ng-content select="mat-list,mat-nav-list,nav"></ng-content>
+      <ng-content
+        select="mat-list,mat-nav-list,mat-action-list,nav"
+      ></ng-content>
     </mat-sidenav>
 
     <mat-sidenav-content class="layout-nav-drawer-content">

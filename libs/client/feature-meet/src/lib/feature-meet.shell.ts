@@ -1,5 +1,5 @@
 import {Component, OnInit, inject} from '@angular/core'
-import {AuthFacade} from '@contact/auth/data-access'
+import {AuthFacade} from '@contact/client/data-access-auth'
 import {NavigationService} from '@contact/client/shared/ui-layout'
 
 @Component({

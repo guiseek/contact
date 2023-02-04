@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, inject} from '@angular/core'
 import {ActivatedRoute} from '@angular/router'
-import {AuthFacade} from '@contact/auth/data-access'
+import {AuthFacade} from '@contact/client/data-access-auth'
 import {PeerFacade} from '@contact/client/data-access-meet'
 
 @Component({

@@ -12,9 +12,12 @@ import {
   HttpClientModule,
 } from '@angular/common/http'
 import {HttpService} from '@contact/shared/types'
-import {userDataProviders} from '@contact/user/data-access'
+import {userDataProviders} from '@contact/client/data-access-user'
 import {StorageService, sharedDataProviders} from '@contact/shared/data-access'
-import {AuthInterceptor, authDataProviders} from '@contact/auth/data-access'
+import {
+  AuthInterceptor,
+  authDataProviders,
+} from '@contact/client/data-access-auth'
 import {clientDataAccessMeet} from '@contact/client/data-access-meet'
 import {MAT_DATE_LOCALE} from '@angular/material/core'
 import {UiMeetModule} from '@contact/client/shared/ui-meet'
@@ -33,12 +36,16 @@ registerLocaleData(pt, 'pt-BR', ptBr)
         {
           path: 'auth',
           loadChildren: () =>
-            import('@contact/auth/feature').then((m) => m.AuthFeatureModule),
+            import('@contact/client/feature-auth').then(
+              (m) => m.ClientFeatureAuthModule
+            ),
         },
         {
           path: 'user',
           loadChildren: () =>
-            import('@contact/user/feature').then((m) => m.UserFeatureModule),
+            import('@contact/client/feature-user').then(
+              (m) => m.UserFeatureModule
+            ),
         },
         {
           path: 'meet',

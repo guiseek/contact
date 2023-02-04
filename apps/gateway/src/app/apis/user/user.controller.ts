@@ -248,7 +248,7 @@ export class UserController {
   }
 
   @Get()
-  @Roles(UserRole.Admin)
+  // @Roles(UserRole.Admin)
   async findAll() {
     return this._toUserDto.many(this.userService.findAll())
   }

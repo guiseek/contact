@@ -12,7 +12,7 @@ import {catchError, map} from 'rxjs'
 @Injectable({
   providedIn: 'root',
 })
-export class MeetGuard implements CanActivate {
+export class UserGuard implements CanActivate {
   authFacade = inject(AuthFacade)
   router = inject(Router)
 

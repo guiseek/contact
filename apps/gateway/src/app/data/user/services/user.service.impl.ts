@@ -80,6 +80,10 @@ export class UserServiceImpl implements UserService {
     return this.devices.save(createDeviceDto)
   }
 
+  async createContact(createContact: Pick<UserImpl, 'id' | 'contacts'>) {
+    return this.users.save(createContact)
+  }
+
   async findDevices(user: Pick<UserImpl, 'id'>) {
     return this.devices.find({where: {user}})
   }

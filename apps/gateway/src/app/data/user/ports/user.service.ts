@@ -20,6 +20,9 @@ export abstract class UserService {
   abstract createOne(createUser: CreateUser): Promise<User>
 
   abstract createDevice(createDeviceDto: CreateDeviceDto): Promise<Device>
+  abstract createContact(
+    createContact: Pick<User, 'id' | 'contacts'>
+  ): Promise<User>
 
   abstract searchUser(query: SearchUserDto): Promise<User[]>
   abstract findOneMeeting(where: Partial<Pick<Meeting, 'id'>>): Promise<Meeting>
