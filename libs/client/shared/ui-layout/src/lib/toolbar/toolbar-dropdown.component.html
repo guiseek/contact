@@ -9,13 +9,13 @@
   </button>
   <mat-menu #beforeMenu="matMenu" xPosition="before">
     <ng-template matMenuContent let-username="username" let-email="email">
-      <button mat-menu-item disabled>
+      <a mat-menu-item routerLink="/user">
         <mat-icon>account_circle</mat-icon>
         <div>
           {{ username }} <br />
           <small>{{ email }}</small>
         </div>
-      </button>
+      </a>
     </ng-template>
     <mat-divider></mat-divider>
     <ng-container *ngIf="items | async as tdItems">

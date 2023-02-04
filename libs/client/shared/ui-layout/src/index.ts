@@ -13,3 +13,5 @@ export * from './lib/progress-bar/progress-bar.component'
 
 export * from './lib/navigation/navigation.component'
 export * from './lib/navigation/navigation.service'
+
+export * from './lib/nav-tabs/nav-tabs.component'

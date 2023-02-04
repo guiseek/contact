@@ -18,6 +18,7 @@ export abstract class UserService {
   abstract findOneByUsername(username: string): Observable<UserResponse | null>
 
   abstract findAgenda(): Observable<AgendaResponse[]>
+  abstract findContacts(): Observable<UserResponse>
 
   abstract searchUser(searchUser: SearchUser): Observable<UserResponse[]>
 

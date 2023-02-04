@@ -18,6 +18,10 @@ export class UserServiceImpl implements UserService {
     return this.http.get<UserResponse[]>(`/api/user`)
   }
 
+  findContacts() {
+    return this.http.get<UserResponse>(`/api/user/contacts`)
+  }
+
   findOneById(id: number) {
     return this.http.get<UserResponse | null>(`/api/user/${id}`)
   }

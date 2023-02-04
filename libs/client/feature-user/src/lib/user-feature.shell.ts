@@ -37,13 +37,62 @@ import {UserFacade} from '@contact/client/data-access-user'
     </contact-toolbar>
 
     <main>
-      <router-outlet></router-outlet>
+      <section>
+        <router-outlet></router-outlet>
+      </section>
+
+      <contact-nav-tabs [tabs]="tabs"></contact-nav-tabs>
     </main>
   `,
+  styles: [
+    `
+      :host {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      :host main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      :host section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      :host nav,
+      :host main {
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class UserFeatureShell {
   protected auth = inject(AuthFacade)
   protected user = inject(UserFacade)
+
+  tabs = [
+    {
+      label: 'Conta',
+      icon: 'account_circle',
+      path: '/user',
+    },
+    {
+      label: 'Contatos',
+      icon: 'contacts',
+      path: '/user',
+    },
+    {
+      label: 'Agenda',
+      icon: 'today',
+      path: '/user/agenda',
+    },
+  ]
 
   onMenuClicked<T>(value: T) {
     console.log(value)

@@ -1,20 +1,15 @@
 import {
   Router,
   CanActivate,
+  HttpErrorResponse,
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
-} from '@angular/router'
-import {inject, Injectable} from '@angular/core'
-import {AuthFacade} from '@contact/client/data-access-auth'
-import {HttpErrorResponse} from '@contact/shared/types'
+} from '@contact/shared/types'
+import {AuthFacade} from '../domain/auth.facade'
 import {catchError, map} from 'rxjs'
 
-@Injectable({
-  providedIn: 'root',
-})
-export class MeetGuard implements CanActivate {
-  authFacade = inject(AuthFacade)
-  router = inject(Router)
+export class AuthGuard implements CanActivate {
+  constructor(private authFacade: AuthFacade, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.authFacade.validate().pipe(

@@ -31,6 +31,26 @@ export class UserGateway implements OnGatewayDisconnect {
     })
   }
 
+  @SubscribeMessage('accept')
+  handleAccept(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: PeerCaller
+  ) {
+    this.clientService.findByUser(data.source).then((c) => {
+      client.to(c.id).emit('open', data)
+    })
+  }
+
+  @SubscribeMessage('deny')
+  handleDeny(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: PeerCaller
+  ) {
+    this.clientService.findByUser(data.source).then((c) => {
+      client.to(c.id).emit('close', data)
+    })
+  }
+
   handleDisconnect(@ConnectedSocket() client: Socket) {
     this.clientService.removeByClient(client.id)
   }

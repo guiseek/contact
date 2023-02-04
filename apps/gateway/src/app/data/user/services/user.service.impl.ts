@@ -3,6 +3,7 @@ import {
   CreateMeetingDto,
   UpdateMeetingDto,
   CreateAgendaDto,
+  CreateContactDto,
 } from '../dto'
 import {FindOptionsWhere, Like, Repository} from 'typeorm'
 import {CreateUserDto} from '../dto/create-user.dto'
@@ -10,6 +11,7 @@ import {UpdateUserDto} from '../dto/update-user.dto'
 import {MeetingImpl} from '../entities/meeting.impl'
 import {DeviceImpl} from '../entities/device.impl'
 import {AgendaImpl} from '../entities/agenda.impl'
+import {ContactImpl} from '../entities/contact.impl'
 import {UserService} from '../ports/user.service'
 import {NotFoundException} from '@nestjs/common'
 import {UserImpl} from '../entities/user.impl'
@@ -21,6 +23,7 @@ export class UserServiceImpl implements UserService {
     private users: Repository<UserImpl>,
     private devices: Repository<DeviceImpl>,
     private meetings: Repository<MeetingImpl>,
+    private contacts: Repository<ContactImpl>,
     private agenda: Repository<AgendaImpl>
   ) {}
 
@@ -80,8 +83,8 @@ export class UserServiceImpl implements UserService {
     return this.devices.save(createDeviceDto)
   }
 
-  async createContact(createContact: Pick<UserImpl, 'id' | 'contacts'>) {
-    return this.users.save(createContact)
+  async createContact(createContact: CreateContactDto) {
+    return this.contacts.save(createContact)
   }
 
   async findDevices(user: Pick<UserImpl, 'id'>) {
@@ -90,6 +93,10 @@ export class UserServiceImpl implements UserService {
 
   async findAgenda(user: Pick<UserImpl, 'id'>) {
     return this.agenda.find({where: {user}})
+  }
+
+  async findContacts(user: Pick<UserImpl, 'id'>) {
+    return this.contacts.find({where: user })
   }
 
   async findMeetingsByUser(user: Pick<UserImpl, 'id'>) {

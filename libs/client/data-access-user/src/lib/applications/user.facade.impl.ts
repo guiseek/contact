@@ -7,10 +7,11 @@ import {
   SearchUser,
   UpdateMeeting,
   UpdateUser,
+  Contact,
   UserResponse,
 } from '@contact/shared/types'
 import {UserService} from '../domain/user.service'
-import {State} from '@contact/shared/data-access'
+import {State, freeze} from '@contact/shared/data-access'
 import {UserFacade} from '../domain/user.facade'
 import {catchError, take} from 'rxjs'
 
@@ -21,14 +22,16 @@ interface UserState {
   meeting: MeetingResponse | null
   agenda: AgendaResponse[]
   users: UserResponse[]
+  contacts: Contact[]
 }
 
-const initialValue: UserState = Object.freeze({
+const initialValue: UserState = freeze<UserState>({
   loading: false,
   error: null,
   user: null,
   meeting: null,
   agenda: [],
+  contacts: [],
   users: [],
 })
 
@@ -39,6 +42,7 @@ export class UserFacadeImpl extends State<UserState> implements UserFacade {
   meeting$ = this.select((state) => state.meeting)
   user$ = this.select((state) => state.user)
   users$ = this.select((state) => state.users)
+  contacts$ = this.select((state) => state.contacts)
 
   constructor(private userService: UserService) {
     super(initialValue)
@@ -50,9 +54,21 @@ export class UserFacadeImpl extends State<UserState> implements UserFacade {
       .findAll()
       .pipe(take(1), catchError(this.throwError))
       .subscribe((users) => {
-        console.log(users);
+        console.log(users)
 
         this.patch({users, loading: false})
+      })
+  }
+
+  loadContacts() {
+    this.update('loading', true)
+    this.userService
+      .findContacts()
+      .pipe(take(1), catchError(this.throwError))
+      .subscribe((user) => {
+        console.log(user)
+
+        this.patch({contacts: user.contacts, loading: false})
       })
   }
 

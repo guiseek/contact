@@ -15,7 +15,6 @@ export function createProcessor() {
 
 @Component({
   selector: 'contact-root',
-  // template: `<button (click)="onClick()">Ligar</button>`,
   template: ` <router-outlet></router-outlet> `,
   styleUrls: ['./app.component.scss'],
 })
@@ -41,19 +40,6 @@ export class AppComponent implements OnInit {
       this.auth.validateUser().subscribe((user) => {
         this.client.register(user.id)
       })
-    })
-  }
-
-  onClick() {
-    this.auth.validateUser().subscribe((user) => {
-      console.log(user)
-
-      const data = {
-        target: user.id === 1 ? 2 : 1,
-        source: user.id,
-      }
-
-      this.client.call(data)
     })
   }
 }

@@ -2,25 +2,4 @@
   <router-outlet></router-outlet>
 </section>
 
-<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-
-<nav
-  backgroundColor="primary"
-  class="flex col p-8 align-center"
-  [tabPanel]="tabPanel"
-  color="primary"
-  mat-tab-nav-bar
->
-  <a
-    mat-tab-link
-    *ngFor="let tab of tabs"
-    [routerLink]="tab.path"
-    (click)="onClick(tab)"
-    [active]="tab.isActive"
-  >
-    <span class="flex col align-center">
-      <mat-icon>{{tab.icon}}</mat-icon>
-      <span> {{tab.label}} </span>
-    </span>
-  </a>
-</nav>
+<contact-nav-tabs [tabs]="tabs"></contact-nav-tabs>

@@ -1,4 +1,4 @@
-import {UserContact} from './user-contact'
+import {Contact} from './contact/contact'
 import {Device} from './device'
 import {Meeting} from './meeting'
 import {UserRole} from './user-role'
@@ -17,7 +17,7 @@ export interface User {
   roles: UserRole[]
   devices?: Device[]
   meetings?: Meeting[]
-  contacts?: UserContact[]
+  contacts?: Contact[]
   isAdmin: boolean
   status: boolean
   createdAt: Date

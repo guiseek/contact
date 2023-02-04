@@ -6,7 +6,11 @@ import {
   UiLayoutModule,
   UiMaterialModule,
 } from '@contact/client/shared/ui-layout'
-import {DeviceContainer, AccountContainer, AgendaContainer} from './containers'
+import {
+  DeviceContainer,
+  AccountContainer,
+  AgendaContainer,
+} from './containers'
 import {UserFeatureShell} from './user-feature.shell'
 import {userFeatureRoutes} from './lib.routes'
 import {IsPastPipe} from './pipes/is-past.pipe'

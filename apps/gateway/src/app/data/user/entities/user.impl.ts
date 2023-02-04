@@ -1,24 +1,17 @@
 import {
   Column,
   Entity,
+  Index,
   Unique,
   OneToMany,
   BaseEntity,
   PrimaryGeneratedColumn,
-  Index,
-  ManyToMany,
-  JoinTable,
 } from 'typeorm'
-import {
-  Agenda,
-  Device,
-  User,
-  UserContact,
-  UserRole,
-} from '@contact/shared/types'
+import {Agenda, Device, User, Contact, UserRole} from '@contact/shared/types'
 import {entityContainer} from '../../../utils'
 import {DeviceImpl} from './device.impl'
 import {AgendaImpl} from './agenda.impl'
+import {ContactImpl} from './contact.impl'
 
 @Entity({
   name: 'users',
@@ -95,9 +88,11 @@ export class UserImpl extends BaseEntity implements User {
   @OneToMany(() => AgendaImpl, (agenda) => agenda.user)
   agenda: Agenda[]
 
-  @ManyToMany(() => UserImpl)
-  @JoinTable()
-  contacts: UserContact[]
+  @OneToMany(() => ContactImpl, (contact) => contact.user, {
+    cascade: true,
+    lazy: true,
+  })
+  contacts: Contact[]
 
   @Column({
     type: 'enum',

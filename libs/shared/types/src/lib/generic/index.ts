@@ -23,3 +23,7 @@ export * from './tail';
 export * from './truty-types-of';
 export * from './value';
 export * from './callback';
+export * from './params';
+export * from './param-map';
+export * from './data';
+export * from './type';

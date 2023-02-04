@@ -1,6 +1,6 @@
 import {Route} from '@angular/router'
+import {AuthGuard} from '@contact/client/data-access-auth'
 import {FeatureMeetShell} from './feature-meet.shell'
-import {MeetGuard} from './guards/meet.guard'
 import {
   RoomContainer,
   AudioContainer,
@@ -13,7 +13,7 @@ export const featureMeetRoutes: Route[] = [
   {
     path: '',
     component: FeatureMeetShell,
-    canActivate: [MeetGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'settings',
@@ -32,7 +32,8 @@ export const featureMeetRoutes: Route[] = [
             component: SpeakerContainer,
           },
           {
-            path: '**',
+            path: '',
+            pathMatch: 'full',
             redirectTo: 'audio',
           },
         ],

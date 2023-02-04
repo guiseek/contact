@@ -2,6 +2,7 @@ import {Component, OnInit, inject} from '@angular/core'
 import {AuthFacade} from '@contact/client/data-access-auth'
 import {ClientFacade} from '@contact/client/data-access-meet'
 import {UserFacade} from '@contact/client/data-access-user'
+import {AuthUserLogged} from '@contact/shared/types'
 import {of} from 'rxjs'
 
 @Component({
@@ -59,12 +60,19 @@ export class HomeContainer implements OnInit {
 
   ngOnInit() {
     this.authFacade.validate().subscribe(console.log)
-    this.userFacade.users$.subscribe(console.log)
-    this.userFacade.loadUsers()
+    this.userFacade.contacts$.subscribe(console.log)
+    this.userFacade.loadContacts()
   }
 
   callTo(source: number, target: number) {
     this.clientFacade.call({source, target})
+  }
+
+  onUserSelected<T>(data: T, user: AuthUserLogged) {
+    console.log(Object.assign(user, {contacts: [data]}))
+    this.userFacade.updateUser(
+      Object.assign(user, {contacts: [data]})
+    )
   }
 
   onMenuToggled<T>(value: T) {

@@ -1,7 +1,7 @@
 import {Route} from '@angular/router'
 import {HomeContainer} from './containers/home/home.container'
-import {UserGuard} from './guards/user.guard'
+import {AuthGuard} from '@contact/client/data-access-auth'
 
 export const featureHomeRoutes: Route[] = [
-  {path: '', canActivate: [UserGuard], component: HomeContainer},
+  {path: '', canActivate: [AuthGuard], component: HomeContainer},
 ]

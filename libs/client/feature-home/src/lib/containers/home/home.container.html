@@ -45,7 +45,13 @@
       <p matListItemTitle>{{contact.name}}</p>
     </a> -->
 
-  <main>
+  <main *ngIf="authFacade.user$ | async as authUser">
+    <contact-search-user
+      [me]="authUser.id"
+      label="Procurar usuário"
+      (searchUser)="onUserSelected($event, authUser)"
+    ></contact-search-user>
+
     <mat-nav-list>
       <ng-container *ngFor="let link of links; last as isLast">
         <a mat-list-item [activated]="link.isActive" [routerLink]="link.route">

@@ -11,6 +11,7 @@ import {
   MeetingResponseDto,
   SearchUserDto,
   CreateAgendaDto,
+  ContactResponseDto,
 } from '../../data'
 import {
   ApiTags,
@@ -30,7 +31,6 @@ import {
   Controller,
   UnauthorizedException,
 } from '@nestjs/common'
-import {CaslAbilityFactory} from '../casl/casl-ability.factory'
 import {AuthUserLogged, UserRole} from '@contact/shared/types'
 import {User} from '../../data/user/ports/user'
 import {Logged, Roles} from '../../utils'
@@ -56,11 +56,9 @@ export class UserController {
   private _toDeviceDto = toDto(DeviceResponseDto)
   private _toAgendaDto = toDto(AgendaResponseDto)
   private _toMeetingDto = toDto(MeetingResponseDto)
+  private _toContactDto = toDto(ContactResponseDto)
 
-  constructor(
-    private readonly userService: UserService,
-    private caslAbilityFactory: CaslAbilityFactory
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   @Get('devices')
   @ApiOperation({summary: 'Gets devices by user'})
@@ -167,6 +165,12 @@ export class UserController {
     return await this._toAgendaDto.many(this.userService.findAgenda(user))
   }
 
+  @Get('contacts')
+  @ApiOperation({summary: 'Gets user with contacts'})
+  async findContacts(@Logged() {id}: AuthUserLogged) {
+    return await this._toContactDto.many(this.userService.findContacts({id}))
+  }
+
   @Post('device/bulk')
   @ApiOperation({summary: 'Creates user devices bulk'})
   @ApiBody({
@@ -219,6 +223,7 @@ export class UserController {
     if (user.id !== +id) {
       throw new UnauthorizedException('You can only change yourself')
     }
+
     return this._toUserDto.one(this.userService.update(+id, value))
   }
 
@@ -248,7 +253,7 @@ export class UserController {
   }
 
   @Get()
-  // @Roles(UserRole.Admin)
+  @Roles(UserRole.Admin)
   async findAll() {
     return this._toUserDto.many(this.userService.findAll())
   }

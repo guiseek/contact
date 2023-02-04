@@ -1,12 +1,12 @@
 import {Route} from '@angular/router'
-import {UserGuard} from './guards/user.guard'
 import {UserFeatureShell} from './user-feature.shell'
 import {AccountContainer, DeviceContainer, AgendaContainer} from './containers'
+import {AuthGuard} from '@contact/client/data-access-auth'
 
 export const userFeatureRoutes: Route[] = [
   {
     path: '',
-    canActivate: [UserGuard],
+    canActivate: [AuthGuard],
     component: UserFeatureShell,
     children: [
       {
